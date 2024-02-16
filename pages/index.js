@@ -7,6 +7,7 @@ export default function Home() {
       <main>Hola mundo</main>
       <Link href="/login">Login</Link>
       <Link href="/registrar">Registrar</Link>
+      <Link href="/olvide-password">Olvide contraseña</Link>
     </Layout>
   );
 }

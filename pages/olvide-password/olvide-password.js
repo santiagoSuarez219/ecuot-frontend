@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Layout from "../layout/Layout";
+import Layout from "../../layout/Layout";
 
-export default function Login() {
+export default function OlvideContraseña() {
   return (
     <Layout
       title={"Login"}
@@ -12,7 +12,7 @@ export default function Login() {
       <main className="mt-5 md:mt-20 w-full md:w-2/3 lg:w-2/5 mx-5">
         <div className="">
           <h1 className="text-orange-500 font-black text-6xl capitalize">
-            Inicia sesión
+            Recupera tu contraseña
           </h1>
           <form className="my-10 bg-white shadow rounded-lg p-10">
             <div className="my-5">
@@ -29,40 +29,19 @@ export default function Login() {
                 placeholder="Email de registro"
               />
             </div>
-            <div className="my-5">
-              <label
-                htmlFor="password"
-                className="uppercase text-gray-600 block text-xl font-bold "
-              >
-                Password
-              </label>
-              <input
-                id="password"
-                className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-                type="password"
-                placeholder="Password de registro"
-              />
-            </div>
+
             <input
               type="submit"
-              value={"Iniciar Sesion"}
+              value={"Enviar instrucciones"}
               className="w-full bg-orange-500 mb-5 py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-600 transition-colors"
             />
           </form>
-          <nav className="lg:flex lg:justify-between">
-            <Link
-              href="/"
-              className="block text-center my-5 text-slate-500 uppercase"
-            >
-              Volver al inicio
-            </Link>
-            <Link
-              href="/olvide-password"
-              className="block text-center my-5 text-slate-500 uppercase text-sm"
-            >
-              Olvide mi contraseña
-            </Link>
-          </nav>
+          <Link
+            href="/"
+            className="block text-center my-5 text-slate-500 uppercase"
+          >
+            Volver al inicio
+          </Link>
         </div>
       </main>
     </Layout>
