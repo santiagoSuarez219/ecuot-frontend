@@ -78,14 +78,12 @@ export default function registrar() {
               className="w-full bg-orange-500 mb-5 py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-600 transition-colors"
             />
           </form>
-          <nav className="lg:flex mt-2 lg:justify-between">
-            <Link
-              href="/"
-              className="block text-center text-slate-500 uppercase"
-            >
-              Volver al inicio
-            </Link>
-          </nav>
+          <Link
+            href="/"
+            className="block text-center text-slate-500 uppercase mt-5"
+          >
+            Volver al inicio
+          </Link>
         </div>
       </main>
     </Layout>
