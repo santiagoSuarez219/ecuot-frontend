@@ -6,6 +6,7 @@ export default function Home() {
     <Layout title={"Inicio"} description={"ECUOT Repositorio Institucional"}>
       <main>Hola mundo</main>
       <Link href="/login">Login</Link>
+      <Link href="/registrar">Registrar</Link>
     </Layout>
   );
 }
