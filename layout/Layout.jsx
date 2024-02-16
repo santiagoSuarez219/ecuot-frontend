@@ -7,7 +7,9 @@ export default function Layout({ children, title = "", description = "" }) {
         <title>{`Ecuot - ${title}`}</title>
         <meta name="description" content={description} />
       </Head>
-      <div className="">{children}</div>
+      <div className="bg-gray-100 min-h-screen flex justify-center">
+        {children}
+      </div>
     </>
   );
 }
