@@ -9,7 +9,7 @@ export default function Login() {
         "Pagina para ingresar credenciales y habilitar otras opciones"
       }
     >
-      <main className="w-full h-screen flex flex-col justify-center items-center ">
+      <main className="w-full h-screen flex flex-col justify-center items-center">
         <h1 className="text-orange-500 font-black text-6xl capitalize">
           Inicia sesión
         </h1>
