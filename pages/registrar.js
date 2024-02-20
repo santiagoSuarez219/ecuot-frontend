@@ -8,7 +8,7 @@ export default function registrar() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
-  const [rol, setRol] = useState("");
+  const [rol, setRol] = useState("usuario");
   const [alerta, setAlerta] = useState({});
 
   const handleSubmit = (e) => {
@@ -17,6 +17,13 @@ export default function registrar() {
       setAlerta({
         error: true,
         msg: "Todos los campos son obligatorios",
+      });
+      return;
+    }
+    if (password !== repetirPassword) {
+      setAlerta({
+        error: true,
+        msg: "Las contraseñas no son iguales",
       });
       return;
     }
@@ -54,7 +61,7 @@ export default function registrar() {
               <input
                 id="nombre"
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-                type="email"
+                type="text"
                 placeholder="Nombre del usuario"
                 onChange={(e) => setNombre(e.target.value)}
               />
@@ -116,6 +123,7 @@ export default function registrar() {
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50 text-gray-400"
                 onChange={(e) => setRol(e.target.value)}
               >
+                <option value="usuario">Usuario</option>
                 <option value="investigador">Investigador</option>
                 <option value="estudiante">Estudiante</option>
               </select>
