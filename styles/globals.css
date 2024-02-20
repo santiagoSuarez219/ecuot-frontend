@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-orange-500 font-black lg:text-6xl text-5xl capitalize;
+  }
+}

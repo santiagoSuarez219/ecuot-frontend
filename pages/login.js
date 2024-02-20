@@ -10,9 +10,7 @@ export default function Login() {
       }
     >
       <main className="w-full h-screen flex flex-col justify-center items-center mt-4 md:mt-0">
-        <h1 className="text-orange-500 font-black lg:text-6xl text-5xl capitalize">
-          Inicia sesión
-        </h1>
+        <h1>Inicia sesión</h1>
         <form className="md:my-10 my-4 w-11/12 md:w-4/5 lg:w-2/5 bg-white shadow rounded-lg md:p-10 p-4">
           <div className="my-5">
             <label
