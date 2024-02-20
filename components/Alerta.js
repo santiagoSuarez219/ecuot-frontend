@@ -5,7 +5,7 @@ const Alerta = ({ alerta }) => {
         alerta.error
           ? "from-red-400 to-red-600"
           : "from-orange-400 to-orange-500"
-      } bg-gradient-to-br text-center p-3 rounded-xl uppercase text-white font-bold text-sm my-10`}
+      } bg-gradient-to-br text-center p-3 rounded-xl uppercase text-white font-bold text-sm md:my-10 my-4 w-full`}
     >
       {alerta.msg}
     </div>
