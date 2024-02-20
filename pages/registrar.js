@@ -36,14 +36,30 @@ export default function registrar() {
       return;
     }
     try {
-      const respuesta = await axios.post("http://localhost:4000/api/usuarios", {
-        nombre,
-        email,
-        password,
-        rol,
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/usuarios`,
+        {
+          nombre,
+          email,
+          password,
+          rol,
+        }
+      );
+      setAlerta({
+        error: false,
+        msg: data.msg,
       });
-      console.log(respuesta);
-    } catch {}
+      setNombre("");
+      setEmail("");
+      setPassword("");
+      setRepetirPassword("");
+      setRol("usuario");
+    } catch (error) {
+      setAlerta({
+        error: true,
+        msg: error.response.data.msg,
+      });
+    }
   };
 
   const { msg } = alerta;
@@ -56,7 +72,7 @@ export default function registrar() {
       }
     >
       <main className="w-full lg:h-screen flex flex-col lg:flex-row items-center md:px-6 md:gap-6">
-        <div className="lg:w-1/2">
+        <div className="lg:w-1/2 w-11/12">
           <h1 className="p-4 md:p-6 md:text-center lg:text-left">
             Crea usuarios para administrar{" "}
             <span className="text-slate-700">Ecuot</span>
@@ -82,6 +98,7 @@ export default function registrar() {
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
                 type="text"
                 placeholder="Nombre del usuario"
+                value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
               />
             </div>
@@ -97,6 +114,7 @@ export default function registrar() {
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
                 type="email"
                 placeholder="Email de registro"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
@@ -112,6 +130,7 @@ export default function registrar() {
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
                 type="password"
                 placeholder="Contraseña de registro"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
@@ -127,6 +146,7 @@ export default function registrar() {
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
                 type="password"
                 placeholder="Repetir la contraseña"
+                value={repetirPassword}
                 onChange={(e) => setRepetirPassword(e.target.value)}
               />
             </div>
@@ -140,6 +160,7 @@ export default function registrar() {
               <select
                 id="rol"
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50 text-gray-400"
+                value={rol}
                 onChange={(e) => setRol(e.target.value)}
               >
                 <option value="usuario">Usuario</option>
