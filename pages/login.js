@@ -9,11 +9,11 @@ export default function Login() {
         "Pagina para ingresar credenciales y habilitar otras opciones"
       }
     >
-      <main className="w-full h-screen flex flex-col justify-center items-center">
-        <h1 className="text-orange-500 font-black text-6xl capitalize">
+      <main className="w-full h-screen flex flex-col justify-center items-center mt-4 md:mt-0">
+        <h1 className="text-orange-500 font-black lg:text-6xl text-5xl capitalize">
           Inicia sesión
         </h1>
-        <form className="my-10 lg:w-2/5 bg-white shadow rounded-lg p-10">
+        <form className="md:my-10 my-4 w-11/12 md:w-4/5 lg:w-2/5 bg-white shadow rounded-lg md:p-10 p-4">
           <div className="my-5">
             <label
               htmlFor="email"
@@ -48,7 +48,7 @@ export default function Login() {
             className="w-full bg-orange-500 mb-5 py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-600 transition-colors"
           />
         </form>
-        <nav className="lg:w-2/5 lg:flex justify-between text-sm">
+        <nav className="lg:w-2/5 md:w-4/5 md:flex justify-between text-sm">
           <Link
             href="/"
             className="block text-center my-5 text-slate-500 uppercase"

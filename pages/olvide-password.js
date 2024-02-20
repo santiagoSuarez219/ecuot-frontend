@@ -10,10 +10,10 @@ export default function OlvideContraseña() {
       }
     >
       <main className="w-full h-screen flex flex-col justify-center items-center">
-        <h1 className="text-orange-500 font-black text-6xl capitalize">
+        <h1 className="text-orange-500 font-black lg:text-6xl lg:w-2/5 text-5xl px-4 capitalize">
           Recupera tu contraseña
         </h1>
-        <form className="lg:w-2/5 my-10 bg-white shadow rounded-lg p-10">
+        <form className="lg:w-2/5 w-11/12 md:w-4/5 lg:my-10 my-12 bg-white shadow rounded-lg lg:p-10 p-4">
           <div className="my-5">
             <label
               htmlFor="email"
