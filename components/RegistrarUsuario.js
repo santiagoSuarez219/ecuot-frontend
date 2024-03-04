@@ -1,10 +1,7 @@
 import useEcuot from "../hooks/useEcuot";
-import Alerta from "../components/Alerta";
 import Layout from "../layout/Layout";
 
 export default function RegistrarUsuario({
-  msg,
-  alerta,
   handleSubmit,
   nombre,
   setNombre,
@@ -24,7 +21,7 @@ export default function RegistrarUsuario({
       title="Registrar"
       description="Registra usuarios para administrar ECUOT"
     >
-      <main className="w-full h-[calc(100vh-96px)] overflow-y-auto justify-center items-center p-4 ">
+      <main className="w-full h-[calc(100vh-96px)] overflow-y-auto justify-center items-center p-4">
         <div className="w-full max-w-sm mx-auto">
           <div className="space-y-2 text-center">
             <h1 className="text-3xl font-bold">Registrar</h1>
@@ -74,7 +71,7 @@ export default function RegistrarUsuario({
               >
                 <option value="usuario">Usuario</option>
                 <option value="investigador">Investigador</option>
-                <option value="estudiante">Auxiliar</option>
+                <option value="auxiliar">Auxiliar</option>
               </select>
             </div>
             <div className="md:col-span-2">
