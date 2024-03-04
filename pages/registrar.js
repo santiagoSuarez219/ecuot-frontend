@@ -1,9 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-import Registrar from "@/components/Registrar";
+import RegistrarUsuario from "@/components/RegistrarUsuario";
 
 export default function registrar() {
   const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
@@ -12,6 +13,7 @@ export default function registrar() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("entre");
     if ([nombre, email, password, repetirPassword, rol].includes("")) {
       setAlerta({
         error: true,
@@ -63,12 +65,14 @@ export default function registrar() {
   const { msg } = alerta;
 
   return (
-    <Registrar
+    <RegistrarUsuario
       msg={msg}
       alerta={alerta}
       handleSubmit={handleSubmit}
       nombre={nombre}
       setNombre={setNombre}
+      apellido={apellido}
+      setApellido={setApellido}
       email={email}
       setEmail={setEmail}
       password={password}
