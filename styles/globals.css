@@ -6,6 +6,10 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+.main-image {
+  filter: grayscale(100%);
+}
+
 /* @layer base {
   h1 {
     @apply text-orange-500 lg:text-6xl text-5xl capitalize;

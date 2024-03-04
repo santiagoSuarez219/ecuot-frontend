@@ -1,7 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
 import Layout from "../layout/Layout";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SobreNosotros from "@/components/SobreNosotros";
 import EquipoTrabajo from "@/components/EquipoTrabajo";
@@ -9,7 +7,6 @@ import EquipoTrabajo from "@/components/EquipoTrabajo";
 export default function Home() {
   return (
     <Layout title={"Inicio"} description={"ECUOT Repositorio Institucional"}>
-      <Navbar />
       <div className="p-2 w-full text-center space-y-2 mb-6">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
           Introduccion
@@ -29,7 +26,7 @@ export default function Home() {
           alt="Imagen de fondo"
           width={2000}
           height={1000}
-          className="rounded-t-lg"
+          className="main-image rounded-t-lg "
         />
       </figure>
       <SobreNosotros />
