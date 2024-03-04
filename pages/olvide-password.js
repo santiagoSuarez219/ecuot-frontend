@@ -1,7 +1,31 @@
+import { useState } from "react";
 import Link from "next/link";
+import axios from "axios";
 import Layout from "../layout/Layout";
+import { toast } from "react-toastify";
 
 export default function OlvideContraseña() {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (email === "") {
+      toast.error("El email es requerido");
+      return;
+    }
+    try {
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/usuarios/olvide-password`,
+        {
+          email,
+        }
+      );
+      toast.success(data.msg);
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+  };
+
   return (
     <Layout
       title={"Recuperar contraseña"}
@@ -16,7 +40,7 @@ export default function OlvideContraseña() {
               contraseña
             </p>
           </div>
-          <form className="">
+          <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="font-medium">
                 Email
@@ -26,6 +50,8 @@ export default function OlvideContraseña() {
                 className="w-full mt-2 p-3 border border-gray-400 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors"
                 type="text"
                 placeholder="johnd@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <input
