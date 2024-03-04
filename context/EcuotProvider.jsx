@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import { toast } from "react-toastify";
 
 const EcuotContext = createContext();
 
@@ -26,6 +27,7 @@ const EcuotProvider = ({ children }) => {
         handleCloseModal,
         modal,
         handleChangeModal,
+        toast,
       }}
     >
       {children}

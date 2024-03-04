@@ -1,20 +1,10 @@
 import Head from "next/head";
-import Navbar from "../components/Navbar";
 import Modal from "react-modal";
-import { HiBars3 } from "react-icons/hi2";
-import { HiOutlineXMark } from "react-icons/hi2";
+import { ToastContainer } from "react-toastify";
+import Navbar from "../components/Navbar";
 import useEcuot from "../hooks/useEcuot";
-import RegistrarUsuario from "@/components/RegistrarUsuario";
 
-const customStylesMobile = {
-  content: {
-    top: "auto",
-    left: "auto",
-    right: 0,
-    bottom: 0,
-    height: "calc(100vh - 96px)",
-  },
-};
+import "react-toastify/dist/ReactToastify.css";
 
 const customStyles = {
   content: {
@@ -42,11 +32,12 @@ export default function Layout({ children, title = "", description = "" }) {
         <Navbar />
         {children}
       </div>
-      {modal && (
-        <Modal isOpen={modal} style={customStylesMobile}>
-          <RegistrarUsuario />
+      {/* {modal && (
+        <Modal isOpen={modal} style={customStyles}>
+          Hola
         </Modal>
-      )}
+      )} */}
+      <ToastContainer />
     </>
   );
 }
