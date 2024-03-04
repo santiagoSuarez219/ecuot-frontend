@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import RegistrarUsuario from "@/components/RegistrarUsuario";
 
 export default function registrar() {
@@ -9,30 +10,19 @@ export default function registrar() {
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
   const [rol, setRol] = useState("usuario");
-  const [alerta, setAlerta] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("entre");
     if ([nombre, email, password, repetirPassword, rol].includes("")) {
-      setAlerta({
-        error: true,
-        msg: "Todos los campos son obligatorios",
-      });
+      toast.error("Todos los campos son obligatorios");
       return;
     }
     if (password !== repetirPassword) {
-      setAlerta({
-        error: true,
-        msg: "Las contraseñas no son iguales",
-      });
+      toast.error("Las contraseñas no coinciden");
       return;
     }
     if (password.length < 6) {
-      setAlerta({
-        error: true,
-        msg: "La contraseña debe tener al menos 6 caracteres",
-      });
+      toast.error("La contraseña debe tener al menos 6 caracteres");
       return;
     }
     try {
@@ -40,34 +30,26 @@ export default function registrar() {
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/usuarios`,
         {
           nombre,
+          apellido,
           email,
           password,
           rol,
         }
       );
-      setAlerta({
-        error: false,
-        msg: data.msg,
-      });
+      toast.success(data.msg);
       setNombre("");
+      setApellido("");
       setEmail("");
       setPassword("");
       setRepetirPassword("");
       setRol("usuario");
     } catch (error) {
-      setAlerta({
-        error: true,
-        msg: error.response.data.msg,
-      });
+      toast.error(error.response.data.msg);
     }
   };
 
-  const { msg } = alerta;
-
   return (
     <RegistrarUsuario
-      msg={msg}
-      alerta={alerta}
       handleSubmit={handleSubmit}
       nombre={nombre}
       setNombre={setNombre}

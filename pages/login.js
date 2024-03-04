@@ -1,7 +1,20 @@
 import Link from "next/link";
+import { useState } from "react";
+import { toast } from "react-toastify";
 import Layout from "../layout/Layout";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if ([email, password].includes("")) {
+      toast.error("Todos los campos son obligatorios");
+      return;
+    }
+  };
+
   return (
     <Layout title={"Login"} description={"Inicia sesión en ECUOT"}>
       <main className="w-full h-[calc(100vh-96px)] flex flex-col justify-center items-center md:mt-0 p-4">
@@ -12,7 +25,10 @@ export default function Login() {
             cuenta
           </p>
         </div>
-        <form className="my-4 w-full max-w-sm space-y-4">
+        <form
+          className="my-4 w-full max-w-sm space-y-4"
+          onSubmit={handleSubmit}
+        >
           <div>
             <label htmlFor="email">Email</label>
             <input
@@ -20,13 +36,15 @@ export default function Login() {
               className="w-full mt-2 p-3 border rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors"
               type="email"
               placeholder="m@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
             <div className="flex justify-between items-center">
               <label htmlFor="password">Password</label>
               <p className="underline underline-offset-1 text-sm cursor-pointer">
-                Olvidaste tu contraseña
+                <Link href={"/olvide-password"}>Olvidaste tu contraseña</Link>
               </p>
             </div>
             <input
@@ -34,6 +52,8 @@ export default function Login() {
               className="w-full mt-2 p-3 border rounded-xl bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300"
               type="password"
               placeholder="Password de registro"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <input
