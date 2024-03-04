@@ -7,17 +7,6 @@ import Layout from "../../layout/Layout";
 export default function OlvidePassword({ token }) {
   const [password, setPassword] = useState("");
   const [tokenValido, setTokenValido] = useState(false);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/usuarios/olvide-password/${token}`
-      );
-      toast.success(data.msg);
-    } catch (error) {
-      toast.error(error.response.data.msg);
-    }
-  };
 
   useEffect(() => {
     const comprobarToken = async () => {
@@ -32,6 +21,25 @@ export default function OlvidePassword({ token }) {
     };
     comprobarToken();
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (password.length < 6) {
+      return toast.error("La contraseña debe tener al menos 6 caracteres");
+    }
+    try {
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/usuarios/olvide-password/${token}`,
+        {
+          password,
+        }
+      );
+      setPassword("");
+      toast.success(data.msg);
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+  };
 
   return (
     <Layout
