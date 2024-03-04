@@ -20,7 +20,7 @@ export default function Home() {
           la IUCMA
         </p>
       </div>
-      <figure className="hidden md:block w-full rounded-t-lg mb-6">
+      <figure className="hidden md:block w-full rounded-t-lg mb-6 p-6">
         <Image
           src="/img/2.png"
           alt="Imagen de fondo"
