@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
+import axios from "axios";
 import { toast } from "react-toastify";
 import Layout from "../layout/Layout";
 
@@ -7,11 +8,24 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  //TODO: No funciona la autenticacion
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if ([email, password].includes("")) {
       toast.error("Todos los campos son obligatorios");
       return;
+    }
+    try {
+      const { data } = axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/usuarios/login`,
+        {
+          email,
+          password,
+        }
+      );
+      // toast.success(data.msg);
+    } catch (error) {
+      console.log(error.response.data);
     }
   };
 
@@ -62,56 +76,6 @@ export default function Login() {
             className="w-full bg-black mb-5 py-3 text-white rounded cursor-pointer hover:bg-black/90 transition-colors"
           />
         </form>
-
-        {/* <div className="mt-4">
-          <div className="space-y-2">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              placeholder="m@example.com"
-              required
-              type="email"
-              className="w-full"
-            />
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center">
-              <label htmlFor="password">Password</label>
-              <Link className="ml-auto inline-block text-sm underline" href="#">
-                Forgot your password?
-              </Link>
-            </div>
-            <input id="password" required type="password" />
-          </div>
-          <button className="w-full" type="submit">
-            Login
-          </button>
-          <button className="w-full" variant="outline">
-            Login with Google
-          </button>
-        </div> */}
-        {/* <form className="md:my-10 my-4 w-11/12 md:w-4/5 lg:w-2/5 bg-white shadow rounded-lg md:p-10 p-4">
-
-          <input
-            type="submit"
-            value={"Iniciar Sesion"}
-            className="w-full bg-orange-500 mb-5 py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-600 transition-colors"
-          />
-        </form> */}
-        {/* <nav className="lg:w-2/5 md:w-4/5 md:flex justify-between text-sm">
-          <Link
-            href="/"
-            className="block text-center my-5 text-slate-500 uppercase"
-          >
-            Volver al inicio
-          </Link>
-          <Link
-            href="/olvide-password"
-            className="block text-center my-5 text-slate-500 uppercase"
-          >
-            Olvide mi contraseña
-          </Link>
-        </nav> */}
       </main>
     </Layout>
   );
