@@ -1,3 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.nav__list {
+    @apply relative my-0 
+}
+
+.nav__item {
+    @apply mx-8
+}
+
+.nav__title {
+    @apply relative inline-block transition-all duration-300 ease-in-out text-font-color cursor-pointer;
+}
+
+.nav__title::before {
+    content: '';
+    position: absolute;
+    bottom: -0.7rem;
+    left: 0;
+    width: 0;
+    height: 0.1rem;
+    @apply bg-primary;
+    opacity: 0;
+    transition: 500ms;
+}
+
+.nav__title:hover::before {
+    width: 100%;
+    opacity: 1;
+}
+
+.figures__item {
+    @apply absolute -z-10
+}
