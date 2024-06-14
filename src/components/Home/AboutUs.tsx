@@ -4,7 +4,7 @@ import { aboutUsText } from "../../utils/aboutUsText";
 
 export default function AboutUs() {
   return (
-    <section className="layout__about-us mx-12 rounded-[60px] relative mt-8 pt-16 pb-[17rem] mb-12 shadow-lg  px-28 flex gap-8 z-10 overflow-hidden min-h-[720px]">
+    <section className="layout__about-us mx-12 rounded-[60px] relative mt-8 pt-16 pb-[17rem] shadow-lg  px-28 flex gap-8 z-10 overflow-hidden min-h-[720px]">
       <div className="about-us__content">
         <h1 className="about-us__title text-[4.5rem] capitalize text-primary font-semibold leading-none ">
           Sobre <br />
@@ -27,7 +27,6 @@ export default function AboutUs() {
             />
           </svg>
         </div>
-
         <div className="about-us__figures">
           <ul className="figures__list">
             <li className="figures__item figures__item--figure-team -left-[4rem] -bottom-[3rem]">
