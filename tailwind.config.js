@@ -16,6 +16,7 @@ export default {
         'septenary': '#172139',
         'font-color': '#525260',
         'font-color-light': '#E0E0E0',
+        'delete-color': '#b91c1c',
       }
     },
   },

@@ -40,3 +40,8 @@ body {
 .figures__item {
     @apply absolute -z-10
 }
+
+
+.intervention-sheet__nav__item:hover svg {
+    background-color: #FBBB28 ;
+}

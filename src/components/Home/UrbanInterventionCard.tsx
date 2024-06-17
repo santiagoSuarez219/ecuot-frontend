@@ -1,11 +1,22 @@
+import { useNavigate } from "react-router-dom";
+
 type Data = {
   title: string;
   image: string;
 };
 
 export default function UrbanInterventionCard(props: Data) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/intervention/description");
+  };
+
   return (
-    <div className="urban-interventions__item w-full h-[28rem] rounded-xl cursor-pointer hover:scale-105 transition-all bg-secondary">
+    <div
+      className="urban-interventions__item w-full h-[28rem] rounded-xl cursor-pointer hover:scale-105 transition-all bg-secondary"
+      onClick={handleClick}
+    >
       <figure className="item__image-container bg-red-300 w-full h-[100%] rounded-xl relative">
         <img
           src={props.image}

@@ -14,7 +14,6 @@ export default function HomeView() {
       <UrbanPlanningInterventions />
       <ShortCuts />
       <Statistics />
-
       <DocumentsSection />
       <TeamWork />
     </section>
