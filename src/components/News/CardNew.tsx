@@ -4,7 +4,7 @@ export default function CardNew() {
   return (
     <div className="urban-planning-interventions__item flex rounded-xl overflow-hidden flex-col text-font-color border border-secondary cursor-pointer">
       <div className="flex ">
-        <figure className="w-[50%] relative">
+        <figure className="w-[40%] relative">
           <img
             src={prueba}
             alt=""
@@ -28,7 +28,7 @@ export default function CardNew() {
             </svg>
           </div>
         </figure>
-        <div className="w-[50%] pt-4 flex flex-col justify-between">
+        <div className="w-[60%] pt-4 flex flex-col justify-between">
           <div className="px-4">
             <h3 className="text-3xl font-semibold text-primary mb-2">
               Críticas sobre calidad de materiales en pasaje de Junín

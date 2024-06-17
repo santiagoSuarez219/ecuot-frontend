@@ -1,3 +1,4 @@
+import Login from "../components/Auth/Login";
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
@@ -9,6 +10,7 @@ export default function AppLayout() {
       <NavBar />
       <Outlet />
       <Footer />
+      <Login />
     </div>
   );
 }

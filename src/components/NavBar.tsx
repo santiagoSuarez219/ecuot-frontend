@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function NavBar() {
+  const navigate = useNavigate();
   return (
     <header className="layout__menu w-full py-[3.5rem] px-[3rem] ">
       <nav className="menu__navbar w-full flex item-center justify-between">
@@ -30,7 +32,7 @@ export default function NavBar() {
           <li className="nav__item">
             <p className="text-font-color font-light">santiago8628@gmail.com</p>
           </li>
-          <li className="nav__item">
+          <li className="nav__item" onClick={() => navigate("?authLogin=true")}>
             <p className="nav__title font-semibold">Iniciar Sesion</p>
           </li>
         </ul>
