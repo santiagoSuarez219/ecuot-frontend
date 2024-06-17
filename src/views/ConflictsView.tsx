@@ -1,19 +1,16 @@
-import CardUrbanPlanningIntervention from "../components/UrbanPlanningInterventions/CardUrbanPlanningIntervention";
-import FilterForm from "../components/UrbanPlanningInterventions/FilterForm";
 import CrudButton from "../components/CrudButton";
 import Pagination from "../components/Pagination";
+import FilterForm from "../components/Conflicts/FilterForm";
+import CardConflict from "../components/Conflicts/CardConflict";
 
-export default function UrbanPlanningInterventions() {
+export default function ConflictsView() {
   return (
     <section className="layout__urban-planning-interventions mx-20">
-      <h2
-        className="urban-planning-interventions__title text-[4.5rem] capitalize text-primary font-semibold"
-        id="urban-planning-interventions__title-id"
-      >
-        Actuaciones Urbanisticas
+      <h2 className="urban-planning-interventions__title text-[4.5rem] capitalize text-primary font-semibold">
+        Conflictos
       </h2>
       <p className="urban-planning-interventions__description text-lg text-font-color">
-        Listado de todas las actuaciones urbanisticas
+        Listado de todos los conflictos asociados a una actuación urbanística
       </p>
       <div className="my-6 grid grid-cols-3 gap-6">
         <CrudButton
@@ -33,12 +30,12 @@ export default function UrbanPlanningInterventions() {
         />
       </div>
       <FilterForm />
-      <div className="urban-planning-interventions__list w-full mt-6 mb-12 grid grid-cols-2 gap-6">
-        <CardUrbanPlanningIntervention />
-        <CardUrbanPlanningIntervention />
-        <CardUrbanPlanningIntervention />
-        <CardUrbanPlanningIntervention />
-        <CardUrbanPlanningIntervention />
+      <div className="urban-planning-interventions__list w-full mt-6 mb-12 grid grid-cols-1 gap-6">
+        <CardConflict />
+        <CardConflict />
+        <CardConflict />
+        <CardConflict />
+        <CardConflict />
       </div>
       <Pagination />
     </section>

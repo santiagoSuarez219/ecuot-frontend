@@ -16,10 +16,14 @@ export default function NavBar() {
             </Link>
           </li>
           <li className="nav__item">
-            <p className="nav__title font-medium">Conflictos</p>
+            <Link to="/conflicts" className="nav__title font-medium">
+              Conflictos
+            </Link>
           </li>
           <li className="nav__item">
-            <p className="nav__title font-medium">Acontecimientos noticiosos</p>
+            <Link to="/news" className="nav__title font-medium">
+              Acontecimientos noticiosos
+            </Link>
           </li>
         </ul>
         <ul className="nav__list flex">

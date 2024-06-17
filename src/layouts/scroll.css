@@ -1,0 +1,34 @@
+/* SCROLL CHROME */
+
+.content_page::-webkit-scrollbar {
+    width: 25px;
+    background: transparent;
+}
+
+.content_page::-webkit-scrollbar-thumb {
+    box-shadow: none;
+    border-radius: 40px;
+    border: 10px solid transparent;
+
+}
+
+.content_page:hover::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0 10px #E9901E;
+}
+
+.content_page:hover::-webkit-scrollbar-thumb:hover {
+    border: 8px solid transparent; 
+    box-shadow: inset 0 0 0 10px #E9901E;
+}
+
+
+.content_page::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 40px 0;
+}
+
+/* SCROL MOZILLA */
+.content__page {
+    scrollbar-width: thin;
+    scrollbar-color: #E9901E transparent;
+}

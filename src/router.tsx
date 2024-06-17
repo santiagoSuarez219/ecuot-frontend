@@ -6,7 +6,9 @@ import Conflictivity from "./components/InterventionSheet/Conflictivity";
 import InterventionSheetLayout from "./layouts/InterventionSheetLayout";
 import Description from "./components/InterventionSheet/Description";
 import Features from "./components/InterventionSheet/Features";
+import ConflictsView from "./views/ConflictsView";
 import AppLayout from "./layouts/AppLayout";
+import NewsView from "./views/NewsView";
 import HomeView from "./views/HomeView";
 
 export default function Router() {
@@ -19,6 +21,8 @@ export default function Router() {
             path="/interventions"
             element={<UrbanPlanningInterventions />}
           />
+          <Route path="/conflicts" element={<ConflictsView />} />
+          <Route path="/news" element={<NewsView />} />
         </Route>
         <Route element={<InterventionSheetLayout />}>
           <Route path="/intervention/description" element={<Description />} />

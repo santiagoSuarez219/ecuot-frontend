@@ -1,19 +1,25 @@
+import { useNavigate } from "react-router-dom";
+
 type ShortCutItemProps = {
   title: string;
   icon: string;
+  route: string;
 };
 
 export default function ShortCutItem(props: ShortCutItemProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+    navigate(props.route);
+  };
+
   return (
-    <div className="shorcuts__item relative rounded-xl shadow-xl cursor-pointer hover:scale-105 transition-all ">
-      <figure className="shorcut__icon">
-        <img
-          src={props.icon}
-          alt={props.title}
-          className="shorcut_img aspect-square"
-        />
-      </figure>
-      <h2 className="shorcut__title bg-primary rounded-lg py-6 px-4 text-white font-semibold capitalize text-2xl w-full absolute text-center -bottom-8">
+    <div
+      className="shorcuts__item bg-primary relative w-full h-56 rounded-xl shadow-xl cursor-pointer flex justify-center items-center hover:bg-secondary transition-colors"
+      onClick={handleClick}
+    >
+      <h2 className="text-white font-semibold capitalize text-4xl text-center">
         {props.title}
       </h2>
     </div>

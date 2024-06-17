@@ -3,7 +3,7 @@ import Item from "./Pagination/Item";
 export default function Pagination() {
   return (
     <div className="w-full mb-12 flex justify-center items-center gap-2">
-      <div className="w-8 h-9 border border-font-color-light bg-font-color-light px-2 py-1 rounded-md text-font-color cursor-pointer flex items-center justify-center">
+      <div className="w-8 h-9 border border-font-color-light bg-primary/50 px-2 py-1 rounded-md text-font-color cursor-pointer flex items-center justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -24,7 +24,7 @@ export default function Pagination() {
       <Item value="..." active={false} />
       <Item value="9" active={false} />
       <Item value="10" active={false} />
-      <div className="w-8 h-9 border border-font-color-light px-2 py-1 rounded-md text-font-color/50 cursor-pointer flex items-center justify-center">
+      <div className="w-8 h-9 border border-primary px-2 py-1 rounded-md text-font-color cursor-pointer flex items-center justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

@@ -5,7 +5,7 @@ import logo_desarrollo from "../assets/img/logo_desarrollo.png";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col px-12">
+    <footer className="flex flex-col px-12 bg-primary">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-12">
         <figure>
           <img src={logo_colmayor} alt="logo_colmayor" />
@@ -21,16 +21,16 @@ export default function Footer() {
         </figure>
       </div>
       <div className="flex flex-col lg:flex-row items-center gap-6">
-        <div className="w-full md:max-w-screen-sm lg:max-w-screen-xl lg:w-1/2 shadow-lg rounded-2xl flex flex-col px-12 pb-12 pt-6">
+        {/* <div className="bg-white w-full md:max-w-screen-sm lg:max-w-screen-xl lg:w-1/2 shadow-lg rounded-2xl flex flex-col px-12 pb-12 pt-6">
           <h2 className="text-4xl lg:text-6xl font-medium text-primary text-center lg:text-left">
             Contactanos!
           </h2>
-          <p className="lg:text-lg lg:mt-8 mt-4">
+          <p className="lg:text-lg lg:mt-8 mt-4 text-font-color">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla enim
             quaerat eaque dolor impedit delectus doloribus iusto facilis eum est
             ad deserunt debitis omnis ipsam, nisi, quo quae similique aperiam?
           </p>
-          <div className="flex px-2 lg:px-6 mt-4 lg:mt-8 py-2 lg:py-4 shadow-md justify-between items-center">
+          <div className="flex px-2 lg:px-6 mt-4 lg:mt-8 py-2 lg:py-4 shadow-md justify-between items-center rounded-md bg-white">
             <div className="flex gap-2 lg:gap-4 lg:w-4/5 items-center">
               <input
                 type="text"
@@ -40,32 +40,26 @@ export default function Footer() {
             </div>
             <button
               type="submit"
-              className="bg-primary px-4 py-2 rounded-lg text-white font-semibold text-lg hover:bg-primary/80 transition-colors"
+              className="bg-primary px-4 py-2 rounded-lg text-white font-semibold text-lg hover:bg-secondary transition-colors"
             >
               Enviar
             </button>
           </div>
-        </div>
-        <div className="mt-12 lg:mt-0 w-full lg:w-1/2 text-lg px-6 flex flex-col md:flex-row gap-12 lg:gap-24 text-gray-500">
+        </div> */}
+        <div className="mt-12 lg:mt-0 w-full lg:w-1/2 text-lg px-6 flex flex-col md:flex-row gap-12 lg:gap-24 text-white">
           <div>
-            <h3 className="font-semibold mb-6 text-black">Menu</h3>
-            <ul className="flex flex-col gap-2 ">
-              <li className="hover:text-black cursor-pointer">Inicio</li>
-              <li className="hover:text-black cursor-pointer">
-                Sobre nosotros
-              </li>
-              <li className="hover:text-black cursor-pointer">Documentos</li>
-              <li className="hover:text-black cursor-pointer">
-                Actuaciones Urbanisticas
-              </li>
-              <li className="hover:text-black cursor-pointer">Conflictos</li>
-              <li className="hover:text-black cursor-pointer">
-                Acontecimientos noticiosos
-              </li>
+            <h3 className="font-semibold mb-6  text-xl">Menu</h3>
+            <ul className="flex flex-col gap-2  ">
+              <li className="cursor-pointer">Inicio</li>
+              <li className=" cursor-pointer">Sobre nosotros</li>
+              <li className=" cursor-pointer">Documentos</li>
+              <li className=" cursor-pointer">Actuaciones Urbanisticas</li>
+              <li className=" cursor-pointer">Conflictos</li>
+              <li className=" cursor-pointer">Acontecimientos noticiosos</li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-6 text-black">Contacto</h3>
+            <h3 className="font-semibold mb-6 text-xl">Contacto</h3>
             <div className="flex flex-col gap-2">
               <p>Facultad de ciencias sociales y educacion</p>
               <p>Direccion: Calle 112 #45-56</p>
@@ -75,7 +69,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="text-xs text-gray-500 text-center lg:text-right p-4 md:mt-12 lg:mt-0">
+      <div className="text-xs text-white text-center lg:text-right p-4 md:mt-12 lg:mt-0">
         © {new Date().getFullYear()} Santiago Suarez. Todos los derechos
         reservados.
       </div>

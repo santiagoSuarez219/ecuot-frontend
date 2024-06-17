@@ -45,3 +45,25 @@ body {
 .intervention-sheet__nav__item:hover svg {
     background-color: #FBBB28 ;
 }
+
+html::-webkit-scrollbar {
+    width: 25px;
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0 10px #E9901E;
+    border-radius: 40px;
+    border: 8px solid transparent
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 40px 0 0 0 0;
+}
+
+/* SCROL MOZILLA */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #E9901E transparent;
+} 

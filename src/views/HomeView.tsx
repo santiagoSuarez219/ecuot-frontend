@@ -1,9 +1,10 @@
-import Banner from "../components/Home/Banner";
-import AboutUs from "../components/Home/AboutUs";
 import UrbanPlanningInterventions from "../components/Home/UrbanPlanningInterventions";
-import ShortCuts from "../components/Home/ShortCuts";
-import Statistics from "../components/Home/Statistics";
 import DocumentsSection from "../components/Home/DocumentsSection";
+import ContactUsSection from "../components/Home/ContactUsSection";
+import Statistics from "../components/Home/Statistics";
+import ShortCuts from "../components/Home/ShortCuts";
+import AboutUs from "../components/Home/AboutUs";
+import Banner from "../components/Home/Banner";
 import TeamWork from "../components/Home/TeamWork";
 
 export default function HomeView() {
@@ -16,6 +17,7 @@ export default function HomeView() {
       <Statistics />
       <DocumentsSection />
       <TeamWork />
+      <ContactUsSection />
     </section>
   );
 }
