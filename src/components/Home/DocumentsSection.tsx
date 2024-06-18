@@ -18,7 +18,7 @@ export default function DocumentsSection() {
         <img
           src={document_img}
           alt="document-img"
-          className="document__image w-[40rem] absolute -bottom-8 -left-32"
+          className="document__image w-[38rem] absolute -bottom-8 -left-32"
         />
       </figure>
       <figure>

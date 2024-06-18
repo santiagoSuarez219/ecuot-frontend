@@ -5,16 +5,11 @@ export default function Banner() {
   return (
     <div className="home__banner relative mx-12 pr-0 pl-32 rounded-[60px] bg-primary z-10 overflow-x-hidden overflow-y-hidden ">
       <div className="banner__content flex px-6 z-30">
-        <div className="banner__title w-[70%] pt-24 pb-[16rem]">
+        <div className="banner__title w-[70%] pt-24 pb-[24rem]">
           <h1 className="text-[4rem] leading-none font-medium  text-white flex flex-col ">
             Estudios sobre el conflicto urbano asociados a decisiones de
             ordenamiento territorial
           </h1>
-          <input
-            type="button"
-            value="Sobre nosotros"
-            className="mt-12 py-8 px-14 rounded-[20px] bg-white relative z-30 text-primary font-medium text-center text-base cursor-pointer hover:bg-tertiary hover:text-white transition-all duration-300 ease-in-out"
-          />
         </div>
         <div className="banner__logo w-[30%] self-center ">
           <img

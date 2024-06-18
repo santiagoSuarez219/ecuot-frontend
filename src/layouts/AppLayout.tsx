@@ -1,3 +1,6 @@
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Login from "../components/Auth/Login";
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
@@ -11,6 +14,7 @@ export default function AppLayout() {
       <Outlet />
       <Footer />
       <Login />
+      <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false} />
     </div>
   );
 }

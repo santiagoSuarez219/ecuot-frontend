@@ -17,7 +17,7 @@ body {
 }
 
 .nav__title {
-    @apply relative inline-block transition-all duration-300 ease-in-out text-font-color cursor-pointer;
+    @apply relative inline-block transition-transform duration-300 ease-in-out text-font-color cursor-pointer;
 }
 
 .nav__title::before {
@@ -36,6 +36,11 @@ body {
     width: 100%;
     opacity: 1;
 }
+
+.nav__title--active {
+    @apply text-primary font-semibold;
+}
+
 
 .figures__item {
     @apply absolute -z-10
@@ -61,9 +66,3 @@ html::-webkit-scrollbar-track {
     background: transparent;
     margin: 40px 0 0 0 0;
 }
-
-/* SCROL MOZILLA */
-html {
-    scrollbar-width: thin;
-    scrollbar-color: #E9901E transparent;
-} 
