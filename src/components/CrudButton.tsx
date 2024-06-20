@@ -7,6 +7,8 @@ type CrudButtonProps = {
   route: string;
 };
 
+//TODO: Borrar color
+
 export default function CrudButton(props: CrudButtonProps) {
   const navigate = useNavigate();
   return (

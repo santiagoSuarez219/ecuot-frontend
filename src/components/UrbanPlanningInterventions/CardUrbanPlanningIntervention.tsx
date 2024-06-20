@@ -7,10 +7,12 @@ export default function CardUrbanPlanningIntervention({
   data,
   isEditing,
   isDeleting,
+  setInterventionId,
 }: {
   data: Intervention;
   isEditing: boolean;
   isDeleting: boolean;
+  setInterventionId: (id: string) => void;
 }) {
   const navigate = useNavigate();
   return (
@@ -28,6 +30,10 @@ export default function CardUrbanPlanningIntervention({
             className={`${
               isDeleting ? "flex" : "hidden"
             } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
+            onClick={() => {
+              setInterventionId(data._id);
+              navigate(`/interventions/?deleteUrbanIntervention=true`);
+            }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +54,10 @@ export default function CardUrbanPlanningIntervention({
             className={`${
               isEditing ? "flex" : "hidden"
             } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
-            onClick={() => navigate(`/interventions/${data._id}/edit`)}
+            onClick={() => {
+              navigate(`/interventions/${data._id}/edit`);
+              window.scrollTo(0, 0);
+            }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

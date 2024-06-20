@@ -64,3 +64,14 @@ export async function updateIntervention({
     }
   }
 }
+
+export async function deleteIntervention(id: Intervention["_id"]) {
+  try {
+    const { data } = await api.delete<string>(`/interventions/${id}`);
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.error);
+    }
+  }
+}

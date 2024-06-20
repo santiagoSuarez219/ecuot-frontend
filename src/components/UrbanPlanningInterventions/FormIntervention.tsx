@@ -60,11 +60,11 @@ export default function FormIntervention({
           {...register("hierarchy")}
         >
           <option value="Ciudad">Ciudad</option>
-          <option value="Barrial Suburbano">Barrial Suburbano</option>
-          <option value="Zona y Corregimental">Zona y Corregimental</option>
-          <option value="Metropolitano y regional">
-            Metropolitano y regional
+          <option value="Barrial y Suburbano">Barrial y Suburbano</option>
+          <option value="Metropolitano y Regional">
+            Metropolitano y Regional
           </option>
+          <option value="Zonal y Corregimental">Zonal y Corregimental</option>
         </select>
       </div>
       <div className="mb-5 space-y-3">
@@ -91,21 +91,38 @@ export default function FormIntervention({
         <label htmlFor="internalSystem" className="font-medium">
           Sistema interno al que pertenece
         </label>
-        <input
-          id="internalSystem"
+        <select
+          id="system"
           className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-          type="text"
-          placeholder="Nombre del sistema interno al que pertenece"
-          {...register("internalSystem", {
-            required:
-              "El sistema interno de la actuacion urbanistica es obligatorio",
-          })}
-        />
-        {errors.internalSystem && (
-          <span className="text-red-500 text-sm">
-            {errors.internalSystem.message}
-          </span>
-        )}
+          {...register("internalSystem")}
+        >
+          <option value="Sistema de Espacio Público, Parques, Plazas, Plazoletas y Zonas Verdes">
+            Sistema de Espacio Público, Parques, Plazas, Plazoletas y Zonas
+            Verdes
+          </option>
+          <option value="Sistema Movilidad">Sistema Movilidad</option>
+          <option value="Sistema Vial y de Transporte">
+            {" "}
+            Sistema Vial y de Transporte
+          </option>
+          <option value="Sistema de Equipamientos">
+            Sistema de Equipamientos
+          </option>
+          <option value="Sistema de Servicios Publicos">
+            Sistema de Servicios Publicos
+          </option>
+          <option value="Sistema Habitacional">Sistema Habitacional</option>
+          <option value="Asentamientos Humanos y Sistema Habitacional">
+            Asentamientos Humanos y Sistema Habitacional
+          </option>
+          <option value="Sistema de Centralidades">
+            Sistema de Centralidades
+          </option>
+          <option value="Sistema de Centralidades">
+            Sistema de Patrimonio
+          </option>
+          <option value="No Aplica">No Aplica</option>
+        </select>
       </div>
       {/* <div className="mb-5 space-y-3">
     <label htmlFor="image" className="font-medium">
