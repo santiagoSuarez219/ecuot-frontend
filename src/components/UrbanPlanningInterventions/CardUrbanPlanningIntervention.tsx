@@ -1,24 +1,41 @@
+import { useNavigate } from "react-router-dom";
+
+import { Intervention } from "../../types";
 import bazares from "../../assets/img/Bazares.jpg";
 
-export default function CardUrbanPlanningIntervention() {
+export default function CardUrbanPlanningIntervention({
+  data,
+  isEditing,
+  isDeleting,
+}: {
+  data: Intervention;
+  isEditing: boolean;
+  isDeleting: boolean;
+}) {
+  const navigate = useNavigate();
   return (
-    <div className="urban-planning-interventions__item flex rounded-xl overflow-hidden flex-col text-font-color border border-secondary cursor-pointer ">
-      <div className="flex gap-4">
-        <figure className="w-[50%]  relative">
+    <div className="urban-planning-interventions__item w-full flex rounded-xl overflow-hidden flex-col text-font-color border border-secondary cursor-pointer">
+      <div className="flex gap-4 h-full">
+        <figure className="w-[40%]  relative">
           <img
             src={bazares}
-            alt=""
-            className="w-full h-full aspect-square object-cover" // TODO: Modificar la opacidad al 40
+            alt={data.interventionName}
+            className={`w-full h-full aspect-square object-cover ${
+              isEditing || isDeleting ? "opacity-40" : "opacity-100"
+            } `}
           />
-          <div className="hidden w-full h-full justify-center items-center absolute top-0 cursor-pointer">
-            {/* // TODO:colocar display flex  */}
+          <div
+            className={`${
+              isDeleting ? "flex" : "hidden"
+            } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-20 text-delete"
+              className="w-20 text-red-700 hover:scale-105 transition-all"
             >
               <path
                 strokeLinecap="round"
@@ -27,30 +44,49 @@ export default function CardUrbanPlanningIntervention() {
               />
             </svg>
           </div>
+          <div
+            className={`${
+              isEditing ? "flex" : "hidden"
+            } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
+            onClick={() => navigate(`/interventions/${data._id}/edit`)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-20 text-font-color hover:scale-105 transition-all"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+              />
+            </svg>
+          </div>
         </figure>
-        <div className="w-[50%] pr-2 py-2">
-          <h3 className="text-3xl font-semibold text-primary mb-2">Bazares</h3>
-          <p className="">
-            Adecuación de mejores espacios peatonales y acondicionamiento de las
-            áreas ambientales
+        <div className="w-[60%] px-2 py-2">
+          <h3 className="text-4xl font-semibold text-primary mb-2">
+            {data.interventionName}
+          </h3>
+          <p className="text-lg">{data.description}</p>
+          <p className="mt-4 text-primary font-medium text-lg">
+            Proyecto estrategico
           </p>
-          <p className="mt-4 text-primary font-medium">Proyecto estrategico</p>
-          <p>Plan especial del Centro Tradicional y Representativo</p>
-          <p className="mt-4 text-primary font-medium">Sistema interno</p>
-          <p>
-            Sistema de Espacio Público, Parques, Plazas, Plazoletas y Zonas
-            Verdes
+          <p className="text-lg">{data.strategicProject}</p>
+          <p className="mt-4 text-primary font-medium text-lg">
+            Sistema interno
           </p>
-          <p className="mt-4 text-primary font-medium">Jerarquia</p>
-          <p>Ciudad</p>
-          <p className="mt-4 text-primary font-medium">Fecha de inicio</p>
-          <p>04 Abril 2014</p>
+          <p className="text-lg">{data.internalSystem}</p>
+          <p className="mt-4 text-primary font-medium text-lg">Jerarquia</p>
+          <p className="text-lg">{data.hierarchy}</p>
         </div>
       </div>
       <input
         type="button"
         value="Ir a la ficha tecnica"
-        className="bg-primary text-white text-3xl font-semibold w-full py-2 cursor-pointer hover:bg-secondary transition-all"
+        className="bg-primary text-white text-3xl font-semibold w-full py-2 cursor-pointer hover:bg-secondary transition-all self-end"
       />
     </div>
   );

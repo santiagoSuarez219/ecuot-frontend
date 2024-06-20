@@ -9,6 +9,16 @@ export const InterventionSchema = z.object({
   strategicProject: z.string(),
   internalSystem: z.string(),
 });
+export const dashboardInterventionSchema = z.array(
+  InterventionSchema.pick({
+    _id: true,
+    interventionName: true,
+    description: true,
+    hierarchy: true,
+    strategicProject: true,
+    internalSystem: true,
+  })
+);
 export type Intervention = z.infer<typeof InterventionSchema>;
 export type InterventionFormData = Pick<
   Intervention,
@@ -50,4 +60,17 @@ export type News = z.infer<typeof NewsSchema>;
 export type NewsFormData = Pick<
   News,
   "newsName" | "description" | "associatedIntervention" | "newsDate"
+>;
+
+/**Users */
+export const UserSchema = z.object({
+  _id: z.string(),
+  userName: z.string(),
+  userLastName: z.string(),
+  userEmail: z.string(),
+});
+export type User = z.infer<typeof UserSchema>;
+export type UserFormData = Pick<
+  User,
+  "userName" | "userLastName" | "userEmail"
 >;

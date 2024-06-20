@@ -1,4 +1,4 @@
-import { data } from "../../utils/UrbanPlanningInterventionsData";
+import { dataInterventions } from "../../utils/UrbanPlanningInterventionsData";
 import UrbanInterventionCard from "./UrbanInterventionCard";
 
 export default function UrbanPlanningInterventions() {
@@ -8,10 +8,10 @@ export default function UrbanPlanningInterventions() {
         Actuaciones Urbanisticas
       </h1>
       <div className="urban-interventions__list mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data.map((item) => (
+        {dataInterventions.map((item) => (
           <UrbanInterventionCard
-            key={item.title}
-            title={item.title}
+            key={item.interventionName}
+            title={item.interventionName}
             image={item.image}
           />
         ))}

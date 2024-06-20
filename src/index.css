@@ -66,3 +66,8 @@ html::-webkit-scrollbar-track {
     background: transparent;
     margin: 40px 0 0 0 0;
 }
+
+.modal__form::-webkit-scrollbar {
+    width: 25px;
+    background: transparent;
+}

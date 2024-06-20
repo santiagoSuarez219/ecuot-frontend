@@ -50,6 +50,16 @@ export default function NavBar() {
               Acontecimientos noticiosos
             </Link>
           </li>
+          <li className="nav__item">
+            <Link
+              to="/users"
+              className={`nav__title font-medium ${
+                location.pathname === "/users" ? "nav__title--active" : ""
+              }`}
+            >
+              Usuarios
+            </Link>
+          </li>
         </ul>
         <ul className="nav__list flex">
           <li className="nav__item">
