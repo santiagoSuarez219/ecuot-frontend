@@ -29,7 +29,7 @@ export default function ItemNav(props: ItemNavProps) {
           props.active ? "bg-secondary" : "bg-primary"
         }`}
       >
-        <path stroke-linecap="round" stroke-linejoin="round" d={props.svg} />
+        <path strokeLinecap="round" strokeLinejoin="round" d={props.svg} />
       </svg>
       <h3 className="font-medium">{props.title}</h3>
     </li>

@@ -1,51 +1,38 @@
-import logo_colmayor from "../assets/img/logo_colmayor.png";
-import logo_alcaldia from "../assets/img/logo_alcaldia.png";
-import logo_itm from "../assets/img/logo_itm.png";
-import logo_desarrollo from "../assets/img/logo_desarrollo.png";
-
 export default function Footer() {
   return (
-    <footer className="flex flex-col px-12 bg-primary">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-12">
+    <footer className="flex flex-col">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-6 md:gap-12 mb-6 px-16">
         <figure>
-          <img src={logo_colmayor} alt="logo_colmayor" />
+          <img
+            src="logo_colmayor.avif"
+            alt="logo colmayor"
+            className="h-24 md:h-36 object-contain"
+          />
         </figure>
         <figure>
-          <img src={logo_alcaldia} alt="logo_colmayor" />
+          <img
+            src="logo_itm.avif"
+            alt="logo itm"
+            className=" h-24 md:h-36 object-contain"
+          />
         </figure>
         <figure>
-          <img src={logo_itm} alt="logo_itm" />
+          <img
+            src="logo_alcaldia.avif"
+            alt="logo alcaldia"
+            className="h-24 md:h-36 object-contain"
+          />
         </figure>
+
         <figure>
-          <img src={logo_desarrollo} alt="logo_desarrollo" />
+          <img
+            src="logo_desarrollo.avif"
+            alt="logo desarrollo"
+            className=" h-24 md:h-36 object-contain"
+          />
         </figure>
-      </div>
-      <div className="flex flex-col lg:flex-row items-center gap-6">
-        {/* <div className="bg-white w-full md:max-w-screen-sm lg:max-w-screen-xl lg:w-1/2 shadow-lg rounded-2xl flex flex-col px-12 pb-12 pt-6">
-          <h2 className="text-4xl lg:text-6xl font-medium text-primary text-center lg:text-left">
-            Contactanos!
-          </h2>
-          <p className="lg:text-lg lg:mt-8 mt-4 text-font-color">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla enim
-            quaerat eaque dolor impedit delectus doloribus iusto facilis eum est
-            ad deserunt debitis omnis ipsam, nisi, quo quae similique aperiam?
-          </p>
-          <div className="flex px-2 lg:px-6 mt-4 lg:mt-8 py-2 lg:py-4 shadow-md justify-between items-center rounded-md bg-white">
-            <div className="flex gap-2 lg:gap-4 lg:w-4/5 items-center">
-              <input
-                type="text"
-                placeholder="Correo Electronico"
-                className="lg:text-lg w-full bg-transparent focus:outline-none focus:border-primary"
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-primary px-4 py-2 rounded-lg text-white font-semibold text-lg hover:bg-secondary transition-colors"
-            >
-              Enviar
-            </button>
-          </div>
-        </div> */}
+      </div> */}
+      <div className="flex flex-col lg:flex-row items-center gap-6 bg-primary md:pt-16 md:px-16">
         <div className="mt-12 lg:mt-0 w-full lg:w-1/2 text-lg px-6 flex flex-col md:flex-row gap-12 lg:gap-24 text-white">
           <div>
             <h3 className="font-semibold mb-6  text-xl">Menu</h3>
@@ -69,7 +56,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="text-xs text-white text-center lg:text-right p-4 md:mt-12 lg:mt-0">
+      <div className="text-xs text-white text-center lg:text-right p-4 md:mt-12 pt-12 md:pt-0 lg:mt-0 bg-primary">
         © {new Date().getFullYear()} Santiago Suarez. Todos los derechos
         reservados.
       </div>

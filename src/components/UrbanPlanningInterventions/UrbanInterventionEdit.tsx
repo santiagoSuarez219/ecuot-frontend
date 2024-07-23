@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -23,12 +23,14 @@ export default function UrbanInterventionEdit({
     hierarchy: data.hierarchy,
     strategicProject: data.strategicProject,
     internalSystem: data.internalSystem,
+    image: data.image,
   };
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
@@ -60,31 +62,32 @@ export default function UrbanInterventionEdit({
   };
 
   return (
-    <section className=" mx-20 flex">
-      <div className="w-1/2">
-        <h2 className="w-1/2 text-[4.5rem] capitalize text-primary font-semibold">
-          Editar Actuacion Urbanistica
-        </h2>
-        <p className="text-lg text-font-color mb-8 ">
-          Modifica los campos que quieres editar
+    <section className="w-full  flex flex-col pb-6 max-w-screen-lg mx-auto shadow-lg px-6">
+      <div className="w-full flex flex-col px-4 md:px-0 py-4 md:py-0 ">
+        <p className=" text-font-color md:mb-2 ">
+          Llena el formulario para editar una actuacion urbanistica
         </p>
-        <Link
-          to="/interventions"
-          className="bg-primary text-white p-4 rounded-lg text-lg cursor-pointer hover:bg-secondary transition-colors"
-        >
-          Volver
-        </Link>
       </div>
-      <div className="w-1/2">
-        <form onSubmit={handleSubmit(handleForm)} noValidate>
-          <FormIntervention register={register} errors={errors} />
+      <form
+        className="w-full  flex flex-col px-4 md:px-0"
+        onSubmit={handleSubmit(handleForm)}
+        noValidate
+      >
+        <div className="content__section w- overflow-y-auto pl-1 pr-6 mb-4">
+          <FormIntervention
+            register={register}
+            errors={errors}
+            setValue={setValue}
+          />
+        </div>
+        <div className="pr-6">
           <input
             type="submit"
-            value="Guardar Actuacion Urbanistica"
-            className="w-full bg-primary mb-5 py-3 text-white rounded cursor-pointer text-xl font-semibold hover:bg-secondary transition-colors md:col-span-2"
+            value="Agregar Actuacion Urbanistica"
+            className="w-full bg-primary py-3 text-white rounded cursor-pointer text-xl font-semibold hover:bg-secondary transition-colors md:col-span-2"
           />
-        </form>
-      </div>
+        </div>
+      </form>
     </section>
   );
 }

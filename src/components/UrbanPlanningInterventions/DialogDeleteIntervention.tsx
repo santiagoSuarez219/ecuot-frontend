@@ -28,9 +28,7 @@ export default function DialogDeleteIntervention({
     },
   });
 
-  const handleDelete = () => {
-    mutate(interventionId);
-  };
+  const handleDelete = () => mutate(interventionId);
 
   return (
     <ModalForm

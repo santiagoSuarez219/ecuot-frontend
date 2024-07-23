@@ -10,12 +10,12 @@ export default function FilterForm({
   setSearchBySystem,
 }: FilterFormProps) {
   return (
-    <form className="urban-planning-interventions__form w-full mt-6 grid grid-cols-3 rounded-lg border shadow-sm items-center p-6 gap-6 justify-between">
+    <form className="urban-planning-interventions__form w-full md:mt-6 grid grid-cols-1 md:grid-cols-3 rounded-lg md:border shadow-sm items-center px-0 py-6 md:p-6 gap-6 justify-between">
       <div className="space-y-4">
         <div className="space-y-1">
           <label
             htmlFor="search"
-            className="text-2xl font-semibold text-primary"
+            className="text-xl md:text-2xl font-semibold text-primary"
           >
             Buscar
           </label>
@@ -35,7 +35,7 @@ export default function FilterForm({
         <div className="space-y-1">
           <label
             htmlFor="hierarchy"
-            className="text-2xl font-semibold text-primary"
+            className="text-xl md:text-2xl font-semibold text-primary"
           >
             Jerarquia
           </label>
@@ -62,7 +62,7 @@ export default function FilterForm({
         <div className="space-y-1">
           <label
             htmlFor="hierarchy"
-            className="text-2xl font-semibold text-primary"
+            className="text-xl md:text-2xl font-semibold text-primary"
           >
             Sistema
           </label>

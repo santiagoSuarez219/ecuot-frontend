@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 
 import ItemNav from "../components/InterventionSheet/ItemNav";
-import Login from "../components/Auth/Login";
 import NavBar from "../components/NavBar";
 
 export default function InterventionSheetLayout() {
@@ -41,7 +40,6 @@ export default function InterventionSheetLayout() {
           </ul>
         </nav>
       </div>
-      <Login />
     </>
   );
 }

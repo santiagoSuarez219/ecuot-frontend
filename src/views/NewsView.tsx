@@ -14,7 +14,7 @@ export default function NewsView() {
         Listado de todos los acontecimientos noticiosos asociados a una
         actuación urbanística
       </p>
-      <div className="my-6 grid grid-cols-3 gap-6">
+      {/* <div className="my-6 grid grid-cols-3 gap-6">
         <CrudButton
           icon="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
           text="Agregar"
@@ -43,7 +43,7 @@ export default function NewsView() {
         <CardNew />
       </div>
       <Pagination />
-      <NewFormAdd />
+      <NewFormAdd /> */}
     </section>
   );
 }

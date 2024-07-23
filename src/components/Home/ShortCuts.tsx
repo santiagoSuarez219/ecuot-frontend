@@ -1,27 +1,33 @@
-import intervention_logo from "../../assets/img/intervention_logo_2.jpg";
-import news_logo from "../../assets/img/news_logo_2.jpg";
-import conflicts_logo from "../../assets/img/conflict-icon.jpg";
-import ShortCutItem from "./ShortCutItem";
+import { Link } from "react-router-dom";
 
 export default function ShortCuts() {
   return (
-    <section className="layout__shorcuts mt-8 mb-8 mx-12 py-16 px-28  rounded-[60px] shadow-lg">
-      <div className="shorcuts__list mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center ">
-        <ShortCutItem
-          title="Actuaciones Urbanisticas"
-          icon={intervention_logo}
-          route="/interventions/"
-        />
-        <ShortCutItem
-          title="Acontecimientos noticiososos"
-          icon={news_logo}
-          route="/news"
-        />
-        <ShortCutItem
-          title="Conflictos"
-          icon={conflicts_logo}
-          route="/conflicts"
-        />
+    <section className="layout__shorcuts mb-8 mx-4 md:mx-12 mt-8 md:px-28 md:mt-28">
+      <div className="shorcuts__list mx-auto flex flex-wrap gap-6 md:gap-12 justify-center">
+        <Link
+          to={"/interventions"}
+          className="shorcuts__item bg-primary relative w-full md:w-[30rem] h-56 rounded-xl shadow-xl cursor-pointer flex justify-center items-center hover:bg-secondary transition-colors px-4"
+        >
+          <h2 className="text-white font-semibold capitalize text-4xl text-center">
+            Actuaciones Urbanisticas
+          </h2>
+        </Link>
+        <Link
+          to={"/news"}
+          className="shorcuts__item bg-primary relative w-full md:w-[30rem] h-56 rounded-xl shadow-xl cursor-pointer flex justify-center items-center hover:bg-secondary transition-colors px-4"
+        >
+          <h2 className="text-white font-semibold capitalize text-4xl text-center">
+            Acontecimientos noticiososos
+          </h2>
+        </Link>
+        <Link
+          to={"/conflicts"}
+          className="shorcuts__item bg-primary relative w-full md:w-[30rem] h-56 rounded-xl shadow-xl cursor-pointer flex justify-center items-center hover:bg-secondary transition-colors px-4"
+        >
+          <h2 className="text-white font-semibold capitalize text-4xl text-center">
+            Conflictos
+          </h2>
+        </Link>
       </div>
     </section>
   );
