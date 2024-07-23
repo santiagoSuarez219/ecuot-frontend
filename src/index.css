@@ -29,18 +29,18 @@ body {
     background-color: #FBBB28 ;
 }
 
-html::-webkit-scrollbar {
+html::-webkit-scrollbar, .intervention__form::-webkit-scrollbar {
     width: 25px;
     background: transparent;
 }
 
-html::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb, .intervention__form::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 0 10px #E9901E;
     border-radius: 40px;
     border: 8px solid transparent
 }
 
-html::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track, .intervention__form::-webkit-scrollbar-track {
     background: transparent;
     margin: 40px 0 0 0 0;
 }
@@ -49,3 +49,4 @@ html::-webkit-scrollbar-track {
     width: 25px;
     background: transparent;
 }
+

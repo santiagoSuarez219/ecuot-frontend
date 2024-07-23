@@ -4,6 +4,7 @@ import {
   InterventionFormData,
   dashboardInterventionSchema,
   Intervention,
+  InterventionDataSheetFormData,
 } from "../types";
 import api from "../lib/axios";
 
@@ -68,6 +69,39 @@ export async function updateIntervention({
 export async function deleteIntervention(id: Intervention["_id"]) {
   try {
     const { data } = await api.delete<string>(`/interventions/${id}`);
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.error);
+    }
+  }
+}
+
+type InterventionDataSheetAPIType = {
+  formData: InterventionDataSheetFormData;
+  interventionId: Intervention["_id"];
+};
+
+export async function createInterventionDataSheet({
+  formData,
+  interventionId,
+}: InterventionDataSheetAPIType) {
+  try {
+    const { data } = await api.post(
+      `/interventions/${interventionId}/datasheet`,
+      formData
+    );
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.error);
+    }
+  }
+}
+
+export async function getInterventionDataSheetById(id: Intervention["_id"]) {
+  try {
+    const { data } = await api(`/intervention_datasheet/${id}`);
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response) {

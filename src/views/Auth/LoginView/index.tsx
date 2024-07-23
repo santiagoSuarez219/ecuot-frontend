@@ -35,14 +35,14 @@ export default function LoginView() {
 
   const handleForm = (formData: LoginFormData) => mutate(formData);
   return (
-    <main className="w-full h-full flex justify-center items-center relative">
+    <main className="w-full h-full flex justify-center items-center relative bg-gradient-to-r from-quaternary ">
       <Link
         to="/"
         className="absolute top-6 left-6 bg-primary text-white rounded-xl px-6 py-4 uppercase font-bold hover:bg-secondary transition-all"
       >
         Volver al home
       </Link>
-      <div className="w-full max-w-screen-md rounded-2xl shadow-xl p-4 md:p-16">
+      <div className="w-full max-w-screen-md rounded-2xl shadow-xl p-4 md:p-16 bg-white">
         <h3 className="text-3xl md:text-5xl font-bold mt-5 mb-2 text-primary text-left">
           Iniciar sesion
         </h3>

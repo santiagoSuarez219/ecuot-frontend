@@ -22,10 +22,17 @@ export default function NavBar({ user }: NavBarProps) {
     return location.pathname === path ? "text-primary" : "text-font-color";
   };
 
+  const handleNavBar = (path: string) => {
+    if (path === "/" || path === "/interventions" || path === "/conflicts") {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <header
       className={`layout__menu w-full md:py-[3.5rem] md:px-[3rem] ${
-        location.pathname === "/interventions/new" ? "hidden" : "block"
+        handleNavBar(location.pathname) ? "block" : "hidden"
       }`}
     >
       <NavBarMobile />

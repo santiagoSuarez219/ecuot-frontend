@@ -2,14 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import UrbanPlanningInterventions from "./views/UrbanPlanningInterventionsView";
 import CreateInterventionDataSheet from "./views/CreateInterventionDataSheet";
-import Spatialization from "./components/InterventionSheet/Spatialization";
+import InterventionSheetLayout from "./layouts/InterventionDataSheetLayout";
 import UrbanInterventionEditView from "./views/UrbanInterventionEditView";
-import Conflictivity from "./components/InterventionSheet/Conflictivity";
-import InterventionSheetLayout from "./layouts/InterventionSheetLayout";
-import Description from "./components/InterventionSheet/Description";
+import Description from "./views/InterventionDataSheetData/Description";
 import AddIntervention from "./views/Interventions/AddIntervention";
 import DataSheetIntervention from "./views/DataSheetIntervention";
-import Features from "./components/InterventionSheet/Features";
 import ConflictsView from "./views/ConflictsView";
 import LoginView from "./views/Auth/LoginView";
 import AuthLayout from "./layouts/AuthLayout";
@@ -46,7 +43,11 @@ export default function Router() {
           <Route path="/users" element={<UsersView />} />
         </Route>
         <Route element={<InterventionSheetLayout />}>
-          <Route path="/intervention/description" element={<Description />} />
+          <Route
+            path="/intervention-datasheet/:interventionId/:datasheetId/description"
+            element={<Description />}
+          />
+          {/* <Route path="/intervention/description" element={<Description />} />
           <Route path="/intervention/features" element={<Features />} />
           <Route
             path="/intervention/conflictivity"
@@ -55,7 +56,7 @@ export default function Router() {
           <Route
             path="/intervention/spatialization"
             element={<Spatialization />}
-          />
+          /> */}
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="/auth/login" element={<LoginView />} index />
