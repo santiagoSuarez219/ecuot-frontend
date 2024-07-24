@@ -1,6 +1,4 @@
-// import { useRouter, usePathname } from "next/navigation";
-
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 type ItemNavProps = {
   title: string;
@@ -9,19 +7,25 @@ type ItemNavProps = {
 };
 
 export default function ItemNav(props: ItemNavProps) {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
+  const params = useParams();
 
-  //   const handleClick = () => {
-  //     const currentPath = pathname;
-  //     const newPath = currentPath.replace(/[^/]+$/, props.route);
-  //     router.push(newPath);
-  //   };
+  const handleClick = () => {
+    if (props.title === "Volver") {
+      navigate(`/interventions/${params.interventionId}/datasheet`);
+      return;
+    }
+
+    const currentPath = location.pathname;
+    const newPath = currentPath.replace(/[^/]+$/, props.route);
+    navigate(newPath);
+  };
 
   return (
     <li
       className="intervention-sheet__nav__item flex flex-col items-center relative cursor-pointer"
-      //   onClick={handleClick}
+      onClick={handleClick}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

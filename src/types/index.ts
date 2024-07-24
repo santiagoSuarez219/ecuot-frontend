@@ -43,19 +43,67 @@ export const ConflictSchema = z.object({
   _id: z.string(),
   conflictName: z.string(),
   description: z.string(),
-  associatedIntervention: z.string(),
   timeStressOccurrence: z.string(),
   actorsInvolved: z.string(),
+  intervention: z.string(),
+  image: z.string(),
 });
 export type Conflict = z.infer<typeof ConflictSchema>;
 export type ConflictFormData = Pick<
   Conflict,
   | "conflictName"
   | "description"
-  | "associatedIntervention"
   | "timeStressOccurrence"
   | "actorsInvolved"
+  | "intervention"
+  | "image"
 >;
+
+export const dashboardConflictSchema = z.array(
+  ConflictSchema.pick({
+    _id: true,
+    conflictName: true,
+    description: true,
+    timeStressOccurrence: true,
+    actorsInvolved: true,
+    intervention: true,
+    image: true,
+  })
+);
+
+export const ConflictSchemaResponse = z.object({
+  _id: z.string(),
+  conflictName: z.string(),
+  description: z.string(),
+  timeStressOccurrence: z.string(),
+  actorsInvolved: z.string(),
+  intervention: z.object({
+    _id: z.string(),
+    interventionName: z.string(),
+    description: z.string(),
+    hierarchy: z.string(),
+    strategicProject: z.string(),
+    internalSystem: z.string(),
+    image: z.string(),
+    datasheet: z.string().nullable(),
+    conflicts: z.array(z.string()),
+    news: z.array(z.string()),
+  }),
+  image: z.string(),
+});
+
+export type ConflictResponse = z.infer<typeof ConflictSchemaResponse>;
+export const dashboardConflictSchemaResponde = z.array(
+  ConflictSchemaResponse.pick({
+    _id: true,
+    conflictName: true,
+    description: true,
+    timeStressOccurrence: true,
+    actorsInvolved: true,
+    intervention: true,
+    image: true,
+  })
+);
 
 /**News */
 export const NewsSchema = z.object({

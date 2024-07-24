@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 import {
   getInterventionDataSheetById,
   getInterventionsById,
-} from "../../../api/InterventionAPI";
+} from "../../api/InterventionAPI";
+import InterventionDataSheetEdit from "../../components/InterventionDataSheet/InterventionDataSheetEdit";
 
-export default function Description() {
+export default function EditInterventionDataSheet() {
   const params = useParams();
 
   const { data, isError, isLoading } = useQuery({
@@ -31,22 +32,6 @@ export default function Description() {
   if (isError || isErrorIntervention) return <p>Error</p>;
   if (data)
     return (
-      <>
-        <article className="datasheet__content w-[50%] p-12 overflow-auto bg-white">
-          <h1 className="text-5xl font-semibold capitalize text-primary mb-6">
-            {intervention?.interventionName}
-          </h1>
-          <p className="text-lg text-justify text-font-color">
-            {data.description}
-          </p>
-        </article>
-        <figure className="w-[50%] relative">
-          <img
-            src={data.image_description}
-            alt={`image`}
-            className="w-full h-full object-cover"
-          />
-        </figure>
-      </>
+      <InterventionDataSheetEdit intervention={intervention} datasheet={data} />
     );
 }

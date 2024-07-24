@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
+
 import ItemNav from "../../components/InterventionDataSheet/ItemNav";
 
 export default function InterventionSheetLayout() {
   return (
-    <div className="layout__intervention-sheet w-full h-screen px-20 py-12 flex gap-6 justify-center">
-      <div className="layout__intervention-sheet__content w-[85%] h-[100%] shadow-xl rounded-2xl flex overflow-hidden">
+    <div className="layout__intervention-sheet w-full h-screen px-20 py-12 flex gap-6 justify-center bg-gradient-to-r from-septenary to-senary">
+      <div className="layout__intervention-sheet__content w-[85%] h-[100%] shadow-xl rounded-2xl flex overflow-hidden relative">
         <Outlet />
       </div>
-      <nav className="intervention-sheet__nav w-[10%] h-full shadow-xl rounded-2xl">
+      <nav className="intervention-sheet__nav w-[10%] h-full shadow-xl rounded-2xl bg-white">
         <ul className="intervention-sheet__nav__list w-full h-full text-center flex flex-col justify-around ">
           <ItemNav
             title="Descripcion"
@@ -27,6 +28,11 @@ export default function InterventionSheetLayout() {
           <ItemNav
             title="Espacializacion"
             svg="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+            route="spatialization"
+          />
+          <ItemNav
+            title="Volver"
+            svg="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
             route="spatialization"
           />
         </ul>

@@ -45,11 +45,7 @@ export default function DialogDeleteIntervention({
         </button>
         <button
           className="w-full border-2 border-primary py-3 text-font-color rounded cursor-pointer text-xl font-semibold hover:bg-primary hover:text-white transition-colors"
-          onClick={() =>
-            navigate(location.pathname, {
-              replace: true,
-            })
-          }
+          onClick={() => navigate("/interventions")}
         >
           Cancelar
         </button>
