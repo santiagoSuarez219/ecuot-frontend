@@ -1,7 +1,11 @@
-export default function FilterForm() {
+type FilterFormProps = {
+  setSearchKeyWords: (value: string) => void;
+};
+
+export default function FilterForm({ setSearchKeyWords }: FilterFormProps) {
   return (
-    <form className="urban-planning-interventions__form w-full mt-6 rounded-lg border shadow-sm items-center p-6 gap-6 justify-between">
-      <div className="space-y-4">
+    <form className="w-full mt-6 grid grid-cols-1 rounded-lg items-center p-6 gap-6 justify-between bg-white">
+      <div className="space-y-4 flex gap-6">
         <div className="space-y-1">
           <label
             htmlFor="search"
@@ -10,7 +14,7 @@ export default function FilterForm() {
             Buscar
           </label>
           <p className="text-md text-font-color leading-tight">
-            Filtrar por un nombre o un correo electronico
+            Filtrar por un nombre, apellido o un usuario
           </p>
         </div>
         <input
@@ -18,6 +22,7 @@ export default function FilterForm() {
           placeholder="Buscar por nombre o descripcion..."
           type="search"
           id="search"
+          onChange={(event) => setSearchKeyWords(event.target.value)}
         />
       </div>
     </form>

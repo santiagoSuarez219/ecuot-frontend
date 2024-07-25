@@ -11,15 +11,19 @@ import Description from "./views/InterventionDataSheetData/Description";
 import AddIntervention from "./views/Interventions/AddIntervention";
 import DataSheetIntervention from "./views/DataSheetIntervention";
 import Features from "./views/InterventionDataSheetData/Features";
+import EditConflict from "./views/Conflicts/EditConflict";
 import AddConflict from "./views/Conflicts/AddConflict";
+import EditUserView from "./views/Users/EditUserView";
 import ConflictsView from "./views/ConflictsView";
 import LoginView from "./views/Auth/LoginView";
 import AuthLayout from "./layouts/AuthLayout";
+import EditNews from "./views/News/EditNews";
 import AppLayout from "./layouts/AppLayout";
+import AddNews from "./views/News/AddNews";
 import UsersView from "./views/UsersView";
 import NewsView from "./views/NewsView";
 import HomeView from "./views/HomeView";
-import EditConflict from "./views/Conflicts/EditConflict";
+import AddUser from "./views/Users/AddUser";
 
 export default function Router() {
   return (
@@ -55,7 +59,11 @@ export default function Router() {
             element={<EditConflict />}
           />
           <Route path="/news" element={<NewsView />} />
+          <Route path="/news/new" element={<AddNews />} />
+          <Route path="/news/:newsId/edit" element={<EditNews />} />
           <Route path="/users" element={<UsersView />} />
+          <Route path="/users/new" element={<AddUser />} />
+          <Route path="/users/:userId/edit" element={<EditUserView />} />
         </Route>
         <Route element={<InterventionSheetLayout />}>
           <Route

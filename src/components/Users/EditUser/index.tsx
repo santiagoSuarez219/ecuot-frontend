@@ -1,70 +1,72 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
-import { ConflictFormData, ConflictResponse } from "../../../types";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateConflict } from "../../../api/ConflictAPI";
 import { toast } from "react-toastify";
-import ConflictAddForm from "../ConflictAddForm";
+import { UserFormData, UserItemList } from "../../../types";
+import { updateUser } from "../../../api/UserAPI";
+import NewUserForm from "../NewUserForm";
 
-type ConflictEditProps = {
-  conflict: ConflictResponse;
+type EditUserProps = {
+  user: UserItemList;
 };
 
-export default function ConflictEdit({ conflict }: ConflictEditProps) {
+export default function EditUser({ user }: EditUserProps) {
   const navigate = useNavigate();
   const params = useParams();
-  const initialValues: ConflictFormData = {
-    conflictName: conflict.conflictName,
-    description: conflict.description,
-    timeStressOccurrence: conflict.timeStressOccurrence,
-    actorsInvolved: conflict.actorsInvolved,
-    intervention: conflict.intervention._id,
-    image: conflict.image,
+  const initialValues: UserFormData = {
+    userName: user.userName,
+    userLastName: user.userLastName,
+    rol: user.rol,
+    user: user.user,
+    userPassword: "",
+    passwordConfirmation: "",
   };
 
   const {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
   const queryClient = useQueryClient();
 
   const { mutate } = useMutation({
-    mutationFn: updateConflict,
+    mutationFn: updateUser,
     onError: (error) => {
       toast.error(error.message);
     },
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["conflicts"] });
+      queryClient.invalidateQueries({ queryKey: ["users"] });
       queryClient.invalidateQueries({
-        queryKey: ["get-conflict", params.conflictId],
+        queryKey: ["get-user-by-id", params.userId],
       });
       toast.success(data);
       reset();
       window.scrollTo(0, 0);
-      navigate("/conflicts");
+      navigate("/users");
     },
   });
 
-  const handleForm = (formData: ConflictFormData) => {
-    if (!params.conflictId) return;
-
-    const dataForm = {
-      formData,
-      conflictId: params.conflictId,
-      interventionId: formData.intervention,
+  const handleForm = (formData: UserFormData) => {
+    if (!params.userId) return;
+    const data = {
+      formData: {
+        userName: formData.userName,
+        userLastName: formData.userLastName,
+        user: formData.user,
+        rol: formData.rol,
+      },
+      userId: params.userId,
     };
-
-    mutate(dataForm);
+    mutate(data);
   };
 
   return (
     <section className="w-full md:h-screen flex justify-center items-center relative bg-gradient-to-r from-senary to-quaternary md:p-6 py-4 overflow-y-auto px-4">
       <Link
-        to="/conflicts"
+        to="/users"
         className="hidden md:block absolute top-6 left-6 bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-all"
       >
         Volver
@@ -81,7 +83,12 @@ export default function ConflictEdit({ conflict }: ConflictEditProps) {
           noValidate
         >
           <div className="content__section overflow-y-auto pl-1 pr-6 mb-4">
-            <ConflictAddForm register={register} errors={errors} />
+            <NewUserForm
+              register={register}
+              errors={errors}
+              watch={watch}
+              user={user}
+            />
           </div>
           <div className="pr-6">
             <input

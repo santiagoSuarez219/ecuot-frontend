@@ -2,25 +2,25 @@ import { isAxiosError } from "axios";
 
 import api from "../../lib/axios";
 import {
-  Conflict,
-  ConflictFormData,
-  ConflictSchemaResponse,
-  dashboardConflictSchemaResponde,
+  dashboardNewsShemaResponse,
   Intervention,
+  News,
+  NewsFormData,
+  NewsShemaResponse,
 } from "../../types";
 
-type ConflitcCreateAPIType = {
-  formData: ConflictFormData;
-  idIntervention: Intervention["_id"];
+type NewsCreateAPIType = {
+  formData: NewsFormData;
+  idIntervention: News["_id"];
 };
 
-export async function createConflict({
+export async function createNews({
   formData,
   idIntervention,
-}: ConflitcCreateAPIType) {
+}: NewsCreateAPIType) {
   try {
     const { data } = await api.post(
-      `/interventions/${idIntervention}/conflicts`,
+      `/interventions/${idIntervention}/news`,
       formData
     );
     return data;
@@ -31,10 +31,10 @@ export async function createConflict({
   }
 }
 
-export async function getConflicts() {
+export async function getNews() {
   try {
-    const { data } = await api("/conflicts");
-    const response = dashboardConflictSchemaResponde.safeParse(data);
+    const { data } = await api("/news");
+    const response = dashboardNewsShemaResponse.safeParse(data);
     if (response.success) {
       return response.data;
     }
@@ -45,10 +45,10 @@ export async function getConflicts() {
   }
 }
 
-export async function getConflictById(id: Conflict["_id"]) {
+export async function getNewsById(id: News["_id"]) {
   try {
-    const { data } = await api(`/conflicts/${id}`);
-    const response = ConflictSchemaResponse.safeParse(data);
+    const { data } = await api(`/news/${id}`);
+    const response = NewsShemaResponse.safeParse(data);
     if (response.success) {
       return response.data;
     }
@@ -59,20 +59,19 @@ export async function getConflictById(id: Conflict["_id"]) {
   }
 }
 
-type ConflitcUpdateAPIType = {
-  formData: ConflictFormData;
-  conflictId: Conflict["_id"];
-  interventionId: Intervention["_id"];
+type NewsUpdateAPIType = {
+  formData: NewsFormData;
+  newsId: News["_id"];
+  interventionId: News["_id"];
 };
-
-export async function updateConflict({
+export async function updateNews({
   formData,
-  conflictId,
+  newsId,
   interventionId,
-}: ConflitcUpdateAPIType) {
+}: NewsUpdateAPIType) {
   try {
     const { data } = await api.put<string>(
-      `conflicts/${conflictId}/intervention/${interventionId}`,
+      `news/${newsId}/intervention/${interventionId}`,
       formData
     );
     return data;
@@ -83,18 +82,18 @@ export async function updateConflict({
   }
 }
 
-type ConflitcDeleteAPIType = {
+type NewsDeleteAPIType = {
   interventionId: Intervention["_id"];
-  conflictId: Conflict["_id"];
+  newsId: News["_id"];
 };
 
-export async function deleteConflict({
+export async function deleteNews({
   interventionId,
-  conflictId,
-}: ConflitcDeleteAPIType) {
+  newsId,
+}: NewsDeleteAPIType) {
   try {
     const { data } = await api.delete<string>(
-      `/interventions/${interventionId}/conflict/${conflictId}`
+      `/interventions/${interventionId}/news/${newsId}`
     );
     return data;
   } catch (error) {

@@ -2,10 +2,10 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 
 import NavBarMobile from "./NavBarMobile";
-import { UserResponse } from "../types";
+import { UserItemList } from "../types";
 
 type NavBarProps = {
-  user?: UserResponse;
+  user?: UserItemList;
 };
 
 export default function NavBar({ user }: NavBarProps) {
@@ -23,7 +23,12 @@ export default function NavBar({ user }: NavBarProps) {
   };
 
   const handleNavBar = (path: string) => {
-    if (path === "/" || path === "/interventions" || path === "/conflicts") {
+    if (
+      path === "/" ||
+      path === "/interventions" ||
+      path === "/conflicts" ||
+      path === "/news"
+    ) {
       return true;
     }
     return false;

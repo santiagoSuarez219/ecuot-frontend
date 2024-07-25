@@ -5,12 +5,12 @@ export default function CardConflict({
   data,
   isEditing,
   isDeleting,
-  setConflictId,
+  setConflict,
 }: {
   data: ConflictResponse;
   isEditing: boolean;
   isDeleting: boolean;
-  setConflictId: (id: string) => void;
+  setConflict: (conflict: ConflictResponse) => void;
 }) {
   const navigate = useNavigate();
   return (
@@ -29,7 +29,7 @@ export default function CardConflict({
               isDeleting ? "flex" : "hidden"
             } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
             onClick={() => {
-              setConflictId(data._id);
+              setConflict(data);
               navigate("/conflicts/?deleteConflict=true");
               window.scrollTo(0, 0);
             }}
@@ -95,9 +95,11 @@ export default function CardConflict({
       </div>
       <input
         type="button"
-        value="Ir a la intervencion asociada"
+        value="Ir a la actuacion urbanistica asociada"
         className="bg-primary text-white text-xl md:text-3xl font-semibold w-full py-2 cursor-pointer hover:bg-secondary transition-all self-end"
-        // onClick={() => navigate(`/interventions/${data._id}/datasheet`)}
+        onClick={() =>
+          navigate(`/interventions/${data.intervention._id}/datasheet`)
+        }
       />
     </div>
   );

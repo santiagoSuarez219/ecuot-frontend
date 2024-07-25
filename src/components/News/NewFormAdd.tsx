@@ -1,121 +1,141 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { useState } from "react";
 
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { useQuery } from "@tanstack/react-query";
+
+import { getInterventions } from "../../api/InterventionAPI";
 import { NewsFormData } from "../../types";
-import ModalForm from "../ModalForm";
+import ImageUpload from "../ImageUpload";
 
-export default function NewFormAdd() {
-  const initialValues: NewsFormData = {
-    newsName: "",
-    description: "",
-    associatedIntervention: "",
-    newsDate: new Date(),
-  };
+type NewFormAddProps = {
+  register: UseFormRegister<NewsFormData>;
+  errors: FieldErrors<NewsFormData>;
+};
+
+export default function NewFormAdd({ errors, register }: NewFormAddProps) {
+  const [image, setImage] = useState<string>("");
 
   const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({ defaultValues: initialValues });
+    data: interventions,
+    isError,
+    isLoading,
+  } = useQuery({
+    queryKey: ["interventions"],
+    queryFn: getInterventions,
+  });
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleForm = async (data: NewsFormData) => {
-    console.log(data);
-    toast.success("Acontecimiento noticioso creado con exito");
-    reset();
-    navigate(location.pathname, { replace: true });
-  };
-
+  if (isLoading) return <p>Cargando...</p>;
+  if (isError) return <p>Ha ocurrido un error</p>;
   return (
-    <ModalForm
-      title="Nuevo Acontecimiento Noticioso"
-      description="Llena el formulario y crea un acontecimiento noticioso"
-      showModalParam="newNews"
-    >
-      <form onSubmit={handleSubmit(handleForm)} noValidate>
-        <div className="mb-5 space-y-3">
+    <>
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+        <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
           <label htmlFor="newsName" className="font-medium">
-            Nombre del acontecimiento noticioso
+            Titular de la noticia
           </label>
           <input
             id="newsName"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.newsName
+                ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+                : ""
+            }`}
             type="text"
-            placeholder="Nombre del acontecimiento noticioso"
+            placeholder={
+              errors.newsName
+                ? errors.newsName.message
+                : "Titular de la noticia"
+            }
             {...register("newsName", {
-              required: "El nombre del acontecimiento noticioso es obligatorio",
+              required: "Este campo es obligatorio",
             })}
           />
-          {errors.newsName && (
-            <span className="text-red-500 text-sm">
-              {errors.newsName.message}
-            </span>
-          )}
         </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="description" className="font-medium">
-            Descripción
-          </label>
-          <textarea
-            id="description"
-            className="w-full h-32 mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            placeholder="Descripción del acontecimiento noticioso"
-            {...register("description", {
-              required:
-                "La descripción del acontecimiento noticioso es obligatoria",
-            })}
-          />
-          {errors.description && (
-            <span className="text-red-500 text-sm">
-              {errors.description.message}
-            </span>
-          )}
-        </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="associated-intervention" className="font-medium">
-            Actuacion urbanistica asociada
-          </label>
-          <select
-            id="associated-intervention"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            {...register("associatedIntervention")}
-          >
-            <option value="">Actuacion Urbanistica 1</option>
-            <option value="">Actuacion Urbanistica 2</option>
-            <option value="">Actuacion Urbanistica 3</option>
-          </select>
-        </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="" className="font-medium">
-            Fecha
+        <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
+          <label htmlFor="newsDate" className="font-medium">
+            Fecha de la noticia
           </label>
           <input
-            id=""
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
+            id="newsDate"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.newsDate
+                ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+                : ""
+            }`}
             type="date"
-            {...register("newsDate")}
+            {...register("newsDate", {
+              required: "Este campo es obligatorio",
+            })}
           />
         </div>
-        {/* <div className="mb-5 space-y-3">
-          <label htmlFor="image" className="font-medium">
-            Imagen
-          </label>
-          <input
-            type="file"
-            id="image"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-          />
-        </div> */}
-        <input
-          type="submit"
-          value="Guardar conflicto"
-          className="w-full bg-primary mb-5 py-3 text-white rounded cursor-pointer text-xl font-semibold hover:bg-secondary transition-colors md:col-span-2"
+      </div>
+
+      <div className="mb-2 space-y-2 text-sm md:text-base">
+        <label htmlFor="description" className="font-medium">
+          Descripción
+        </label>
+        <textarea
+          id="description"
+          className={`w-full h-32 mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+            errors.description
+              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+              : ""
+          }`}
+          placeholder={
+            errors.description
+              ? errors.description.message
+              : "Descripción de la actuacion urbanistica"
+          }
+          {...register("description", {
+            required: "La descripcion es obligatoria",
+          })}
         />
-      </form>
-    </ModalForm>
+      </div>
+      <div className="mb-2 space-y-2 flex-grow">
+        <label htmlFor="intervention" className="font-medium">
+          Actuación urbanistica relacionada
+        </label>
+        <select
+          id="intervention"
+          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+            errors.intervention ? "border-red-500 focus:ring-red-500 " : ""
+          }`}
+          {...register("intervention", {
+            required: "Este campo es obligatorio",
+          })}
+        >
+          <option value=""> Seleccione una opcion </option>
+          {interventions?.map((intervention) => (
+            <option key={intervention._id} value={intervention._id}>
+              {intervention.interventionName}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="mb-2 space-y-2 flex-grow gap-2 md:gap-4 text-sm md:text-base">
+        <label htmlFor="image" className="font-medium">
+          Imagen
+        </label>
+        <input
+          id="image"
+          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+            errors.image
+              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+              : ""
+          }`}
+          type="text"
+          placeholder={errors.image ? errors.image.message : "URL de la imagen"}
+          {...register("image", {
+            required: "La URL de la imagen es obligatoria",
+          })}
+        />
+      </div>
+      <div className="mb-2 space-y-2">
+        <p className="w-full mt-2 p-3 border border-neutral-300 rounded-lg bg-gray-50  text-sm md:text-base">
+          {image ? image : "Carga una imagen"}
+        </p>
+      </div>
+      <ImageUpload image={image} setImage={setImage} />
+    </>
   );
 }

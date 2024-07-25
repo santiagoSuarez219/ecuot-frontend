@@ -1,116 +1,153 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { FieldErrors, UseFormRegister, UseFormWatch } from "react-hook-form";
+import { UserFormData, UserItemList } from "../../types";
 
-import { UserFormData } from "../../types";
-import ModalForm from "../ModalForm";
+type NewUserFormProps = {
+  register: UseFormRegister<UserFormData>;
+  errors: FieldErrors<UserFormData>;
+  watch: UseFormWatch<UserFormData>;
+  user?: UserItemList;
+};
 
-export default function NewUserForm() {
-  const initialValues: UserFormData = {
-    userName: "",
-    userLastName: "",
-    userEmail: "",
-  };
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({ defaultValues: initialValues });
-
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleForm = async (data: UserFormData) => {
-    console.log(data);
-    toast.success("Usuario creado con exito");
-    reset();
-    navigate(location.pathname, { replace: true });
-  };
-
+export default function NewUserForm({
+  errors,
+  register,
+  watch,
+  user,
+}: NewUserFormProps) {
+  const password = watch("userPassword");
   return (
-    <ModalForm
-      title="Nuevo Usuario"
-      description="Llena el formulario y crea un nuevo usuario"
-      showModalParam="newUser"
-    >
-      <form onSubmit={handleSubmit(handleForm)} noValidate>
-        <div className="mb-5 space-y-3">
+    <>
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+        <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
           <label htmlFor="userName" className="font-medium">
             Nombre
           </label>
           <input
             id="userName"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.userName
+                ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+                : ""
+            }`}
             type="text"
-            placeholder="John"
+            placeholder={errors.userName ? errors.userName.message : "John"}
             {...register("userName", {
-              required: "El nombre del usuario es obligatorio",
+              required: "Este campo es obligatorio",
             })}
           />
-          {errors.userName && (
-            <span className="text-red-500 text-sm">
-              {errors.userName.message}
-            </span>
-          )}
         </div>
-        <div className="mb-5 space-y-3">
+        <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
           <label htmlFor="userLastName" className="font-medium">
             Apellido
           </label>
           <input
             id="userLastName"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.userLastName
+                ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+                : ""
+            }`}
             type="text"
-            placeholder="Doe"
+            placeholder={
+              errors.userLastName ? errors.userLastName.message : "Doe"
+            }
             {...register("userLastName", {
-              required: "El apellido del usuario es obligatorio",
+              required: "Este campo es obligatorio",
             })}
           />
-          {errors.userLastName && (
-            <span className="text-red-500 text-sm">
-              {errors.userLastName.message}
-            </span>
-          )}
         </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="userLastName" className="font-medium">
-            Correo electronico
-          </label>
-          <input
-            id="userEmail"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            type="email"
-            placeholder="johndoe@correo.com"
-            {...register("userEmail", {
-              required: "El correo electronico del usuario es obligatorio",
-            })}
-          />
-          {errors.userEmail && (
-            <span className="text-red-500 text-sm">
-              {errors.userEmail.message}
-            </span>
-          )}
-        </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="" className="font-medium">
+        <div className="mb-2 space-y-2 flex-grow">
+          <label htmlFor="rol" className="font-medium">
             Rol
           </label>
           <select
-            id=""
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
+            id="rol"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.rol ? "border-red-500 focus:ring-red-500 " : ""
+            }`}
+            {...register("rol", {
+              required: "Este campo es obligatorio",
+            })}
           >
-            <option value="">Auxiliar</option>
-            <option value="">Investigador</option>
+            <option value="">Selecciona un rol</option>
+            <option value="researcher">Investigador</option>
+            <option value="assistant">Asistente</option>
           </select>
         </div>
-        <input
-          type="submit"
-          value="Registrar Usuario"
-          className="w-full bg-primary mb-5 py-3 text-white rounded cursor-pointer text-xl font-semibold hover:bg-secondary transition-colors md:col-span-2"
-        />
-      </form>
-    </ModalForm>
+      </div>
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+        <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
+          <label htmlFor="user" className="font-medium">
+            Usuario
+          </label>
+          <input
+            id="user"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.user
+                ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+                : ""
+            }`}
+            type="text"
+            placeholder={errors.user ? errors.user.message : "johnDoe2"}
+            {...register("user", {
+              required: "Este campo es obligatorio",
+            })}
+          />
+        </div>
+      </div>
+      {!user && (
+        <>
+          <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
+            <label htmlFor="userPassword" className="font-medium">
+              Contraseña
+            </label>
+            <input
+              id="userPassword"
+              className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+                errors.userPassword
+                  ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+                  : ""
+              }`}
+              type="password"
+              placeholder={
+                errors.userPassword ? errors.userPassword.message : "********"
+              }
+              {...register("userPassword", {
+                required: "Este campo es obligatorio",
+              })}
+            />
+          </div>
+          <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
+            <label htmlFor="passwordConfirmation" className="font-medium">
+              Confirmar contraseña
+            </label>
+            <input
+              id="passwordConfirmation"
+              className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+                errors.passwordConfirmation
+                  ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+                  : ""
+              }`}
+              type="password"
+              placeholder={
+                errors.passwordConfirmation
+                  ? errors.passwordConfirmation.message
+                  : "********"
+              }
+              {...register("passwordConfirmation", {
+                required: "Este campo es obligatorio",
+                validate: (value) =>
+                  value === password || "Las contraseñas no coinciden",
+              })}
+            />
+            {errors.passwordConfirmation && (
+              <span className="text-red-500 text-sm">
+                {errors.passwordConfirmation.message}
+              </span>
+            )}
+          </div>
+        </>
+      )}
+    </>
   );
 }

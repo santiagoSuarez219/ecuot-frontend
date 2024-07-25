@@ -1,37 +1,34 @@
 import { useEffect, useState } from "react";
 
-import { useQuery } from "@tanstack/react-query";
-
-import DialogDeleteConflict from "../DialogDeleteConflict";
-import { getConflicts } from "../../../api/ConflictAPI";
-import { ConflictResponse } from "../../../types";
-import CrudButtons from "../../CrudButtons";
-import NoDataFound from "../../NoDataFound";
-import CardConflict from "../CardConflict";
+import { NewsResponse } from "../../../types";
 import { useEcuot } from "../../../ecuot";
+import { useQuery } from "@tanstack/react-query";
+import { getNews } from "../../../api/NewsAPI";
+import CrudButtons from "../../CrudButtons";
 import FilterForm from "../FilterForm";
+import NoDataFound from "../../NoDataFound";
+import CardNew from "../CardNew";
+import DialogDeleteNews from "../DialogDeleteNews";
 
 export default function LayoutConflictList() {
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [conflict, setConflict] = useState<ConflictResponse>();
+  const [oneNews, setOneNews] = useState<NewsResponse>();
 
   const [searchKeyWords, setSearchKeyWords] = useState("");
   const [searchByIntervention, setSearchByIntervention] = useState("");
-  const [searchByTimeStressOccurrence, setSearchByTimeStressOccurrence] =
-    useState("");
 
-  const [filteredData, setFilteredData] = useState<ConflictResponse[]>([]);
+  const [filteredData, setFilteredData] = useState<NewsResponse[]>([]);
 
   const user = useEcuot((state) => state.user);
 
   const {
-    data: conflicts,
+    data: news,
     isError,
     isLoading,
   } = useQuery({
-    queryKey: ["conflicts"],
-    queryFn: getConflicts,
+    queryKey: ["news"],
+    queryFn: getNews,
   });
 
   const handleEdit = () => {
@@ -44,51 +41,37 @@ export default function LayoutConflictList() {
     setIsEditing(false);
   };
 
-  const filterData = (data: ConflictResponse[], type: string) => {
+  const filterData = (data: NewsResponse[], type: string) => {
     let filtered = data;
     if (type.includes("BY_KEYWORDS")) {
       filtered = filtered.filter(
-        (conflict) =>
-          conflict.conflictName
+        (newsItem) =>
+          newsItem.newsName
             .toLocaleLowerCase()
             .includes(searchKeyWords.toLocaleLowerCase()) ||
-          conflict.description
+          newsItem.description
             .toLocaleLowerCase()
             .includes(searchKeyWords.toLocaleLowerCase())
       );
     }
     if (type.includes("BY_INTERVENTION")) {
       filtered = filtered.filter(
-        (conflict) =>
-          conflict.intervention._id.toLocaleLowerCase() ===
+        (newsItem) =>
+          newsItem.intervention._id.toLocaleLowerCase() ===
           searchByIntervention.toLocaleLowerCase()
-      );
-    }
-    if (type.includes("BY_TIME_STRESS_OCCURRENCE")) {
-      filtered = filtered.filter(
-        (conflict) =>
-          conflict.timeStressOccurrence.toLocaleLowerCase() ===
-          searchByTimeStressOccurrence.toLocaleLowerCase()
       );
     }
     return filtered;
   };
 
   useEffect(() => {
-    if (conflicts) {
+    if (news) {
       let filterType = "";
       if (searchKeyWords) filterType += "BY_KEYWORDS";
       if (searchByIntervention) filterType += "BY_INTERVENTION";
-      if (searchByTimeStressOccurrence)
-        filterType += "BY_TIME_STRESS_OCCURRENCE";
-      setFilteredData(filterData(conflicts, filterType));
+      setFilteredData(filterData(news, filterType));
     }
-  }, [
-    searchKeyWords,
-    searchByIntervention,
-    searchByTimeStressOccurrence,
-    conflicts,
-  ]);
+  }, [searchKeyWords, searchByIntervention, news]);
 
   if (isLoading) {
     return (
@@ -100,39 +83,38 @@ export default function LayoutConflictList() {
       </div>
     );
   }
-  if (isError) return <p>Error al cargar los conflictos</p>;
+  if (isError) return <p>Error al cargar las noticias</p>;
   return (
     <>
       <CrudButtons
         handleDelete={handleDelete}
         handleEdit={handleEdit}
-        routeToNew={"/conflicts/new"}
-        hasItems={conflicts?.length !== 0}
+        routeToNew={"/news/new"}
+        hasItems={news?.length !== 0}
         user={user}
       />
-      {conflicts?.length !== 0 && (
+      {news?.length !== 0 && (
         <FilterForm
           setSearchKeyWords={setSearchKeyWords}
           setSearchByIntervention={setSearchByIntervention}
-          setSearchByTimeStressOccurrence={setSearchByTimeStressOccurrence}
         />
       )}
-      <div className="urban-planning-interventions__list w-full mt-6 mb-12 grid grid-cols-1 gap-6">
+      <div className="w-full mt-6 mb-12 grid grid-cols-1 gap-6">
         {filteredData?.length ? (
-          filteredData.map((conflict) => (
-            <CardConflict
-              key={conflict._id}
-              data={conflict}
+          filteredData.map((news) => (
+            <CardNew
+              key={news._id}
+              data={news}
               isEditing={isEditing}
               isDeleting={isDeleting}
-              setConflict={setConflict}
+              setOneNews={setOneNews}
             />
           ))
         ) : (
-          <NoDataFound title="conflictos" />
+          <NoDataFound title="acontecimientos noticiosos" />
         )}
       </div>
-      <DialogDeleteConflict conflict={conflict} />
+      <DialogDeleteNews news={oneNews} />
     </>
   );
 }

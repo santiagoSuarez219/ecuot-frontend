@@ -1,26 +1,24 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { NewsFormData, NewsResponse } from "../../../types";
 import { useForm } from "react-hook-form";
-
-import { ConflictFormData, ConflictResponse } from "../../../types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateConflict } from "../../../api/ConflictAPI";
+import { updateNews } from "../../../api/NewsAPI";
 import { toast } from "react-toastify";
-import ConflictAddForm from "../ConflictAddForm";
+import NewFormAdd from "../NewFormAdd";
 
-type ConflictEditProps = {
-  conflict: ConflictResponse;
+type NewsEditProps = {
+  news: NewsResponse;
 };
 
-export default function ConflictEdit({ conflict }: ConflictEditProps) {
+export default function NewsEdit({ news }: NewsEditProps) {
   const navigate = useNavigate();
   const params = useParams();
-  const initialValues: ConflictFormData = {
-    conflictName: conflict.conflictName,
-    description: conflict.description,
-    timeStressOccurrence: conflict.timeStressOccurrence,
-    actorsInvolved: conflict.actorsInvolved,
-    intervention: conflict.intervention._id,
-    image: conflict.image,
+  const initialValues: NewsFormData = {
+    newsName: news.newsName,
+    description: news.description,
+    newsDate: new Date(news.newsDate).toISOString().split("T")[0],
+    intervention: news.intervention._id,
+    image: news.image,
   };
 
   const {
@@ -33,28 +31,28 @@ export default function ConflictEdit({ conflict }: ConflictEditProps) {
   const queryClient = useQueryClient();
 
   const { mutate } = useMutation({
-    mutationFn: updateConflict,
+    mutationFn: updateNews,
     onError: (error) => {
       toast.error(error.message);
     },
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["conflicts"] });
+      queryClient.invalidateQueries({ queryKey: ["news"] });
       queryClient.invalidateQueries({
-        queryKey: ["get-conflict", params.conflictId],
+        queryKey: ["get-news-by-id", params.newsId],
       });
       toast.success(data);
       reset();
       window.scrollTo(0, 0);
-      navigate("/conflicts");
+      navigate("/news");
     },
   });
 
-  const handleForm = (formData: ConflictFormData) => {
-    if (!params.conflictId) return;
+  const handleForm = (formData: NewsFormData) => {
+    if (!params.newsId) return;
 
     const dataForm = {
       formData,
-      conflictId: params.conflictId,
+      newsId: params.newsId,
       interventionId: formData.intervention,
     };
 
@@ -64,7 +62,7 @@ export default function ConflictEdit({ conflict }: ConflictEditProps) {
   return (
     <section className="w-full md:h-screen flex justify-center items-center relative bg-gradient-to-r from-senary to-quaternary md:p-6 py-4 overflow-y-auto px-4">
       <Link
-        to="/conflicts"
+        to="/news"
         className="hidden md:block absolute top-6 left-6 bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-all"
       >
         Volver
@@ -81,7 +79,7 @@ export default function ConflictEdit({ conflict }: ConflictEditProps) {
           noValidate
         >
           <div className="content__section overflow-y-auto pl-1 pr-6 mb-4">
-            <ConflictAddForm register={register} errors={errors} />
+            <NewFormAdd register={register} errors={errors} />
           </div>
           <div className="pr-6">
             <input

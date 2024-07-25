@@ -1,68 +1,56 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
-import NewUserForm from "../components/Users/NewUserForm";
-import FilterForm from "../components/Users/FilterForm";
-import UserCard from "../components/Users/UserCard";
+import LayoutUsersList from "../components/Users/LayoutUsersList";
 import CrudButton from "../components/CrudButton";
-import Pagination from "../components/Pagination";
+import { useEcuot } from "../ecuot";
 
-export default function UsersView() {
-  const [isEditing, setIsEditing] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
+export default function UserView() {
+  const user = useEcuot((state) => state.user);
 
-  const handleEdit = () => {
-    setIsEditing(!isEditing);
-    setIsDeleting(false);
-  };
-
-  const handleDelete = () => {
-    setIsDeleting(!isDeleting);
-    setIsEditing(false);
-  };
+  if (!user || user.rol !== "researcher") {
+    return (
+      <div className="h-[calc(100vh-136px)] flex justify-center items-center">
+        <div className="w-1/3 h-96 text-center flex flex-col gap-8 items-center justify-center rounded-xl border-2 border-red-700">
+          <h2 className="text-3xl uppercase text-red-700">
+            Acceso no autorizado
+          </h2>
+          <Link
+            to={"/"}
+            className="bg-primary px-4 py-2 rounded-lg text-white text-xl font-semibold hover:bg-secondary transition-colors"
+          >
+            Volver al inicio
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <section className="layout__users mx-20">
-      <h2 className="users__title text-[4.5rem] capitalize text-primary font-semibold">
-        Usuarios
-      </h2>
-      <p className="urban-planning-interventions__description text-lg text-font-color">
-        Listado de todos los usuarios
-      </p>
-      <div className="my-6 grid grid-cols-3 gap-6">
-        <CrudButton
-          icon="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-          text="Agregar"
-          color="primary"
-          route="newUser"
-        />
-        <div onClick={handleEdit}>
-          <CrudButton
-            icon="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-            text="Editar"
-            color="primary"
-            route=""
-          />
+    <>
+      <section className="px-32 flex gap-12 h-screen pt-24 bg-gradient-to-r from-quaternary to-senary ">
+        <div className="">
+          <Link
+            to="/"
+            className="bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-all"
+          >
+            Volver
+          </Link>
+          <h2 className="mt-12 text-[4.5rem] capitalize text-white font-semibold">
+            Usuarios
+          </h2>
+          <p className="text-lg text-white">
+            Listado de todos los usuarios registrados en el sistema
+          </p>
+          <div className="my-6">
+            <CrudButton
+              icon="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              text="Agregar"
+              route="/users/new"
+            />
+          </div>
         </div>
-        <div onClick={handleDelete}>
-          <CrudButton
-            icon="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
-            text="Eliminar"
-            color="[red]"
-            route=""
-          />
-        </div>
-      </div>
-      <FilterForm />
-      <div className="users__list w-full mt-6 mb-12 grid grid-cols-3 gap-6">
-        <UserCard isDeleting={isDeleting} isEditing={isEditing} />
-        <UserCard isDeleting={isDeleting} isEditing={isEditing} />
-        <UserCard isDeleting={isDeleting} isEditing={isEditing} />
-        <UserCard isDeleting={isDeleting} isEditing={isEditing} />
-        <UserCard isDeleting={isDeleting} isEditing={isEditing} />
-        <UserCard isDeleting={isDeleting} isEditing={isEditing} />
-      </div>
-      <Pagination />
-      <NewUserForm />
-    </section>
+        <LayoutUsersList />
+      </section>
+    </>
   );
 }

@@ -72,7 +72,7 @@ export default function AddConflict() {
           <div className="pr-6">
             <input
               type="submit"
-              value="Agregar Actuacion Urbanistica"
+              value="Agregar Conflicto"
               className="w-full bg-primary py-3 text-white rounded cursor-pointer md:text-xl font-semibold hover:bg-secondary transition-colors md:col-span-2"
             />
           </div>

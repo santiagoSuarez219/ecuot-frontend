@@ -1,24 +1,46 @@
-import prueba from "../../assets/img/Estacion_de_transferencia.jpg";
+import { useNavigate } from "react-router-dom";
+import { NewsResponse } from "../../types";
 
-export default function CardNew() {
+export default function CardNew({
+  data,
+  isEditing,
+  isDeleting,
+  setOneNews,
+}: {
+  data: NewsResponse;
+  isEditing: boolean;
+  isDeleting: boolean;
+  setOneNews: (news: NewsResponse) => void;
+}) {
+  const navigate = useNavigate();
   return (
-    <div className="urban-planning-interventions__item flex rounded-xl overflow-hidden flex-col text-font-color border border-secondary cursor-pointer">
-      <div className="flex ">
-        <figure className="w-[40%] relative">
+    <div className="urban-planning-interventions__item w-full flex rounded-xl overflow-hidden flex-col text-font-color border border-secondary cursor-pointer">
+      <div className="flex gap-2 md:gap-4 h-full flex-col md:flex-row">
+        <figure className="w-full md:w-[40%] relative aspect-square">
           <img
-            src={prueba}
-            alt=""
-            className="w-full h-full aspect-square object-cover" // TODO: Modificar la opacidad al 40
+            src={data.image}
+            alt={data.newsName}
+            className={`w-full h-full object-cover ${
+              isEditing || isDeleting ? "opacity-40" : "opacity-100"
+            } `}
           />
-          <div className="hidden w-full h-full justify-center items-center absolute top-0 cursor-pointer">
-            {/* // TODO:colocar display flex  */}
+          <div
+            className={`${
+              isDeleting ? "flex" : "hidden"
+            } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
+            onClick={() => {
+              setOneNews(data);
+              navigate("/news/?deleteNews=true");
+              window.scrollTo(0, 0);
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              className="w-20 text-delete"
+              className="w-20 text-red-700 hover:scale-105 transition-all"
             >
               <path
                 strokeLinecap="round"
@@ -27,38 +49,55 @@ export default function CardNew() {
               />
             </svg>
           </div>
-        </figure>
-        <div className="w-[60%] pt-4 flex flex-col justify-between">
-          <div className="px-4">
-            <h3 className="text-3xl font-semibold text-primary mb-2">
-              Críticas sobre calidad de materiales en pasaje de Junín
-            </h3>
-            <p className="">
-              Concejal denuncia que en la ejecucion de las obras de renovación
-              del pasaje de Junín se están utilizando materiales de mala
-              calidad, situacion que se ha denunciado por parte de la
-              interventoria en mas de 20 informes, pero que solo hasta ahora ha
-              sido tenido en cuenta por la Contraloría. Responde el secretario
-              de Obras publicas que se revisaran las denuncias y se tomaran las
-              medidas necesarias. Respecto al atraso del proyecto obedece a tres
-              factores redes de servicios publicos viejas, suspensión de obras
-              en diciembre para comerciantes e invierno
-            </p>
-            <p className="text-xl mt-4 text-primary font-medium">
-              Actuacion urbanistica asociada
-            </p>
-            <p className="text-lg">Bazares</p>
-            <p className="text-xl mt-4 text-primary font-medium">Fecha</p>
-            <p className="">17 de Junio 2024</p>
+          <div
+            className={`${
+              isEditing ? "flex" : "hidden"
+            } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
+            onClick={() => {
+              navigate(`/news/${data._id}/edit`);
+              window.scrollTo(0, 0);
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-20 text-font-color hover:scale-105 transition-all"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+              />
+            </svg>
           </div>
-
-          <input
-            type="button"
-            value="Ir a la actuacion urbanistica asociada"
-            className="bg-primary text-white text-3xl font-semibold w-[calc(100vh+2rem)] py-2 cursor-pointer hover:bg-secondary transition-all"
-          />
+        </figure>
+        <div className="w-full md:w-[60%] px-2 py-2">
+          <h3 className="text-2xl md:text-4xl font-semibold text-primary mb-2">
+            {data.newsName}
+          </h3>
+          <p className="text-base md:text-lg">{data.description}</p>
+          <p className="mt-4 text-primary font-medium text-lg">
+            Actuacion urbanistica asociada
+          </p>
+          <p className="text-lg">{data.intervention.interventionName}</p>
+          <p className="mt-4 text-primary font-medium text-lg">Fecha</p>
+          <p className="text-lg">
+            {/* TODO: Formatear fecha */}
+            {new Date(data.newsDate).toISOString().split("T")[0]}
+          </p>
         </div>
       </div>
+      <input
+        type="button"
+        value="Ir a la actuacion urbanistica asociada"
+        className="bg-primary text-white text-xl md:text-3xl font-semibold w-full py-2 cursor-pointer hover:bg-secondary transition-all self-end"
+        onClick={() =>
+          navigate(`/interventions/${data.intervention._id}/datasheet`)
+        }
+      />
     </div>
   );
 }
