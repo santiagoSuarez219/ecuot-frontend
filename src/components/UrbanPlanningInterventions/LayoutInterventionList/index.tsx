@@ -110,9 +110,10 @@ export default function LayoutInterventionList() {
           setSearchBySystem={setSearchBySystem}
         />
       )}
-      <div className="urban-planning-interventions__list w-full mt-6 mb-12 grid grid-cols-1 gap-6">
-        {filteredData?.length ? (
-          filteredData.map((intervention, index) => (
+
+      {filteredData?.length ? (
+        <div className="urban-planning-interventions__list w-full mt-6 mb-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+          {filteredData.map((intervention, index) => (
             <CardIntervention
               key={index}
               data={intervention}
@@ -120,11 +121,12 @@ export default function LayoutInterventionList() {
               isDeleting={isDeleting}
               setInterventionId={setInterventionId}
             />
-          ))
-        ) : (
-          <NoDataFound title="actuaciones urbanisticas" />
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <NoDataFound title="actuaciones urbanisticas" />
+      )}
+
       <DialogDeleteIntervention interventionId={interventionId} />
     </>
   );

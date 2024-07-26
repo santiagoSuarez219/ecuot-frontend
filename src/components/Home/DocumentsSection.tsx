@@ -3,7 +3,10 @@ import DocumentItem from "./DocumentItem";
 // TODO: Incluir los documentos
 export default function DocumentsSection() {
   return (
-    <section className="layout__documents bg-senary mt-8 mb-8 mx-4 md:mx-12 md:py-16  md:px-28 md:rounded-[60px] rounded-2xl shadow-xl relative overflow-hidden">
+    <section
+      className="layout__documents bg-senary mt-8 mb-8 mx-4 md:mx-12 md:py-16  md:px-28 md:rounded-[60px] rounded-2xl shadow-xl relative overflow-hidden md:mt-24"
+      id="documents-section"
+    >
       <h1 className="urban-interventions__title text-center text-4xl mt-6 md:text-[4.5rem] text-primary font-semibold mb-8">
         Documentos
       </h1>

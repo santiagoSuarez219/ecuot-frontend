@@ -167,9 +167,7 @@ export default function FormIntervention({
           }`}
           type="text"
           placeholder={errors.image ? errors.image.message : "URL de la imagen"}
-          {...register("image", {
-            required: "La URL de la imagen es obligatoria",
-          })}
+          {...register("image")}
         />
       </div>
       <div className="mb-2 space-y-2">

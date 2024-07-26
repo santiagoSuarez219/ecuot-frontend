@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 
 import UrbanPlanningInterventions from "../components/Home/UrbanPlanningInterventions";
 import DocumentsSection from "../components/Home/DocumentsSection";
-// import ContactUsSection from "../components/Home/ContactUsSection";
 import { getInterventions } from "../api/InterventionAPI";
 import Statistics from "../components/Home/Statistics";
+import VideoModal from "../components/Home/VideoModal";
 import ShortCuts from "../components/Home/ShortCuts";
 import TeamWork from "../components/Home/TeamWork";
 import AboutUs from "../components/Home/AboutUs";
@@ -43,6 +43,7 @@ export default function HomeView() {
         <DocumentsSection />
         <TeamWork />
         <Footer />
+        <VideoModal />
         {/* <ContactUsSection /> */}
       </section>
     );

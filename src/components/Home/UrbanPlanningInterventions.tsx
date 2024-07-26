@@ -19,8 +19,7 @@ export default function UrbanPlanningInterventions({
           {interventions.map((intervention) => (
             <UrbanInterventionCard
               key={intervention._id}
-              title={intervention.interventionName}
-              image={intervention.image}
+              intervention={intervention}
             />
           ))}
         </div>

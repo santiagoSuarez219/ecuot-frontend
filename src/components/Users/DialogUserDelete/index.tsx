@@ -1,37 +1,44 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import { UserItemList } from "../../../types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { deleteUserById } from "../../../api/UserAPI";
 import { toast } from "react-toastify";
+import ModalForm from "../../ModalForm";
 
-import ModalForm from "../ModalForm";
-import { deleteIntervention } from "../../api/InterventionAPI";
+type DialogUserDeleteProps = {
+  user?: UserItemList;
+};
 
-export default function DialogDeleteIntervention({
-  interventionId,
-}: {
-  interventionId: string;
-}) {
+export default function DialogUserDelete({ user }: DialogUserDeleteProps) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
-    mutationFn: deleteIntervention,
+    mutationFn: deleteUserById,
     onError: (error) => {
       toast.error(error.message);
     },
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["interventions"] });
+      queryClient.invalidateQueries({ queryKey: ["users"] });
       toast.success(data);
-      navigate("/interventions");
+      navigate(location.pathname, {
+        replace: true,
+      });
     },
   });
 
-  const handleDelete = () => mutate(interventionId);
+  const handleDelete = () => {
+    if (user) {
+      mutate(user._id);
+    }
+  };
 
   return (
     <ModalForm
-      title="Eliminar Actuacion Urbanistica"
-      description="¿Estas seguro de eliminar esta actuacion urbanistica?"
-      showModalParam="deleteUrbanIntervention"
+      title="Eliminar Usuario"
+      description={`¿Estas seguro de eliminar el usuario ${user?.user}?`}
+      showModalParam="deleteUser"
     >
       <div className="flex justify-between gap-4 mt-8">
         <button
@@ -42,7 +49,7 @@ export default function DialogDeleteIntervention({
         </button>
         <button
           className="w-full border-2 border-primary py-3 text-font-color rounded cursor-pointer text-xl font-semibold hover:bg-primary hover:text-white transition-colors"
-          onClick={() => navigate("/interventions")}
+          onClick={() => navigate("/users")}
         >
           Cancelar
         </button>

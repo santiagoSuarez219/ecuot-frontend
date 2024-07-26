@@ -77,10 +77,14 @@ export async function updateUser({ formData, userId }: UserUpdateAPIType) {
   }
 }
 
-export async function changePasswordRequest(
-  formData: ChangePasswordType,
-  userId: User["_id"]
-) {
+type ChangePasswordAPIType = {
+  formData: ChangePasswordType;
+  userId: User["_id"];
+};
+export async function changePasswordRequest({
+  formData,
+  userId,
+}: ChangePasswordAPIType) {
   try {
     const { data } = await api.post<string>(
       `/users/update-password/${userId}`,

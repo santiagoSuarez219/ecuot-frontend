@@ -1,6 +1,6 @@
 export default function TeamWork() {
   return (
-    <section className="layout__team-work mt-8 mb-8 mx-4 md:mx-12 md:py-16 py-6 md:px-28 px-4 md:rounded-[60px] rounded-2xl relative overflow-hidden bg-primary">
+    <section className="layout__team-work mt-8 mb-8 mx-4 md:mx-12 md:py-16 py-6 md:px-28 px-4 md:rounded-[60px] rounded-2xl relative overflow-hidden bg-primary md:my-24">
       <h1 className="teamwork__title text-center text-4xl md:text-[4.5rem] text-white font-semibold mb-6 md:mb-16 bg-transparent z-10 relative">
         Equipo de trabajo
       </h1>

@@ -14,7 +14,7 @@ export default function NoInterventionDataSheet({
   const user = useEcuot((state) => state.user);
   return (
     <div className="w-full h-full flex flex-col justify-center items-center p-4 md:py-0 md:px-6">
-      <h2 className="text-3xl md:text-[3rem] text-white font-medium text-center">
+      <h2 className="text-3xl md:text-[3rem] text-white font-medium text-center leading-none">
         {`No se ha encontrado información de ${interventionName}`}
       </h2>
       {user && (
@@ -37,7 +37,7 @@ export default function NoInterventionDataSheet({
           type="button"
           value="Volver"
           className="w-full md:w-96 md:py-6 py-4 rounded-lg text-lg md:text-xl font-medium bg-white hover:scale-105 transition-all cursor-pointer"
-          onClick={() => navigate("/interventions")}
+          onClick={() => navigate(-1)}
         />
       </div>
     </div>

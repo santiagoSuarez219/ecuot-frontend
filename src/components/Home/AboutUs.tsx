@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Information } from "../../types";
 
 type AboutUsProps = {
@@ -5,6 +6,7 @@ type AboutUsProps = {
 };
 
 export default function AboutUs({ data }: AboutUsProps) {
+  const navigate = useNavigate();
   return (
     <section
       className="layout__about-us md:bg-senary md:mx-12 mx-4 md:rounded-[60px] rounded-2xl relative md:mt-8 mt-6 md:py-24  shadow-lg md:px-28 flex gap-8 z-10 overflow-hidden pb-6 "
@@ -19,8 +21,10 @@ export default function AboutUs({ data }: AboutUsProps) {
             {data.aboutUs}
           </p>
         </div>
-        {/* TODO: Crear el modal para ver el video */}
-        <div className="w-full md:w-[40%] bg-white p-6 rounded-xl overflow-hidden aspect-video flex justify-center items-center text-secondary cursor-pointer relative">
+        <div
+          className="w-full md:w-[40%] bg-white p-6 rounded-xl overflow-hidden aspect-video flex justify-center items-center text-secondary cursor-pointer relative"
+          onClick={() => navigate("?watchVideo=true")}
+        >
           <img
             src="logo.avif"
             alt="logo"

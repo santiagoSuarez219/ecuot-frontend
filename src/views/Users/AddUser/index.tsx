@@ -33,7 +33,7 @@ export default function AddUser() {
       toast.error(error.message);
     },
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["conflicts"] });
+      queryClient.invalidateQueries({ queryKey: ["users"] });
       toast.success(data);
       navigate("/users");
       reset();
@@ -45,7 +45,7 @@ export default function AddUser() {
   return (
     <section className="w-full md:h-screen flex justify-center items-center relative bg-gradient-to-r from-senary to-quaternary md:p-6 py-4 overflow-y-auto px-4">
       <Link
-        to="/news"
+        to="/users"
         className="hidden md:block absolute top-6 left-6 bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-all"
       >
         Volver

@@ -93,7 +93,7 @@ export default function EditUser({ user }: EditUserProps) {
           <div className="pr-6">
             <input
               type="submit"
-              value="Editar Conflicto"
+              value="Editar Usuario"
               className="w-full bg-primary py-3 text-white rounded cursor-pointer md:text-xl font-semibold hover:bg-secondary transition-colors md:col-span-2"
             />
           </div>

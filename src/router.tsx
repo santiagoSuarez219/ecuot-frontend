@@ -24,6 +24,7 @@ import UsersView from "./views/UsersView";
 import NewsView from "./views/NewsView";
 import HomeView from "./views/HomeView";
 import AddUser from "./views/Users/AddUser";
+import NewPassword from "./views/Users/NewPassword";
 
 export default function Router() {
   return (
@@ -64,6 +65,7 @@ export default function Router() {
           <Route path="/users" element={<UsersView />} />
           <Route path="/users/new" element={<AddUser />} />
           <Route path="/users/:userId/edit" element={<EditUserView />} />
+          <Route path="/users/:userId/new-password" element={<NewPassword />} />
         </Route>
         <Route element={<InterventionSheetLayout />}>
           <Route

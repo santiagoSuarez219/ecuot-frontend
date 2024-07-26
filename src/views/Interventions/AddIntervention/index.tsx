@@ -40,7 +40,9 @@ export default function AddIntervention() {
     },
   });
 
-  const handleForm = (formData: InterventionFormData) => mutate(formData);
+  const handleForm = (formData: InterventionFormData) => {
+    mutate(formData);
+  };
 
   return (
     <section className="w-full md:h-screen flex justify-center items-center relative bg-gradient-to-r from-senary to-quaternary md:p-6 py-4 overflow-y-auto px-4">

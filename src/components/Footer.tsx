@@ -1,7 +1,17 @@
+import { Link, useLocation } from "react-router-dom";
+
 export default function Footer() {
+  const location = useLocation();
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="flex flex-col">
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-6 md:gap-12 mb-6 px-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-6 md:gap-12 mb-6 px-16">
         <figure>
           <img
             src="logo_colmayor.avif"
@@ -31,18 +41,48 @@ export default function Footer() {
             className=" h-24 md:h-36 object-contain"
           />
         </figure>
-      </div> */}
+      </div>
       <div className="flex flex-col lg:flex-row items-center gap-6 bg-primary md:pt-16 md:px-16">
         <div className="mt-12 lg:mt-0 w-full lg:w-1/2 text-lg px-6 flex flex-col md:flex-row gap-12 lg:gap-24 text-white">
           <div>
             <h3 className="font-semibold mb-6  text-xl">Menu</h3>
             <ul className="flex flex-col gap-2  ">
-              <li className="cursor-pointer">Inicio</li>
-              <li className=" cursor-pointer">Sobre nosotros</li>
-              <li className=" cursor-pointer">Documentos</li>
-              <li className=" cursor-pointer">Actuaciones Urbanisticas</li>
-              <li className=" cursor-pointer">Conflictos</li>
-              <li className=" cursor-pointer">Acontecimientos noticiosos</li>
+              {location.pathname === "/" ? (
+                <li
+                  className="cursor-pointer"
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  Inicio
+                </li>
+              ) : (
+                <li className=" cursor-pointer">
+                  <Link to="/">Inicio</Link>
+                </li>
+              )}
+
+              <li
+                className="cursor-pointer"
+                onClick={() => handleScroll("about-us")}
+              >
+                Sobre nosotros
+              </li>
+              <li
+                className="cursor-pointer"
+                onClick={() => handleScroll("documents-section")}
+              >
+                Documentos
+              </li>
+              <li className=" cursor-pointer">
+                <Link to="/interventions">Actuaciones Urbanisticas</Link>
+              </li>
+              <li className=" cursor-pointer">
+                <Link to="/conflicts">Conflictos</Link>
+              </li>
+              <li className=" cursor-pointer">
+                <Link to="/news">Acontecimientos noticiosos</Link>
+              </li>
             </ul>
           </div>
           <div>
