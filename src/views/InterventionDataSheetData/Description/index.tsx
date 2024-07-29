@@ -40,9 +40,9 @@ export default function Description() {
             {data.description}
           </p>
         </article>
-        <figure className="w-[50%] relative">
+        <figure className="w-[50%] relative bg-white">
           <img
-            src={data.image_description}
+            src={data.image_description ? data.image_description : "/logo.avif"}
             alt={`image`}
             className="w-full h-full object-cover"
           />

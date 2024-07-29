@@ -20,7 +20,7 @@ export default function FormIntervention({
   return (
     <>
       <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-        <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
+        <div className="mb-2 space-y-1 flex-grow text-sm md:text-base">
           <label htmlFor="interventionName" className="font-medium">
             Nombre de la actuacion urbanistica
           </label>
@@ -42,7 +42,7 @@ export default function FormIntervention({
             })}
           />
         </div>
-        <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
+        <div className="mb-2 space-y-1 flex-grow text-sm md:text-base">
           <label htmlFor="hierarchy" className="font-medium">
             Jerarquia
           </label>
@@ -66,7 +66,7 @@ export default function FormIntervention({
         </div>
       </div>
 
-      <div className="mb-2 space-y-2 text-sm md:text-base">
+      <div className="mb-2 space-y-1 text-sm md:text-base">
         <label htmlFor="description" className="font-medium">
           Descripción
         </label>
@@ -89,7 +89,7 @@ export default function FormIntervention({
       </div>
 
       <div className="flex flex-col md:flex-row gap-2 md:gap-4 text-sm md:text-base">
-        <div className="mb-2 space-y-2 flex-grow">
+        <div className="mb-2 space-y-1 flex-grow">
           <label htmlFor="strategicProject" className="font-medium">
             Proyecto estrategico
           </label>
@@ -111,7 +111,7 @@ export default function FormIntervention({
             })}
           />
         </div>
-        <div className="mb-2 space-y-2 flex-grow">
+        <div className="mb-2 space-y-1 flex-grow">
           <label htmlFor="internalSystem" className="font-medium">
             Sistema interno al que pertenece
           </label>
@@ -154,10 +154,20 @@ export default function FormIntervention({
           </select>
         </div>
       </div>
-      <div className="mb-2 space-y-2 flex-grow gap-2 md:gap-4 text-sm md:text-base">
-        <label htmlFor="image" className="font-medium">
-          Imagen
-        </label>
+      <div className="mb-2 space-y-1 flex-grow gap-2 md:gap-4 text-sm md:text-base">
+        <div className="flex justify-between">
+          <label htmlFor="image" className="font-medium">
+            Imagen
+          </label>
+          <a
+            href="https://imgto.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary border-b border-primary"
+          >
+            Optimizador de imagenes
+          </a>
+        </div>
         <input
           id="image"
           className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${

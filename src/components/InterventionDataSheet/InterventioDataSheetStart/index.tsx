@@ -21,7 +21,7 @@ export default function InterventionDataSheetStart({
             <h2 className="text-[3rem] w-3/4 text-white font-medium text-center ">
               {`Ficha técnica de ${intervention.interventionName}`}
             </h2>
-            <div className="flex mt-12 gap-6 ">
+            <div className="flex mt-12 gap-6 flex-wrap justify-center ">
               <input
                 type="button"
                 value="Comenzar"
@@ -60,7 +60,7 @@ export default function InterventionDataSheetStart({
                 type="button"
                 value="Volver"
                 className="w-80 py-6 rounded-lg text-xl font-medium bg-white hover:scale-105 transition-all cursor-pointer"
-                onClick={() => navigate(-1)}
+                onClick={() => navigate("/interventions")}
               />
             </div>
           </div>

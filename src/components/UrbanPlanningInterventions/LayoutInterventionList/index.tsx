@@ -112,7 +112,7 @@ export default function LayoutInterventionList() {
       )}
 
       {filteredData?.length ? (
-        <div className="urban-planning-interventions__list w-full mt-6 mb-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="urban-planning-interventions__list w-full mt-6 mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredData.map((intervention, index) => (
             <CardIntervention
               key={index}

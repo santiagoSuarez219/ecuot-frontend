@@ -47,6 +47,7 @@ export default function DialogDeleteInterventionDataSheet({
       title={`Eliminar Ficha técnica de ${intervention.interventionName}`}
       description="¿Estas seguro de eliminar esta ficha tecnica?"
       showModalParam="deleteUrbanInterventionDataSheet"
+      route={`interventions/${intervention._id}/datasheet`}
     >
       <div className="flex justify-between gap-4 mt-8">
         <button

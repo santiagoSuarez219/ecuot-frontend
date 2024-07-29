@@ -12,6 +12,7 @@ type ModalFormProps = {
   title: string;
   description: string;
   showModalParam: string;
+  route: string;
   children: React.ReactNode;
 };
 
@@ -19,6 +20,7 @@ export default function ModalForm({
   title,
   description,
   showModalParam,
+  route,
   children,
 }: ModalFormProps) {
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ export default function ModalForm({
           as="div"
           className="relative z-10"
           onClose={() => {
-            navigate(location.pathname, { replace: true });
+            navigate(route);
           }}
         >
           <TransitionChild

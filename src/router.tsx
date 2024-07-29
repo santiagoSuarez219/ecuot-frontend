@@ -14,17 +14,18 @@ import Features from "./views/InterventionDataSheetData/Features";
 import EditConflict from "./views/Conflicts/EditConflict";
 import AddConflict from "./views/Conflicts/AddConflict";
 import EditUserView from "./views/Users/EditUserView";
+import NewPassword from "./views/Users/NewPassword";
 import ConflictsView from "./views/ConflictsView";
 import LoginView from "./views/Auth/LoginView";
 import AuthLayout from "./layouts/AuthLayout";
 import EditNews from "./views/News/EditNews";
 import AppLayout from "./layouts/AppLayout";
+import AddUser from "./views/Users/AddUser";
 import AddNews from "./views/News/AddNews";
 import UsersView from "./views/UsersView";
+import AdminView from "./views/AdminView";
 import NewsView from "./views/NewsView";
 import HomeView from "./views/HomeView";
-import AddUser from "./views/Users/AddUser";
-import NewPassword from "./views/Users/NewPassword";
 
 export default function Router() {
   return (
@@ -87,6 +88,7 @@ export default function Router() {
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="/auth/login" element={<LoginView />} index />
+          <Route path="/admin" element={<AdminView />} index />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -41,25 +41,25 @@ export default function FormInterventionDataSheet({
         />
       </div>
       <div className="mb-2 space-y-2 flex-grow gap-2 md:gap-4 text-sm md:text-base">
-        <label htmlFor="image" className="font-medium">
-          Imagen de la descripcion
-        </label>
+        <div className="flex justify-between">
+          <label htmlFor="image_description" className="font-medium">
+            Imagen de la descripcion
+          </label>
+          <a
+            href="https://imgto.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary border-b border-primary"
+          >
+            Optimizador de imagenes
+          </a>
+        </div>
         <input
           id="image_description"
-          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
-            errors.image_description
-              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
-              : ""
-          }`}
+          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors`}
           type="text"
-          placeholder={
-            errors.image_description
-              ? errors.image_description.message
-              : "URL de la imagen"
-          }
-          {...register("image_description", {
-            required: "La URL de la imagen es obligatoria",
-          })}
+          placeholder="URL de la imagen"
+          {...register("image_description")}
         />
       </div>
       <div className="mb-2 space-y-2">
@@ -91,25 +91,25 @@ export default function FormInterventionDataSheet({
         />
       </div>
       <div className="mb-2 space-y-2 flex-grow gap-2 md:gap-4 text-sm md:text-base">
-        <label htmlFor="image_features" className="font-medium">
-          Imagen de las caracteristicas
-        </label>
+        <div className="flex justify-between">
+          <label htmlFor="image_features" className="font-medium">
+            Imagen de las caracteristicas
+          </label>
+          <a
+            href="https://imgto.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary border-b border-primary"
+          >
+            Optimizador de imagenes
+          </a>
+        </div>
         <input
           id="image_features"
-          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
-            errors.image_features
-              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
-              : ""
-          }`}
+          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors`}
           type="text"
-          placeholder={
-            errors.image_features
-              ? errors.image_features.message
-              : "URL de la imagen"
-          }
-          {...register("image_features", {
-            required: "La URL de la imagen es obligatoria",
-          })}
+          placeholder="URL de la imagen"
+          {...register("image_features")}
         />
       </div>
       <div className="mb-2 space-y-2">
@@ -141,25 +141,25 @@ export default function FormInterventionDataSheet({
         />
       </div>
       <div className="mb-2 space-y-2 flex-grow gap-2 md:gap-4 text-sm md:text-base">
-        <label htmlFor="image_conflictivity" className="font-medium">
-          Imagen de la conflictividad
-        </label>
+        <div className="flex justify-between">
+          <label htmlFor="image_conflictivity" className="font-medium">
+            Imagen de la conflictividad
+          </label>
+          <a
+            href="https://imgto.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary border-b border-primary"
+          >
+            Optimizador de imagenes
+          </a>
+        </div>
         <input
           id="image_conflictivity"
-          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
-            errors.image_conflictivity
-              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
-              : ""
-          }`}
+          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors`}
           type="text"
-          placeholder={
-            errors.image_conflictivity
-              ? errors.image_conflictivity.message
-              : "URL de la imagen"
-          }
-          {...register("image_conflictivity", {
-            required: "La URL de la imagen es obligatoria",
-          })}
+          placeholder="URL de la imagen"
+          {...register("image_conflictivity")}
         />
       </div>
       <div className="mb-2 space-y-2">

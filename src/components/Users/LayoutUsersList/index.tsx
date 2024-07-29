@@ -4,10 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 
 import { getUsersRequest } from "../../../api/UserAPI";
+import DialogUserDelete from "../DialogUserDelete";
 import { UserItemList } from "../../../types";
 import NoDataFound from "../../NoDataFound";
+import { useEcuot } from "../../../ecuot";
 import FilterForm from "../FilterForm";
-import DialogUserDelete from "../DialogUserDelete";
 
 export default function LayoutUsersList() {
   const rolTranslate: { [key: string]: string } = {
@@ -30,6 +31,8 @@ export default function LayoutUsersList() {
     queryFn: getUsersRequest,
   });
 
+  const user = useEcuot((state) => state.user);
+
   // TODO: Falta la funcionalidad de filtrar por nombre
   // const filterData = (data: UserItemList[]) => {
   //   let filtered = data;
@@ -50,7 +53,7 @@ export default function LayoutUsersList() {
 
   useEffect(() => {
     if (users) {
-      setFilteredData(users);
+      setFilteredData(users.filter((userItem) => userItem._id !== user?._id));
     }
   }, [searchKeyWords, users]);
 
@@ -67,7 +70,7 @@ export default function LayoutUsersList() {
   if (isError) return <p>Error al cargar los usuarios</p>;
   return (
     <>
-      <div className="w-1/2 flex-grow">
+      <div className="w-full lg:w-1/2 flex-grow">
         <FilterForm setSearchKeyWords={setSearchKeyWords} />
         {filteredData?.length ? (
           <div className="px-4 sm:px-6 lg:px-8 mt-6 bg-white rounded-lg">

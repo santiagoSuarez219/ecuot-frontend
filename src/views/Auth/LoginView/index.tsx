@@ -3,14 +3,14 @@ import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-import { LoginFormData } from "../../../types";
-import { login } from "../../../api/AuthAPI";
 import LoginForm from "../../../components/Auth/LoginForm";
+import { login } from "../../../api/AuthAPI";
+import { LoginType } from "../../../types";
 
 export default function LoginView() {
   const navigate = useNavigate();
 
-  const initialValues: LoginFormData = {
+  const initialValues: LoginType = {
     user: "",
     userPassword: "",
   };
@@ -28,14 +28,15 @@ export default function LoginView() {
       toast.error(error.message);
     },
     onSuccess: () => {
-      navigate("/");
+      toast.success("Sesion iniciada correctamente");
+      navigate("/admin");
       reset();
     },
   });
 
-  const handleForm = (formData: LoginFormData) => mutate(formData);
+  const handleForm = (formData: LoginType) => mutate(formData);
   return (
-    <main className="w-full h-full flex justify-center items-center relative bg-gradient-to-r from-quaternary ">
+    <main className="w-full h-screen flex px-4 md:px-6 lg:px-0 justify-center items-center relative bg-gradient-to-r from-quaternary ">
       <Link
         to="/"
         className="absolute top-6 left-6 bg-primary text-white rounded-xl px-6 py-4 uppercase font-bold hover:bg-secondary transition-all"

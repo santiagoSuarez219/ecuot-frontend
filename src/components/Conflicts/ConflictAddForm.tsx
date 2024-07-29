@@ -148,21 +148,25 @@ export default function ConflictAddForm({
         </div>
       </div>
       <div className="mb-2 space-y-2 flex-grow gap-2 md:gap-4 text-sm md:text-base">
-        <label htmlFor="image" className="font-medium">
-          Imagen
-        </label>
+        <div className="flex justify-between">
+          <label htmlFor="image" className="font-medium">
+            Imagen
+          </label>
+          <a
+            href="https://imgto.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary border-b border-primary"
+          >
+            Optimizador de imagenes
+          </a>
+        </div>
         <input
           id="image"
-          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
-            errors.image
-              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
-              : ""
-          }`}
+          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors`}
           type="text"
-          placeholder={errors.image ? errors.image.message : "URL de la imagen"}
-          {...register("image", {
-            required: "La URL de la imagen es obligatoria",
-          })}
+          placeholder={"URL de la imagen"}
+          {...register("image")}
         />
       </div>
       <div className="mb-2 space-y-2">

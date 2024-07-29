@@ -30,7 +30,7 @@ export default function Features() {
         <figure className="w-[50%] relative bg-white">
           {data !== null && (
             <img
-              src={data.image_features}
+              src={data.image_features ? data.image_features : "/logo.avif"}
               alt={`image`}
               className="w-full h-full object-cover aspect-square"
             />

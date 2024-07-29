@@ -27,15 +27,15 @@ export default function UserView() {
 
   return (
     <>
-      <section className="px-32 flex gap-12 h-screen pt-24 bg-gradient-to-r from-quaternary to-senary ">
+      <section className="h-screen p-4 lg:px-32 flex flex-col lg:flex-row lg:gap-12 lg:pt-24 bg-gradient-to-r from-quaternary to-senary relative">
+        <Link
+          to="/"
+          className="md:w-1/2 bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-al lg:absolute lg:w-auto"
+        >
+          Volver
+        </Link>
         <div className="">
-          <Link
-            to="/"
-            className="bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-all"
-          >
-            Volver
-          </Link>
-          <h2 className="mt-12 text-[4.5rem] capitalize text-white font-semibold">
+          <h2 className="lg:mt-12 text-[4.5rem] capitalize text-white font-semibold">
             Usuarios
           </h2>
           <p className="text-lg text-white">

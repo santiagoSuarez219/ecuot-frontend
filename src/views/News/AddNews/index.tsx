@@ -46,7 +46,7 @@ export default function AddNews() {
   };
 
   return (
-    <section className="w-full md:h-screen flex justify-center items-center relative bg-gradient-to-r from-senary to-quaternary md:p-6 py-4 overflow-y-auto px-4">
+    <section className="w-full h-screen overflow-auto flex relative bg-gradient-to-r from-senary to-quaternary py-4 overflow-y-auto px-4">
       <Link
         to="/news"
         className="hidden md:block absolute top-6 left-6 bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-all"
@@ -70,7 +70,7 @@ export default function AddNews() {
           <div className="pr-6">
             <input
               type="submit"
-              value="Agregar Conflicto"
+              value="Agregar Acontecimiento Noticioso"
               className="w-full bg-primary py-3 text-white rounded cursor-pointer md:text-xl font-semibold hover:bg-secondary transition-colors md:col-span-2"
             />
           </div>

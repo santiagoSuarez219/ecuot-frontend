@@ -32,6 +32,7 @@ export default function DialogDeleteIntervention({
       title="Eliminar Actuacion Urbanistica"
       description="¿Estas seguro de eliminar esta actuacion urbanistica?"
       showModalParam="deleteUrbanIntervention"
+      route="/interventions"
     >
       <div className="flex justify-between gap-4 mt-8">
         <button

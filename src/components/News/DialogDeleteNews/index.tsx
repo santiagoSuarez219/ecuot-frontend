@@ -39,6 +39,7 @@ export default function DialogDeleteNews({ news }: DialogDeleteNewsProps) {
       title="Eliminar Acontecimiento Noticioso"
       description={`¿Estas seguro de eliminar el acontecimiento noticioso ${news?.newsName} ?`}
       showModalParam="deleteNews"
+      route="/news"
     >
       <div className="flex justify-between gap-4 mt-8">
         <button

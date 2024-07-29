@@ -30,7 +30,11 @@ export default function Conflictivity() {
         <figure className="w-[50%] relative bg-white">
           {data !== null && (
             <img
-              src={data.image_conflictivity}
+              src={
+                data.image_conflictivity
+                  ? data.image_conflictivity
+                  : "/logo.avif"
+              }
               alt={`image`}
               className="w-full h-full object-cover aspect-square"
             />

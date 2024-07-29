@@ -99,7 +99,7 @@ export default function LayoutConflictList() {
           setSearchByIntervention={setSearchByIntervention}
         />
       )}
-      <div className="w-full mt-6 mb-12 grid grid-cols-1 gap-6">
+      <div className="w-full mt-6 mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         {filteredData?.length ? (
           filteredData.map((news) => (
             <CardNew

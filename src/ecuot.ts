@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
-import { UserResponse } from "./types";
+import { UserItemList } from "./types";
 
 interface Ecuot {
-  user: UserResponse | undefined;
-  setUser: (user: UserResponse | undefined) => void;
+  user: UserItemList | undefined;
+  setUser: (user: UserItemList | undefined) => void;
 }
 
 export const useEcuot = create<Ecuot>((set) => ({

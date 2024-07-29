@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function AuthLayout() {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full">
       <Outlet />
       <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false} />
     </div>

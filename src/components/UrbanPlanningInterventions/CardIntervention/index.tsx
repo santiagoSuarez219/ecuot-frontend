@@ -15,7 +15,7 @@ export default function CardIntervention({
   const navigate = useNavigate();
   return (
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col gap-6">
-      <figure className="w-full bg-white rounded-md aspect-square relative">
+      <figure className="w-full bg-white rounded-md aspect-square relative overflow-hidden">
         <p
           className={`p-2 bg-primary text-white rounded-md absolute top-4 left-4 ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"

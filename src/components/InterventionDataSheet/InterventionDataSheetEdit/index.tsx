@@ -56,7 +56,7 @@ export default function InterventionDataSheetEdti({
       });
 
       toast.success(data);
-      navigate("/interventions");
+      navigate(`/interventions/${interventionId}/datasheet`);
       reset();
     },
   });

@@ -42,6 +42,7 @@ export default function DialogDeleteConflict({
       title="Eliminar Conflicto"
       description={`¿Estas seguro de eliminar el conflicto ${conflict?.conflictName} ?`}
       showModalParam="deleteConflict"
+      route="/conflicts"
     >
       <div className="flex justify-between gap-4 mt-8">
         <button

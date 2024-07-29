@@ -1,5 +1,6 @@
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 import NavBarMobile from "./NavBarMobile";
 import { UserItemList } from "../types";
@@ -16,6 +17,7 @@ export default function NavBar({ user }: NavBarProps) {
   const Logout = () => {
     localStorage.removeItem("AUTH_TOKEN");
     queryClient.invalidateQueries({ queryKey: ["user"] });
+    toast.success("Cierre de sesion exitoso");
   };
 
   const handleStylesActivate = (path: string) => {
@@ -84,12 +86,12 @@ export default function NavBar({ user }: NavBarProps) {
           {user && user.rol === "researcher" && (
             <li className="mx-8">
               <Link
-                to="/users"
+                to="/admin"
                 className={`nav__title font-medium ${handleStylesActivate(
-                  "/users"
+                  "/admin"
                 )}`}
               >
-                Usuarios
+                Administrador
               </Link>
             </li>
           )}
