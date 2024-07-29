@@ -1,6 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import FormIntervention from "./FormIntervention";
 
 import { createIntervention } from "../../api/InterventionAPI";
 import { InterventionFormData } from "../../types";
@@ -25,12 +27,21 @@ export default function UrbanInterventionAddForm() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleForm = async (data: InterventionFormData) => {
-    await createIntervention(data);
-    toast.success("Actuacion urbanistica creada con exito");
-    reset();
-    navigate(location.pathname, { replace: true });
-  };
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: createIntervention,
+    onError: (error) => {
+      toast.error(error.message);
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["interventions"] });
+      toast.success(data);
+      reset();
+      navigate(location.pathname, { replace: true });
+    },
+  });
+
+  const handleForm = (formData: InterventionFormData) => mutate(formData);
 
   return (
     <ModalForm
@@ -39,108 +50,7 @@ export default function UrbanInterventionAddForm() {
       showModalParam="newUrbanIntervention"
     >
       <form onSubmit={handleSubmit(handleForm)} noValidate>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="interventionName" className="font-medium">
-            Nombre de la actuacion urbanistica
-          </label>
-          <input
-            id="interventionName"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            type="text"
-            placeholder="Nombre de la actuacion urbanistica"
-            {...register("interventionName", {
-              required: "El nombre de la actuacion urbanistica es obligatorio",
-            })}
-          />
-          {errors.interventionName && (
-            <span className="text-red-500 text-sm">
-              {errors.interventionName.message}
-            </span>
-          )}
-        </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="description" className="font-medium">
-            Descripción
-          </label>
-          <textarea
-            id="description"
-            className="w-full h-32 mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            placeholder="Descripción de la actuacion urbanistica"
-            {...register("description", {
-              required:
-                "La descripcion de la actuacion urbanistica es obligatoria",
-            })}
-          />
-          {errors.description && (
-            <span className="text-red-500 text-sm">
-              {errors.description.message}
-            </span>
-          )}
-        </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="hierarchy" className="font-medium">
-            Jerarquia
-          </label>
-          <select
-            id="hierarchy"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            {...register("hierarchy")}
-          >
-            <option value="">Jerarquia 1</option>
-            <option value="">Jerarquia 2</option>
-            <option value="">Jerarquia 3</option>
-          </select>
-        </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="strategicProject" className="font-medium">
-            Proyecto estrategico
-          </label>
-          <input
-            id="strategicProject"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            type="text"
-            placeholder="Nombre del proyecto estrategico"
-            {...register("strategicProject", {
-              required:
-                "El proyecto estrategico de la actuacion urbanistica es obligatorio",
-            })}
-          />
-          {errors.strategicProject && (
-            <span className="text-red-500 text-sm">
-              {errors.strategicProject.message}
-            </span>
-          )}
-        </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="internalSystem" className="font-medium">
-            Sistema interno al que pertenece
-          </label>
-          <input
-            id="internalSystem"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            type="text"
-            placeholder="Nombre del sistema interno al que pertenece"
-            {...register("internalSystem", {
-              required:
-                "El sistema interno de la actuacion urbanistica es obligatorio",
-            })}
-          />
-          {errors.internalSystem && (
-            <span className="text-red-500 text-sm">
-              {errors.internalSystem.message}
-            </span>
-          )}
-        </div>
-        {/* <div className="mb-5 space-y-3">
-          <label htmlFor="image" className="font-medium">
-            Imagen
-          </label>
-          <input
-            type="file"
-            id="image"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-          />
-        </div> */}
+        <FormIntervention register={register} errors={errors} />
         <input
           type="submit"
           value="Guardar Actuacion Urbanistica"

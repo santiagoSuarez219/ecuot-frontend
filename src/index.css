@@ -17,30 +17,8 @@ body {
 }
 
 .nav__title {
-    @apply relative inline-block transition-transform duration-300 ease-in-out text-font-color cursor-pointer;
+    @apply  hover:text-primary transition-all cursor-pointer font-medium 
 }
-
-.nav__title::before {
-    content: '';
-    position: absolute;
-    bottom: -0.7rem;
-    left: 0;
-    width: 0;
-    height: 0.1rem;
-    @apply bg-primary;
-    opacity: 0;
-    transition: 500ms;
-}
-
-.nav__title:hover::before {
-    width: 100%;
-    opacity: 1;
-}
-
-.nav__title--active {
-    @apply text-primary font-semibold;
-}
-
 
 .figures__item {
     @apply absolute -z-10
@@ -51,18 +29,39 @@ body {
     background-color: #FBBB28 ;
 }
 
-html::-webkit-scrollbar {
+html::-webkit-scrollbar, .intervention__form::-webkit-scrollbar {
     width: 25px;
     background: transparent;
 }
 
-html::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb, .intervention__form::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 0 10px #E9901E;
     border-radius: 40px;
     border: 8px solid transparent
 }
 
-html::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track, .intervention__form::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 40px 0 0 0 0;
+}
+
+.modal__form::-webkit-scrollbar {
+    width: 25px;
+    background: transparent;
+}
+
+.datasheet__content::-webkit-scrollbar {
+    width: 25px;
+    background: transparent;
+}
+
+.datasheet__content::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0 10px #E9901E;
+    border-radius: 40px;
+    border: 8px solid transparent
+}
+
+.datasheet__content::-webkit-scrollbar-track {
     background: transparent;
     margin: 40px 0 0 0 0;
 }

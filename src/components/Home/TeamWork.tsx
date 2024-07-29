@@ -1,13 +1,11 @@
-import team_work from "../../assets/img/team-work.jpg";
-
 export default function TeamWork() {
   return (
-    <section className="layout__team-work mt-8 mb-8 mx-12 py-16 px-28 rounded-[60px] shadow-xl relative overflow-hidden">
-      <h1 className="teamwork__title text-center text-[4.5rem] text-secondary font-semibold mb-8 bg-transparent z-10 relative">
+    <section className="layout__team-work mt-8 mb-8 mx-4 md:mx-12 md:py-16 py-6 md:px-28 px-4 md:rounded-[60px] rounded-2xl relative overflow-hidden bg-primary md:my-24">
+      <h1 className="teamwork__title text-center text-4xl md:text-[4.5rem] text-white font-semibold mb-6 md:mb-16 bg-transparent z-10 relative">
         Equipo de trabajo
       </h1>
-      <div className="w-full mx-auto flex gap-12 justify-center ">
-        <div className="bg-white z-10 shadow-xl p-12 rounded-xl w-[40%]">
+      <div className="w-full mx-auto flex flex-col md:flex-row gap-4 md:gap-12 justify-center ">
+        <div className="bg-white z-10 shadow-xl p-12 rounded-xl w-full md:w-[40%]">
           <h2 className="text-xl lg:text-3xl font-semibold">
             Investigador principal
           </h2>
@@ -31,7 +29,7 @@ export default function TeamWork() {
             Sociologo: Especialista en sistema de informacion geografica
           </p>
         </div>
-        <div className="bg-white z-10 shadow-xl p-12 rounded-xl w-[40%]">
+        <div className="bg-white z-10 shadow-xl p-12 rounded-xl w-full md:w-[40%]">
           <h2 className="text-xl lg:text-3xl font-semibold ">
             Estudiantes del programa de planeacion y desarrollo social
           </h2>
@@ -49,13 +47,6 @@ export default function TeamWork() {
           <p className="text-base lg:text-xl">Carlos Andres Narvaez</p>
         </div>
       </div>
-      <figure>
-        <img
-          src={team_work}
-          alt="team-work"
-          className="team-work__figure absolute -left-0 -top-4 w-[30rem]"
-        />
-      </figure>
     </section>
   );
 }

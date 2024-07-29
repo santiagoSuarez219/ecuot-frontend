@@ -1,143 +1,180 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { useState } from "react";
 
-import { ConflictFormData } from "../../types";
-import ModalForm from "../ModalForm";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-export default function ConflictAddForm() {
-  const initialValues: ConflictFormData = {
-    conflictName: "",
-    description: "",
-    associatedIntervention: "",
-    timeStressOccurrence: "",
-    actorsInvolved: "",
-  };
+import { ConflictFormData, ConflictResponse } from "../../types";
+import { useQuery } from "@tanstack/react-query";
+import { getInterventions } from "../../api/InterventionAPI";
+import ImageUpload from "../ImageUpload";
 
-  const navigate = useNavigate();
-  const location = useLocation();
+type ConflictAddFormProps = {
+  register: UseFormRegister<ConflictFormData>;
+  errors: FieldErrors<ConflictFormData>;
+  conflict?: ConflictResponse;
+};
 
-  const handleForm = async (data: ConflictFormData) => {
-    await console.log(data);
-    toast.success("Conflicto creado con exito");
-    reset();
-    navigate(location.pathname, { replace: true });
-  };
+export default function ConflictAddForm({
+  errors,
+  register,
+}: ConflictAddFormProps) {
+  const [image, setImage] = useState<string>("");
 
   const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({ defaultValues: initialValues });
+    data: interventions,
+    isError,
+    isLoading,
+  } = useQuery({
+    queryKey: ["interventions"],
+    queryFn: getInterventions,
+  });
 
+  if (isLoading) return <p>Cargando...</p>;
+  if (isError) return <p>Ha ocurrido un error</p>;
   return (
-    <ModalForm
-      title="Nuevo Conflicto"
-      description="Llena el formulario y crea un conflicto"
-      showModalParam="newConflict"
-    >
-      <form onSubmit={handleSubmit(handleForm)} noValidate>
-        <div className="mb-5 space-y-3">
+    <>
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+        <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
           <label htmlFor="conflictName" className="font-medium">
             Nombre del conflicto
           </label>
           <input
             id="conflictName"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.conflictName
+                ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+                : ""
+            }`}
             type="text"
-            placeholder="Nombre del conflicto"
+            placeholder={
+              errors.conflictName
+                ? errors.conflictName.message
+                : "Nombre del conflicto"
+            }
             {...register("conflictName", {
               required: "El nombre del conflicto es obligatorio",
             })}
           />
-          {errors.conflictName && (
-            <span className="text-red-500 text-sm">
-              {errors.conflictName.message}
-            </span>
-          )}
         </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="description" className="font-medium">
-            Descripción
+        <div className="mb-2 space-y-2 flex-grow text-sm md:text-base">
+          <label htmlFor="timeStressOccurrence" className="font-medium">
+            Momento en el que se presenta
           </label>
-          <textarea
-            id="description"
-            className="w-full h-32 mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            placeholder="Descripción del conflicto"
-            {...register("description", {
-              required: "La descripción del conflicto es obligatoria",
+          <select
+            id="timeStressOccurrence"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.timeStressOccurrence
+                ? "border-red-500 focus:ring-red-500 "
+                : ""
+            }`}
+            {...register("timeStressOccurrence", {
+              required: "Este campo es obligatorio",
             })}
-          />
-          {errors.description && (
-            <span className="text-red-500 text-sm">
-              {errors.description.message}
-            </span>
-          )}
-        </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="associated-intervention" className="font-medium">
-            Actuacion urbanistica asociada
-          </label>
-          <select
-            name=""
-            id="associated-intervention"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
           >
-            <option value="">Actuacion Urbanistica 1</option>
-            <option value="">Actuacion Urbanistica 2</option>
-            <option value="">Actuacion Urbanistica 3</option>
+            <option value="">Seleccione una opcion</option>
+            <option value="Proyectado">Proyectado</option>
+            <option value="Ejecución">Ejecución</option>
+            <option value="Apropiación">Apropiación</option>
+            <option value="Proyectado/Ejecución">Proyectado/Ejecución</option>
+            <option value="N/A">N/A</option>
           </select>
         </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="time-stress-occurrence" className="font-medium">
-            Momento en el que se presenta la tension
+      </div>
+
+      <div className="mb-2 space-y-2 text-sm md:text-base">
+        <label htmlFor="description" className="font-medium">
+          Descripción
+        </label>
+        <textarea
+          id="description"
+          className={`w-full h-32 mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+            errors.description
+              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+              : ""
+          }`}
+          placeholder={
+            errors.description
+              ? errors.description.message
+              : "Descripción de la actuacion urbanistica"
+          }
+          {...register("description", {
+            required: "La descripcion es obligatoria",
+          })}
+        />
+      </div>
+
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4 text-sm md:text-base">
+        <div className="mb-2 space-y-2 flex-grow">
+          <label htmlFor="actorsInvolved" className="font-medium">
+            Proyecto estrategico
           </label>
-          <select
-            name=""
-            id="time-stress-occurrence"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-          >
-            <option value="">Momento 1</option>
-            <option value="">Momento 2</option>
-            <option value="">Momento 3</option>
-          </select>
-        </div>
-        <div className="mb-5 space-y-3">
-          <label htmlFor="actors-involved-conflict" className="font-medium">
-            Actores demandantes
-          </label>
-          <textarea
-            id="actors-involved-conflict"
-            className="w-full h-32 mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-            placeholder="Actores demandantes del conflicto"
+          <input
+            id="actorsInvolved"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.actorsInvolved
+                ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+                : ""
+            }`}
+            type="text"
+            placeholder={
+              errors.actorsInvolved
+                ? errors.actorsInvolved.message
+                : "Nombre del proyecto estrategico"
+            }
             {...register("actorsInvolved", {
-              required:
-                "Los actores demandantes del conflicto son obligatorios",
+              required: "Este campo es obligatorio",
             })}
           />
-          {errors.actorsInvolved && (
-            <span className="text-red-500 text-sm">
-              {errors.actorsInvolved.message}
-            </span>
-          )}
         </div>
-        {/* <div className="mb-5 space-y-3">
+        <div className="mb-2 space-y-2 flex-grow">
+          <label htmlFor="intervention" className="font-medium">
+            Actuación urbanistica relacionada
+          </label>
+          <select
+            id="intervention"
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
+              errors.intervention ? "border-red-500 focus:ring-red-500 " : ""
+            }`}
+            {...register("intervention", {
+              required: "Este campo es obligatorio",
+            })}
+          >
+            <option value=""> Seleccione una opcion </option>
+            {interventions?.map((intervention) => (
+              <option key={intervention._id} value={intervention._id}>
+                {intervention.interventionName}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="mb-2 space-y-2 flex-grow gap-2 md:gap-4 text-sm md:text-base">
+        <div className="flex justify-between">
           <label htmlFor="image" className="font-medium">
             Imagen
           </label>
-          <input
-            type="file"
-            id="image"
-            className="w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-secondary transition-colors"
-          />
-        </div> */}
+          <a
+            href="https://imgto.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary border-b border-primary"
+          >
+            Optimizador de imagenes
+          </a>
+        </div>
         <input
-          type="submit"
-          value="Guardar conflicto"
-          className="w-full bg-primary mb-5 py-3 text-white rounded cursor-pointer text-xl font-semibold hover:bg-secondary transition-colors md:col-span-2"
+          id="image"
+          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors`}
+          type="text"
+          placeholder={"URL de la imagen"}
+          {...register("image")}
         />
-      </form>
-    </ModalForm>
+      </div>
+      <div className="mb-2 space-y-2">
+        <p className="w-full mt-2 p-3 border border-neutral-300 rounded-lg bg-gray-50  text-sm md:text-base">
+          {image ? image : "Carga una imagen"}
+        </p>
+      </div>
+      <ImageUpload image={image} setImage={setImage} />
+    </>
   );
 }

@@ -3,16 +3,22 @@ import { useNavigate } from "react-router-dom";
 type CrudButtonProps = {
   icon: string;
   text: string;
-  color: string;
   route: string;
 };
 
 export default function CrudButton(props: CrudButtonProps) {
   const navigate = useNavigate();
+
   return (
     <div
-      className={`bg-${props.color} rounded-lg h-16 flex overflow-hidden items-center gap-6 pl-6 cursor-pointer hover:scale-105 transition-all`}
-      onClick={() => navigate(`?${props.route}=true`)}
+      className={`${
+        props.text === "Eliminar" ? "bg-red-700" : "bg-primary"
+      } flex rounded-lg h-16 overflow-hidden items-center gap-6 pl-6 cursor-pointer hover:scale-105 transition-all`}
+      onClick={() => {
+        if (props.text === "Agregar") {
+          navigate(props.route);
+        }
+      }}
     >
       <figure className={`text-white`}>
         <svg
@@ -23,8 +29,7 @@ export default function CrudButton(props: CrudButtonProps) {
           stroke="currentColor"
           className="w-10"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d={props.icon} />{" "}
-          // Corrección aquí
+          <path strokeLinecap="round" strokeLinejoin="round" d={props.icon} />
         </svg>
       </figure>
       <h3 className={`text-3xl text-white font-semibold`}>{props.text}</h3>

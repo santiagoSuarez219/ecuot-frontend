@@ -1,19 +1,23 @@
 import { ToastContainer } from "react-toastify";
+import { Outlet } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
-import Login from "../components/Auth/Login";
-import { Outlet } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
 import "./scroll.css";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function AppLayout() {
+  const { data, isLoading } = useAuth();
+
+  //TODO: Cambiar por un loading
+  if (isLoading) return "Cargando ...";
+
   return (
     <div className="layout content_page ">
-      <NavBar />
+      <NavBar user={data} />
+      <ScrollToTop />
       <Outlet />
-      <Footer />
-      <Login />
       <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false} />
     </div>
   );

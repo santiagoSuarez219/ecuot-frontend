@@ -12,6 +12,7 @@ type ModalFormProps = {
   title: string;
   description: string;
   showModalParam: string;
+  route: string;
   children: React.ReactNode;
 };
 
@@ -19,6 +20,7 @@ export default function ModalForm({
   title,
   description,
   showModalParam,
+  route,
   children,
 }: ModalFormProps) {
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ export default function ModalForm({
           as="div"
           className="relative z-10"
           onClose={() => {
-            navigate(location.pathname, { replace: true });
+            navigate(route);
           }}
         >
           <TransitionChild
@@ -45,10 +47,10 @@ export default function ModalForm({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/60" />
+            <div className="fixed inset-0 bg-black/60 " />
           </TransitionChild>
 
-          <div className="fixed inset-0 overflow-y-auto">
+          <div className="modal__form fixed inset-0 overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <TransitionChild
                 as={Fragment}
