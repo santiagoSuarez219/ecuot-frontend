@@ -23,12 +23,12 @@ export default function FilterForm({
   if (isError) return <p>Ha ocurrido un error</p>;
   if (interventions)
     return (
-      <form className="urban-planning-interventions__form w-full mt-6 grid grid-cols-3 rounded-lg border shadow-sm items-center p-6 gap-6 justify-between">
+      <form className="urban-planning-interventions__form w-full mt-6 grid grid-cols-2 rounded-lg border shadow-sm items-center p-6 gap-6 justify-between">
         <div className="space-y-4">
           <div className="space-y-1">
             <label
               htmlFor="search"
-              className="text-2xl font-semibold text-primary"
+              className="text-2xl font-semibold text-quinary"
             >
               Buscar
             </label>
@@ -37,7 +37,7 @@ export default function FilterForm({
             </p>
           </div>
           <input
-            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-quinary"
             placeholder="Buscar por nombre o descripcion..."
             type="search"
             id="search"
@@ -48,7 +48,7 @@ export default function FilterForm({
           <div className="space-y-1">
             <label
               htmlFor="intervention"
-              className="text-2xl font-semibold text-primary"
+              className="text-2xl font-semibold text-quinary"
             >
               Actuación urbanistica asociada
             </label>
@@ -59,7 +59,7 @@ export default function FilterForm({
           <select
             name="intervention"
             id="intervention"
-            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-quinary"
             onChange={(event) => setSearchByIntervention(event.target.value)}
           >
             <option value=""> -- Seleccione -- </option>

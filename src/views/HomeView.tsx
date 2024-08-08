@@ -37,8 +37,8 @@ export default function HomeView() {
       <section className="section__home w-full ">
         <Banner />
         <AboutUs data={data[0]} />
-        <UrbanPlanningInterventions interventions={interventions?.slice(-3)} />
         <ShortCuts />
+        <UrbanPlanningInterventions interventions={interventions?.slice(-3)} />
         <Statistics />
         <DocumentsSection />
         <TeamWork />

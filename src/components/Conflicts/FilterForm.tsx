@@ -30,7 +30,7 @@ export default function FilterForm({
           <div className="space-y-1">
             <label
               htmlFor="search"
-              className="text-2xl font-semibold text-primary"
+              className="text-2xl font-semibold text-quaternary"
             >
               Buscar
             </label>
@@ -39,7 +39,7 @@ export default function FilterForm({
             </p>
           </div>
           <input
-            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-quaternary"
             placeholder="Buscar por nombre o descripcion..."
             type="search"
             id="search"
@@ -50,7 +50,7 @@ export default function FilterForm({
           <div className="space-y-1">
             <label
               htmlFor="intervention"
-              className="text-2xl font-semibold text-primary"
+              className="text-2xl font-semibold text-quaternary"
             >
               Actuación urbanistica asociada
             </label>
@@ -61,7 +61,7 @@ export default function FilterForm({
           <select
             name="intervention"
             id="intervention"
-            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-quaternary"
             onChange={(event) => setSearchByIntervention(event.target.value)}
           >
             <option value=""> -- Seleccione -- </option>
@@ -76,7 +76,7 @@ export default function FilterForm({
           <div className="space-y-1">
             <label
               htmlFor="timeStressOccurrence"
-              className="text-2xl font-semibold text-primary"
+              className="text-2xl font-semibold text-quaternary"
             >
               Etapa en la que se encuentra
             </label>
@@ -87,7 +87,7 @@ export default function FilterForm({
           <select
             name="timeStressOccurrence"
             id="timeStressOccurrence"
-            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+            className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-quaternary"
             onChange={(event) =>
               setSearchByTimeStressOccurrence(event.target.value)
             }

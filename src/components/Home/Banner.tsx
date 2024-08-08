@@ -9,7 +9,7 @@ export default function Banner() {
           </h1>
         </div>
         <div className="banner__logo hidden md:block w-[30%] aspect-square rounded-full bg-white p-2 self-center relative ">
-          <img src="logo.avif" alt="logo" />
+          <img src="logo.avif" alt="logo" className="w-full h-full " />
         </div>
       </div>
     </div>

@@ -65,16 +65,6 @@ export default function NavBar({ user }: NavBarProps) {
           </li>
           <li className="mx-8">
             <Link
-              to="/conflicts"
-              className={`nav__title font-medium ${handleStylesActivate(
-                "/conflicts"
-              )}`}
-            >
-              Conflictos
-            </Link>
-          </li>
-          <li className="mx-8">
-            <Link
               to="/news"
               className={`nav__title font-medium ${handleStylesActivate(
                 "/news"
@@ -83,6 +73,17 @@ export default function NavBar({ user }: NavBarProps) {
               Acontecimientos noticiosos
             </Link>
           </li>
+          <li className="mx-8">
+            <Link
+              to="/conflicts"
+              className={`nav__title font-medium ${handleStylesActivate(
+                "/conflicts"
+              )}`}
+            >
+              Conflictos
+            </Link>
+          </li>
+
           {user && user.rol === "researcher" && (
             <li className="mx-8">
               <Link

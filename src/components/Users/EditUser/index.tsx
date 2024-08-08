@@ -64,14 +64,14 @@ export default function EditUser({ user }: EditUserProps) {
   };
 
   return (
-    <section className="w-full flex justify-center items-center relative bg-gradient-to-r from-senary to-quaternary md:p-6 py-4 overflow-y-auto px-4">
+    <section className="w-full h-screen overflow-auto flex justify-center items-center relative bg-gradient-to-r from-senary to-quaternary md:p-6 py-4 overflow-y-auto px-4">
       <Link
         to="/users"
         className="hidden md:block absolute top-6 left-6 bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-all"
       >
         Volver
       </Link>
-      <h1>Hola</h1>
+
       <div className="intervention__form w-full flex flex-col pb-4 max-w-screen-lg md:mx-auto rounded-2xl shadow-lg md:px-6 bg-white md:pt-4 md:overflow-y-auto md:my-6 ">
         <div className=" w-full flex flex-col px-4 md:px-0 py-4 md:py-0 ">
           <p className=" text-font-color md:mb-4">

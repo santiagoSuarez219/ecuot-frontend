@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type CrudButtonProps = {
   icon: string;
@@ -8,11 +8,22 @@ type CrudButtonProps = {
 
 export default function CrudButton(props: CrudButtonProps) {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleColor = () => {
+    if (location.pathname === "/conflicts") {
+      return "bg-quaternary";
+    }
+    if (location.pathname === "/news") {
+      return "bg-quinary";
+    }
+    return "bg-primary";
+  };
 
   return (
     <div
       className={`${
-        props.text === "Eliminar" ? "bg-red-700" : "bg-primary"
+        props.text === "Eliminar" ? "bg-red-700" : handleColor()
       } flex rounded-lg h-16 overflow-hidden items-center gap-6 pl-6 cursor-pointer hover:scale-105 transition-all`}
       onClick={() => {
         if (props.text === "Agregar") {
