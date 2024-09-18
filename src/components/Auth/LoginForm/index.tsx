@@ -1,9 +1,9 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { LoginFormData } from "../../../types";
+import { LoginType } from "../../../types";
 
 type LoginFormProps = {
-  register: UseFormRegister<LoginFormData>;
-  errors: FieldErrors<LoginFormData>;
+  register: UseFormRegister<LoginType>;
+  errors: FieldErrors<LoginType>;
 };
 
 export default function LoginForm({ errors, register }: LoginFormProps) {

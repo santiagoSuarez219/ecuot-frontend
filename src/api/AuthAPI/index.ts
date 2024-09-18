@@ -1,9 +1,9 @@
 import { isAxiosError } from "axios";
 
-import { LoginFormData, UserSchemaResponse } from "../../types";
+import { LoginType, UserSchemaResponse } from "../../types";
 import api from "../../lib/axios";
 
-export async function login(formData: LoginFormData) {
+export async function login(formData: LoginType) {
   try {
     const { data } = await api.post<string>(`/users/login`, formData);
     localStorage.setItem("AUTH_TOKEN", data);

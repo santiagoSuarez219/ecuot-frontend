@@ -1,4 +1,4 @@
-import { UserResponse } from "../../types";
+import { UserItemList } from "../../types";
 import CrudButton from "../CrudButton";
 
 type CrudButtonProps = {
@@ -6,7 +6,7 @@ type CrudButtonProps = {
   handleDelete: () => void;
   routeToNew: string;
   hasItems: boolean;
-  user?: UserResponse;
+  user?: UserItemList;
 };
 
 export default function CrudButtons({
