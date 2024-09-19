@@ -9,11 +9,11 @@ export default function TeamWork() {
           <h2 className="text-xl lg:text-3xl font-semibold">
             Investigador principal
           </h2>
-          <p className="lg:text-xl mt-4">Claudia Maria Gonzalez Hernandez</p>
+          <p className="lg:text-xl mt-4">Claudia María González Hernández</p>
           <p className="text-sm lg:text-lg">
-            Trabajadora Social. Mg. Ciencia Politica
+            Docente investigador Facultad de Ciencias Sociales y Educación
           </p>
-          <h2 className="text-xl lg:text-3xl font-semibold mb-4 mt-12">
+          <h2 className="text-xl lg:text-3xl font-semibold mb-4 mt-6">
             Colaboradores
           </h2>
           <p className="text-base lg:text-xl mt-4">
@@ -28,23 +28,57 @@ export default function TeamWork() {
           <p className="text-sm lg:text-lg">
             Sociologo: Especialista en sistema de informacion geografica
           </p>
-        </div>
-        <div className="bg-white z-10 shadow-xl p-12 rounded-xl w-full md:w-[40%]">
-          <h2 className="text-xl lg:text-3xl font-semibold ">
+          <h2 className="text-xl lg:text-3xl font-semibold mt-6">
             Estudiantes del programa de planeacion y desarrollo social
           </h2>
           <h3 className="text-lg lg:text-2xl font-semibold  mt-4">
             Estudiantes en practica profesional
           </h3>
-          <p className="text-base lg:text-xl">Carlos Andres Narvaez</p>
-          <p className="text-base lg:text-xl">Carlos Andres Narvaez</p>
-          <p className="text-base lg:text-xl">Carlos Andres Narvaez</p>
+          <p className="text-base lg:text-xl">Carlos Andrés Narváez Jiménez</p>
+          <p className="text-base lg:text-xl">Danid Elías Tapias Restrepo</p>
+          <p className="text-base lg:text-xl">Camila Beltrán Gaviria</p>
           <h3 className="text-lg lg:text-2xl font-semibold  mt-4">
-            Estudiantes Asistentes
+            Estudiantes Asistentes - Auxiliares
           </h3>
-          <p className="text-base lg:text-xl">Carlos Andres Narvaez</p>
-          <p className="text-base lg:text-xl">Carlos Andres Narvaez</p>
-          <p className="text-base lg:text-xl">Carlos Andres Narvaez</p>
+          <p className="text-base lg:text-xl">Daniela Arboleda Cano</p>
+          <p className="text-base lg:text-xl">Gina Alejandra Giraldo Estrada</p>
+          <p className="text-base lg:text-xl">Natalia España</p>
+          <p className="text-base lg:text-xl">Vanessa Gómez</p>
+        </div>
+        <div className="bg-white z-10 shadow-xl p-12 rounded-xl w-full md:w-[40%]">
+          <h2 className="text-xl lg:text-3xl font-semibold mb-2">
+            Espacialización
+          </h2>
+          <p className="text-base lg:text-xl">Valentina Yépez</p>
+          <p className="text-sm lg:text-lg">
+            Profesional en Planeación y Desarrollo Social
+          </p>
+          <h2 className="text-xl lg:text-3xl font-semibold mb-2 mt-6">
+            Fotografías
+          </h2>
+          <p className="text-base lg:text-xl">Arbey Antonio Gómez Muñoz</p>
+          <p className="text-sm lg:text-lg">
+            Estudiante del programa Planeación y Desarrollo Social
+          </p>
+          <h2 className="text-xl lg:text-3xl font-semibold mb-4 mt-6">
+            Desarrolllo del software
+          </h2>
+          <h3 className="text-lg lg:text-2xl font-semibold mt-4">Momento 1</h3>
+          <p className="text-base lg:text-xl">Kevin Ruda Ortiz</p>
+          <p className="text-base lg:text-xl">Michael Andrés Trujillo Acosta</p>
+          <p className="text-base lg:text-xl">Wilmar Andrés Chaverra Montoya</p>
+          <p className="text-sm lg:text-lg">
+            Estudiantes de la tecnología en sistemas de información del
+            Instituto Tecnológico Metropolitano
+          </p>
+          <h3 className="text-lg lg:text-2xl font-semibold mt-4">Momento 2</h3>
+          <p className="text-base lg:text-xl">Santiago Suárez Cortes</p>
+          <p className="text-sm lg:text-lg">
+            Estudiante de Ingeniería Electrónica del Instituto Tecnológico
+            Metropolitano
+          </p>
+          <p className="text-base lg:text-xl mt-4">Catalina Hoyos Ortega</p>
+          <p className="text-sm lg:text-lg">Diseño gráfico</p>
         </div>
       </div>
     </section>

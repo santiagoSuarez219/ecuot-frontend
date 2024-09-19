@@ -17,7 +17,7 @@ export default function CardNew({
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col gap-6">
       <figure className="w-full bg-white rounded-md aspect-square relative overflow-hidden">
         <p
-          className={`p-2 bg-primary text-white rounded-md absolute top-4 left-4 ${
+          className={`p-2 bg-quaternary text-white rounded-md absolute top-4 left-4 ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"
           }`}
         >
@@ -81,17 +81,17 @@ export default function CardNew({
         </div>
       </figure>
       <div className="flex-grow flex flex-col gap-2">
-        <h2 className="font-bold text-2xl text-primary">{data.newsName}</h2>
+        <h2 className="font-bold text-2xl text-quaternary">{data.newsName}</h2>
         <p>{data.description}</p>
       </div>
       <div>
-        <p className="text-primary font-medium text-lg">Fecha</p>
+        <p className="text-quaternary font-medium text-lg">Fecha</p>
         <p>{new Date(data.newsDate).toISOString().split("T")[0]}</p>
       </div>
       <input
         type="button"
         value="Ir a la actuacion urbanistica asociada"
-        className="bg-primary text-white rounded-md text-lg font-semibold w-full py-2 cursor-pointer hover:bg-secondary transition-all"
+        className="bg-quaternary text-white rounded-md text-lg font-semibold w-full py-2 cursor-pointer hover:bg-quinary transition-all"
         onClick={() =>
           navigate(`/interventions/${data.intervention._id}/datasheet`)
         }

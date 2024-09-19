@@ -28,7 +28,7 @@ export default function FilterForm({
           <div className="space-y-1">
             <label
               htmlFor="search"
-              className="text-2xl font-semibold text-primary"
+              className="text-2xl font-semibold text-quaternary"
             >
               Buscar
             </label>
@@ -48,7 +48,7 @@ export default function FilterForm({
           <div className="space-y-1">
             <label
               htmlFor="intervention"
-              className="text-2xl font-semibold text-primary"
+              className="text-2xl font-semibold text-quaternary"
             >
               Actuación urbanistica asociada
             </label>

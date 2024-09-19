@@ -20,8 +20,8 @@ export default function NavBar({ user }: NavBarProps) {
     toast.success("Cierre de sesion exitoso");
   };
 
-  const handleStylesActivate = (path: string) => {
-    return location.pathname === path ? "text-primary" : "text-font-color";
+  const handleStylesActivate = (path: string, color: string) => {
+    return location.pathname === path ? color : "text-font-color";
   };
 
   const handleNavBar = (path: string) => {
@@ -48,7 +48,10 @@ export default function NavBar({ user }: NavBarProps) {
           <li className="mx-8">
             <Link
               to="/"
-              className={`nav__title font-medium ${handleStylesActivate("/")}`}
+              className={`nav__title font-medium hover:text-primary  ${handleStylesActivate(
+                "/",
+                "text-primary"
+              )}`}
             >
               Inicio
             </Link>
@@ -56,31 +59,35 @@ export default function NavBar({ user }: NavBarProps) {
           <li className="mx-8">
             <Link
               to="/interventions"
-              className={`nav__title font-medium ${handleStylesActivate(
-                "/interventions"
+              className={`nav__title font-medium hover:text-primary ${handleStylesActivate(
+                "/interventions",
+                "text-primary"
               )}`}
             >
               Actuaciones Urbanisticas
             </Link>
           </li>
+
           <li className="mx-8">
             <Link
-              to="/conflicts"
-              className={`nav__title font-medium ${handleStylesActivate(
-                "/conflicts"
+              to="/news"
+              className={`nav__title font-medium hover:text-quaternary ${handleStylesActivate(
+                "/news",
+                "text-quaternary"
               )}`}
             >
-              Conflictos
+              Acontecimientos noticiosos
             </Link>
           </li>
           <li className="mx-8">
             <Link
-              to="/news"
-              className={`nav__title font-medium ${handleStylesActivate(
-                "/news"
+              to="/conflicts"
+              className={`nav__title font-medium hover:text-septenary ${handleStylesActivate(
+                "/conflicts",
+                "text-septenary"
               )}`}
             >
-              Acontecimientos noticiosos
+              Conflictos
             </Link>
           </li>
           {user && user.rol === "researcher" && (
@@ -88,7 +95,8 @@ export default function NavBar({ user }: NavBarProps) {
               <Link
                 to="/admin"
                 className={`nav__title font-medium ${handleStylesActivate(
-                  "/admin"
+                  "/admin",
+                  "text-primary"
                 )}`}
               >
                 Administrador

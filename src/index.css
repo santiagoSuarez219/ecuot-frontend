@@ -1,67 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
 .nav__list {
-    @apply relative my-0 
+  @apply relative my-0;
 }
 
 .nav__item {
-    @apply mx-8
+  @apply mx-8;
 }
 
 .nav__title {
-    @apply  hover:text-primary transition-all cursor-pointer font-medium 
+  @apply transition-all cursor-pointer font-medium;
 }
 
 .figures__item {
-    @apply absolute -z-10
+  @apply absolute -z-10;
 }
-
 
 .intervention-sheet__nav__item:hover svg {
-    background-color: #FBBB28 ;
+  background-color: #fbbb28;
 }
 
-html::-webkit-scrollbar, .intervention__form::-webkit-scrollbar {
-    width: 25px;
-    background: transparent;
+html::-webkit-scrollbar,
+.intervention__form::-webkit-scrollbar {
+  width: 25px;
+  background: transparent;
 }
 
-html::-webkit-scrollbar-thumb, .intervention__form::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 0 10px #E9901E;
-    border-radius: 40px;
-    border: 8px solid transparent
+html::-webkit-scrollbar-thumb,
+.intervention__form::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 10px #e9901e;
+  border-radius: 40px;
+  border: 8px solid transparent;
 }
 
-html::-webkit-scrollbar-track, .intervention__form::-webkit-scrollbar-track {
-    background: transparent;
-    margin: 40px 0 0 0 0;
+html::-webkit-scrollbar-track,
+.intervention__form::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 40px 0 0 0 0;
 }
 
 .modal__form::-webkit-scrollbar {
-    width: 25px;
-    background: transparent;
+  width: 25px;
+  background: transparent;
 }
 
 .datasheet__content::-webkit-scrollbar {
-    width: 25px;
-    background: transparent;
+  width: 25px;
+  background: transparent;
 }
 
 .datasheet__content::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 0 10px #E9901E;
-    border-radius: 40px;
-    border: 8px solid transparent
+  box-shadow: inset 0 0 0 10px #e9901e;
+  border-radius: 40px;
+  border: 8px solid transparent;
 }
 
 .datasheet__content::-webkit-scrollbar-track {
-    background: transparent;
-    margin: 40px 0 0 0 0;
+  background: transparent;
+  margin: 40px 0 0 0 0;
 }

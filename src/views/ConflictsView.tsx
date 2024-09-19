@@ -6,7 +6,7 @@ export default function ConflictsView() {
     <>
       <section className="layout__urban-planning-interventions md:mx-20 mx-4 mt-6 md:mt-0">
         <h2
-          className="urban-planning-interventions__title text-3xl md:text-[4.5rem] capitalize text-primary font-semibold md:mb-6"
+          className="urban-planning-interventions__title text-3xl md:text-[4.5rem] capitalize text-septenary font-semibold md:mb-6"
           id="urban-planning-interventions__title-id"
         >
           Conflictos
