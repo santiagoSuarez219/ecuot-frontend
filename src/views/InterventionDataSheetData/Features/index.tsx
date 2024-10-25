@@ -32,7 +32,7 @@ export default function Features() {
             <img
               src={data.image_features ? data.image_features : "/logo.avif"}
               alt={`image`}
-              className="w-full h-full object-cover aspect-square"
+              className="w-full h-full object-contain"
             />
           )}
         </figure>

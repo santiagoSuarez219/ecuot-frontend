@@ -19,7 +19,7 @@ export default function Description() {
         </p>
       </article>
       <figure className="w-[40%]">
-        <img src={map_img} alt="map" className="w-full h-full object-cover" />
+        <img src={map_img} alt="map" className="w-full h-full object-contain" />
       </figure>
     </>
   );

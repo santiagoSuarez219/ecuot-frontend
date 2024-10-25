@@ -36,7 +36,7 @@ export default function Conflictivity() {
                   : "/logo.avif"
               }
               alt={`image`}
-              className="w-full h-full object-cover aspect-square"
+              className="w-full h-full object-contain"
             />
           )}
         </figure>

@@ -44,7 +44,7 @@ export default function Description() {
           <img
             src={data.image_description ? data.image_description : "/logo.avif"}
             alt={`image`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain "
           />
         </figure>
       </>
