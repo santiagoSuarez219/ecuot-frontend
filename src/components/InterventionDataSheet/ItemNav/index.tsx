@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type ItemNavProps = {
   title: string;
@@ -9,17 +9,16 @@ type ItemNavProps = {
 export default function ItemNav(props: ItemNavProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const params = useParams();
 
   const handleClick = () => {
-    if (props.title === "Volver") {
-      navigate(`/interventions/${params.interventionId}/datasheet`);
+    if (props.title === "Salir") {
+      navigate(-2);
       return;
     }
 
     const currentPath = location.pathname;
     const newPath = currentPath.replace(/[^/]+$/, props.route);
-    navigate(newPath);
+    navigate(newPath, { replace: true });
   };
 
   return (

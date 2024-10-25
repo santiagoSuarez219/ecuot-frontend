@@ -60,7 +60,7 @@ export default function InterventionDataSheetStart({
                 type="button"
                 value="Volver"
                 className="w-80 py-6 rounded-lg text-xl font-medium bg-white hover:scale-105 transition-all cursor-pointer"
-                onClick={() => navigate("/interventions")}
+                onClick={() => navigate(-1)}
               />
             </div>
           </div>
