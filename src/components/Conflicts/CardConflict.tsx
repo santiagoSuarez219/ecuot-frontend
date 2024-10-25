@@ -17,7 +17,7 @@ export default function CardConflict({
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col gap-6">
       <figure className="w-full bg-white rounded-md aspect-square relative overflow-hidden">
         <p
-          className={`p-2 bg-quaternary text-white rounded-md absolute top-4 left-4 ${
+          className={`p-2 bg-septenary text-white rounded-md absolute top-4 left-4 ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"
           }`}
         >
@@ -81,18 +81,18 @@ export default function CardConflict({
         </div>
       </figure>
       <div className="flex-grow flex flex-col gap-2">
-        <h2 className="font-bold text-2xl text-quaternary">
+        <h2 className="font-bold text-2xl text-septenary">
           {data.conflictName}
         </h2>
         <p>{data.description}</p>
         <div>
-          <p className="text-quaternary font-medium text-lg">
+          <p className="text-septenary font-medium text-lg">
             Momento en el que se presenta la tension
           </p>
           <p>{data.timeStressOccurrence}</p>
         </div>
         <div>
-          <p className="text-quaternary font-medium text-lg">
+          <p className="text-septenary font-medium text-lg">
             Actores demandantes
           </p>
           <p>{data.actorsInvolved}</p>
@@ -101,7 +101,7 @@ export default function CardConflict({
       <input
         type="button"
         value="Ir a la actuacion urbanistica asociada"
-        className="bg-quaternary text-white rounded-md text-lg font-semibold w-full py-2 cursor-pointer hover:bg-quinary transition-all"
+        className="bg-septenary text-white rounded-md text-lg font-semibold w-full py-2 cursor-pointer hover:bg-senary transition-all"
         onClick={() =>
           navigate(`/interventions/${data.intervention._id}/datasheet`)
         }
