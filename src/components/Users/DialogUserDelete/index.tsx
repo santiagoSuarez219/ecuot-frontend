@@ -39,6 +39,7 @@ export default function DialogUserDelete({ user }: DialogUserDeleteProps) {
       title="Eliminar Usuario"
       description={`¿Estas seguro de eliminar el usuario ${user?.user}?`}
       showModalParam="deleteUser"
+      route="/users"
     >
       <div className="flex justify-between gap-4 mt-8">
         <button
