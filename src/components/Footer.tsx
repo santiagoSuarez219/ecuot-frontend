@@ -12,27 +12,19 @@ export default function Footer() {
   return (
     <footer className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-6 md:gap-12 mb-6 px-16">
-        <figure>
-          <img
-            src="logo_colmayor.avif"
-            alt="logo colmayor"
-            className="h-24 md:h-36 object-contain"
-          />
-        </figure>
-        <figure>
-          <img
-            src="logo_itm.avif"
-            alt="logo itm"
-            className=" h-24 md:h-36 object-contain"
-          />
-        </figure>
-        <figure>
-          <img
-            src="logo_alcaldia.avif"
-            alt="logo alcaldia"
-            className="h-24 md:h-36 object-contain"
-          />
-        </figure>
+        <a
+          href="https://www.itm.edu.co/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <figure>
+            <img
+              src="logo_itm.avif"
+              alt="logo itm"
+              className=" h-24 md:h-36 object-contain"
+            />
+          </figure>
+        </a>
 
         <figure>
           <img
@@ -41,6 +33,32 @@ export default function Footer() {
             className=" h-24 md:h-36 object-contain"
           />
         </figure>
+        <a
+          href="https://www.colmayor.edu.co/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <figure>
+            <img
+              src="logo_colmayor.avif"
+              alt="logo colmayor"
+              className="h-24 md:h-36 object-contain"
+            />
+          </figure>
+        </a>
+        <a
+          href="https://www.medellin.gov.co/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <figure>
+            <img
+              src="logo_alcaldia.avif"
+              alt="logo alcaldia"
+              className="h-24 md:h-36 object-contain"
+            />
+          </figure>
+        </a>
       </div>
       <div className="flex flex-col lg:flex-row items-center gap-6 bg-primary md:pt-16 md:px-16">
         <div className="mt-12 lg:mt-0 w-full lg:w-1/2 text-lg px-6 flex flex-col md:flex-row gap-12 lg:gap-24 text-white">
