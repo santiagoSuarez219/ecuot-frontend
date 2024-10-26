@@ -11,8 +11,8 @@ export default function ItemNav(props: ItemNavProps) {
   const location = useLocation();
 
   const handleClick = () => {
-    if (props.title === "Salir") {
-      navigate(-2);
+    if (props.title === "Volver") {
+      navigate(-1);
       return;
     }
 
@@ -32,10 +32,12 @@ export default function ItemNav(props: ItemNavProps) {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className={`w-12 p-2 rounded-full mb-2 text-white
+        className={`w-12 p-2 rounded-full mb-2 text-white hover:scale-110 transition-transform
         ${
           location.pathname.includes(props.route)
             ? "bg-secondary"
+            : props.title === "Volver"
+            ? "bg-red-400"
             : "bg-primary"
         }`}
       >

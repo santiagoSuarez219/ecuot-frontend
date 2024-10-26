@@ -36,7 +36,7 @@ export default function Description() {
           <h1 className="text-5xl font-semibold capitalize text-primary mb-6">
             {intervention?.interventionName}
           </h1>
-          <p className="text-lg text-justify text-font-color">
+          <p className="text-lg text-justify text-font-color whitespace-pre-line">
             {data.description}
           </p>
         </article>

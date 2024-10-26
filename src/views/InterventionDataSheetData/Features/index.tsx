@@ -23,7 +23,7 @@ export default function Features() {
           <h1 className="text-5xl font-semibold capitalize text-primary mb-6">
             Caracteristicas
           </h1>
-          <p className="text-lg text-justify text-font-color">
+          <p className="text-lg text-justify text-font-color whitespace-pre-line">
             {data?.features}
           </p>
         </article>

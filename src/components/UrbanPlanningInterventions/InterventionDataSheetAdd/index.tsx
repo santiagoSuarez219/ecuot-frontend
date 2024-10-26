@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -59,12 +59,12 @@ export default function InterventionDataSheetAdd({
 
   return (
     <section className="w-full flex justify-center items-center relative bg-septenary">
-      <Link
-        to="/interventions"
+      <div
+        onClick={() => navigate(-1)}
         className="absolute top-6 left-6 bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-all"
       >
         Volver
-      </Link>
+      </div>
       <div className="intervention__form w-full flex flex-col pb-4 max-w-screen-lg md:mx-auto rounded-2xl shadow-lg md:px-6 bg-white md:pt-4 md:overflow-y-auto md:my-6 ">
         <div className=" w-full flex flex-col px-4 md:px-0 py-4 md:py-0 ">
           <p className=" text-font-color md:mb-4">

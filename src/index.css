@@ -24,10 +24,6 @@ body {
   @apply absolute -z-10;
 }
 
-.intervention-sheet__nav__item:hover svg {
-  background-color: #fbbb28;
-}
-
 html::-webkit-scrollbar,
 .intervention__form::-webkit-scrollbar {
   width: 25px;
