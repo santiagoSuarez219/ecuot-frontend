@@ -84,7 +84,7 @@ export default function NewFormAdd({ errors, register }: NewFormAddProps) {
           placeholder={
             errors.description
               ? errors.description.message
-              : "Descripción de la actuacion urbanistica"
+              : "Descripción de la noticia"
           }
           {...register("description", {
             required: "La descripcion es obligatoria",
