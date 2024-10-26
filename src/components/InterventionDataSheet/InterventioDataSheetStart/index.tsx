@@ -15,7 +15,7 @@ export default function InterventionDataSheetStart({
 
   return (
     <>
-      <div className="layout__intervention-sheet w-full h-screen md:px-20 py-4 md:py-12 flex gap-6 justify-center bg-gradient-to-r from-quaternary relative">
+      <div className="layout__intervention-sheet w-full h-[calc(100vh-137px)] md:px-20 py-4 md:py-12 flex gap-6 justify-center bg-gradient-to-r from-quaternary relative">
         <div className="layout__intervention-sheet__content w-[90%] h-[100%] shadow-xl rounded-2xl flex overflow-hidden bg-primary">
           <div className="w-full h-full flex flex-col justify-center items-center px-6">
             <h2 className="text-[3rem] w-3/4 text-white font-medium text-center ">
@@ -40,28 +40,32 @@ export default function InterventionDataSheetStart({
                     className="w-80 py-6 rounded-lg text-xl font-medium bg-white hover:scale-105 transition-all cursor-pointer"
                     onClick={() =>
                       navigate(
-                        `/interventions/${intervention._id}/datasheet/${intervention.datasheet}/edit`
+                        `/interventions/${intervention._id}/datasheet/${intervention.datasheet}/edit`,
+                        {
+                          replace: true,
+                        }
                       )
                     }
                   />
+                </>
+              )}
+              {user?.rol === "researcher" && (
+                <>
                   <input
                     type="button"
                     value="Eliminar"
                     className="w-80 py-6 rounded-lg text-xl font-medium bg-red-700 text-white hover:scale-105 transition-all cursor-pointer"
                     onClick={() =>
                       navigate(
-                        `/interventions/${intervention._id}/datasheet/?deleteUrbanInterventionDataSheet=true`
+                        `/interventions/${intervention._id}/datasheet/?deleteUrbanInterventionDataSheet=true`,
+                        {
+                          replace: true,
+                        }
                       )
                     }
                   />
                 </>
               )}
-              <input
-                type="button"
-                value="Volver"
-                className="w-80 py-6 rounded-lg text-xl font-medium bg-white hover:scale-105 transition-all cursor-pointer"
-                onClick={() => navigate(-1)}
-              />
             </div>
           </div>
         </div>
