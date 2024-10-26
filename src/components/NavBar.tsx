@@ -25,15 +25,18 @@ export default function NavBar({ user }: NavBarProps) {
   };
 
   const handleNavBar = (path: string) => {
-    if (
-      path === "/" ||
-      path === "/interventions" ||
-      path === "/conflicts" ||
-      path === "/news"
-    ) {
+    if (path === "/news") {
       return true;
     }
-    return false;
+
+    if (
+      path.includes("/edit") ||
+      path.includes("/new") ||
+      path.includes("/create")
+    ) {
+      return false;
+    }
+    return true;
   };
 
   return (

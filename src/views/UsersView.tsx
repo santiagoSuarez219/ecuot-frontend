@@ -27,7 +27,7 @@ export default function UserView() {
 
   return (
     <>
-      <section className="h-screen p-4 lg:px-32 flex flex-col lg:flex-row lg:gap-12 lg:pt-24 bg-gradient-to-r from-quaternary to-senary relative">
+      <section className="h-[calc(100vh-137px)] p-4 lg:px-32 flex flex-col lg:flex-row lg:gap-12 lg:pt-24 bg-gradient-to-r from-quaternary to-senary relative">
         <Link
           to="/"
           className="md:w-1/2 bg-white text-primary rounded-xl px-4 py-4 uppercase font-bold hover:bg-primary hover:text-white transition-al lg:absolute lg:w-auto"
