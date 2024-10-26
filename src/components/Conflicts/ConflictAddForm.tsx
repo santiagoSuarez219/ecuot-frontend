@@ -105,7 +105,7 @@ export default function ConflictAddForm({
       <div className="flex flex-col md:flex-row gap-2 md:gap-4 text-sm md:text-base">
         <div className="mb-2 space-y-2 flex-grow">
           <label htmlFor="actorsInvolved" className="font-medium">
-            Proyecto estrategico
+            Actores demandantes
           </label>
           <input
             id="actorsInvolved"
@@ -118,7 +118,7 @@ export default function ConflictAddForm({
             placeholder={
               errors.actorsInvolved
                 ? errors.actorsInvolved.message
-                : "Nombre del proyecto estrategico"
+                : "Actores demandantes"
             }
             {...register("actorsInvolved", {
               required: "Este campo es obligatorio",
