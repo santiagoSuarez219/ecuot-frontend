@@ -14,7 +14,7 @@ export default function AppLayout() {
   if (isLoading) return "Cargando ...";
 
   return (
-    <div className="layout content_page ">
+    <div className="layout content_page">
       <NavBar user={data} />
       <ScrollToTop />
       <Outlet />

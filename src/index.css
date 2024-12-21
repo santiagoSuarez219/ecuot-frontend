@@ -1,23 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Cabin", sans-serif;
 }
 
-.nav__list {
-  @apply relative my-0;
+.primary-button {
+  @apply bg-quaternary px-8 py-4 rounded-2xl text-white cursor-pointer transition-all duration-200 ease-in-out hover:scale-105;
 }
 
-.nav__item {
-  @apply mx-8;
-}
-
-.nav__title {
-  @apply transition-all cursor-pointer font-medium;
+.poster {
+  @apply relative w-full lg:h-[658px] overflow-x-hidden md:px-6 lg:pl-24;
 }
 
 .figures__item {

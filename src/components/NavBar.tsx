@@ -2,7 +2,6 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
-import NavBarMobile from "./NavBarMobile";
 import { UserItemList } from "../types";
 
 type NavBarProps = {
@@ -20,8 +19,10 @@ export default function NavBar({ user }: NavBarProps) {
     toast.success("Cierre de sesion exitoso");
   };
 
-  const handleStylesActivate = (path: string, color: string) => {
-    return location.pathname === path ? color : "text-font-color";
+  const handleRouteActivate = (path: string) => {
+    return location.pathname === path
+      ? "decoration-septenary"
+      : "decoration-white";
   };
 
   const handleNavBar = (path: string) => {
@@ -41,86 +42,91 @@ export default function NavBar({ user }: NavBarProps) {
 
   return (
     <header
-      className={`layout__menu w-full md:py-[3.5rem] md:px-[3rem] ${
+      className={`w-full lg:h-14 my-4 lg:mt-16 lg:mb-10 flex items-center justify-between px-4 lg:px-12 ${
         handleNavBar(location.pathname) ? "block" : "hidden"
       }`}
     >
-      <NavBarMobile />
-      <nav className="hidden md:flex menu__navbar w-full  item-center justify-between">
-        <ul className="nav__list flex">
-          <li className="mx-8">
-            <Link
-              to="/"
-              className={`nav__title font-medium hover:text-primary  ${handleStylesActivate(
-                "/",
-                "text-primary"
-              )}`}
-            >
-              Inicio
-            </Link>
+      <figure className="w-4/5 md:w-[250px] md:mr-16 ">
+        <img
+          src="/logo2.png"
+          alt="ecuot-logo"
+          className="w-full h-full object-cover"
+        />
+      </figure>
+      <figure className="lg:hidden w-[20%] h-full justify-self-end flex justify-end">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="size-12 text-white bg-primary rounded-full p-1"
+        >
+          <path
+            fillRule="evenodd"
+            d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm8.25 5.25a.75.75 0 0 1 .75-.75h8.25a.75.75 0 0 1 0 1.5H12a.75.75 0 0 1-.75-.75Z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </figure>
+      {/* <NavBarMobile /> */}
+      <nav className="hidden lg:flex w-[calc(100%-314px)] items-center justify-between">
+        <ul className="flex gap-9 [&>li]:cursor-pointer text-septenary [&>li]:underline [&>li]:underline-offset-4">
+          <li
+            className={`hover:decoration-septenary ${handleRouteActivate("/")}`}
+          >
+            <Link to="/">Inicio</Link>
           </li>
-          <li className="mx-8">
-            <Link
-              to="/interventions"
-              className={`nav__title font-medium hover:text-primary ${handleStylesActivate(
-                "/interventions",
-                "text-primary"
-              )}`}
-            >
-              Actuaciones Urbanisticas
-            </Link>
+          <li
+            className={`hover:decoration-septenary ${handleRouteActivate(
+              "/interventions"
+            )}`}
+          >
+            <Link to="/interventions">Actuaciones Urbanísticas</Link>
           </li>
 
-          <li className="mx-8">
-            <Link
-              to="/news"
-              className={`nav__title font-medium hover:text-quaternary ${handleStylesActivate(
-                "/news",
-                "text-quaternary"
-              )}`}
-            >
-              Acontecimientos noticiosos
-            </Link>
+          <li
+            className={`hover:decoration-septenary ${handleRouteActivate(
+              "/news"
+            )}`}
+          >
+            <Link to="/news">Acontecimientos Noticiosos</Link>
           </li>
-          <li className="mx-8">
-            <Link
-              to="/conflicts"
-              className={`nav__title font-medium hover:text-septenary ${handleStylesActivate(
-                "/conflicts",
-                "text-septenary"
-              )}`}
-            >
-              Conflictos
-            </Link>
+          <li
+            className={`hover:decoration-septenary ${handleRouteActivate(
+              "/conflicts"
+            )}`}
+          >
+            <Link to="/conflicts">Conflictos</Link>
+          </li>
+          <li
+            className={`hover:decoration-septenary ${handleRouteActivate(
+              "/project"
+            )}`}
+          >
+            <Link to="/project">El Proyecto</Link>
           </li>
 
           {user && user.rol === "researcher" && (
-            <li className="mx-8">
-              <Link
-                to="/admin"
-                className={`nav__title font-medium ${handleStylesActivate(
-                  "/admin",
-                  "text-primary"
-                )}`}
-              >
-                Administrador
-              </Link>
+            <li className="">
+              <Link to="/admin">Administrador</Link>
             </li>
           )}
         </ul>
         {user ? (
           <ul className="nav__list flex">
-            <li className="mx-8">
+            <li className="">
               <p className="text-font-color font-light">{user.user}</p>
             </li>
-            <li className="mx-8" onClick={Logout}>
+            <li className="" onClick={Logout}>
               <p className={`nav__title font-semibold`}>Cerrar Sesion</p>
             </li>
           </ul>
         ) : (
-          <ul className="nav__list flex">
-            <li className="mx-8" onClick={() => navigate("/auth/login")}>
-              <p className="nav__title font-semibold">Iniciar Sesion</p>
+          <ul>
+            <li
+              className="primary-button"
+              onClick={() => navigate("/auth/login")}
+            >
+              <p className="font-semibold">Iniciar Sesion</p>
             </li>
           </ul>
         )}

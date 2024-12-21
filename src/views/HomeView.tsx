@@ -34,9 +34,9 @@ export default function HomeView() {
 
   if (data)
     return (
-      <section className="section__home w-full ">
+      <section>
         <Banner />
-        <AboutUs data={data[0]} />
+        <AboutUs />
         <ShortCuts />
         <UrbanPlanningInterventions interventions={interventions?.slice(-3)} />
         <Statistics />

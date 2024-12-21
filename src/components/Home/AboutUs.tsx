@@ -1,47 +1,34 @@
 import { useNavigate } from "react-router-dom";
-import { Information } from "../../types";
 
-type AboutUsProps = {
-  data: Information;
-};
-
-export default function AboutUs({ data }: AboutUsProps) {
+export default function AboutUs() {
   const navigate = useNavigate();
   return (
-    <section
-      className="layout__about-us md:bg-senary md:mx-12 mx-4 md:rounded-[60px] rounded-2xl relative md:mt-8 mt-6 md:py-24  shadow-lg md:px-28 flex gap-8 z-10 overflow-hidden pb-6 "
-      id="about-us"
-    >
-      <div className="about-us__content flex flex-col-reverse md:flex-row md:gap-12 gap-6">
-        <div className="md:w-[50%] px-6 md:px-6">
-          <h1 className="about-us__title text-4xl md:text-[4.5rem] capitalize text-primary font-semibold leading-none ">
-            Sobre nosotros
-          </h1>
-          <p className="about-us__text text-xl md:mt-8 mt-4 text-font-color md:text-white font-medium ">
-            {data.aboutUs}
+    <section className="w-full px-4 lg:px-10" id="about-us">
+      <div
+        className="mt-4 lg:mt-11 poster md:
+      py-16 md:rounded-3xl md:bg-quinary text-septenary md:text-white flex flex-col-reverse md:flex-row items-center justify-between gap-6 lg:gap-24 lg:pr-24"
+      >
+        <div className="flex flex-col justify-center md:max-w-[300px] lg:max-w-[600px] font-semibold">
+          <h2 className="text-4xl lg:text-6xl mb-3">Sobre nosotros</h2>
+          <p className="text-base lg:text-xl">
+            ECOUT surge de un proyecto del Grupo de Estudios sobre Desarrollo
+            Local y Gestión Territorial de la IUCMA, enfocado en los conflictos
+            urbanos por las intervenciones y decisiones sobre el ordenamiento
+            territorial de Medellín, Colombia. Iniciado en 2018, la
+            investigación caracterizó, mediante el análisis de prensa, las
+            tensiones asociadas al ordenamiento territorial en Medellín entre
+            1999 y 2014, resultando en un sistema de información que organiza
+            dicha conflictividad.
           </p>
         </div>
-        <div
-          className="w-full md:w-[40%] bg-white p-6 rounded-xl overflow-hidden aspect-video flex justify-center items-center text-secondary cursor-pointer relative"
-          onClick={() => navigate("?watchVideo=true")}
-        >
+        <div className="w-full md:w-[317px] lg:w-[634px] flex flex-col items-center text-lg lg:text-xl font-semibold ">
           <img
-            src="logo.avif"
-            alt="logo"
-            className="aspect-square w-[16rem] md:w-[22rem]"
+            src="video.avif"
+            alt="video"
+            className="object-cover cursor-pointer h-[250px] md:h-auto   "
+            onClick={() => navigate("?watchVideo=true")}
           />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="size-32 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hover:scale-105 transition-all"
-          >
-            <path
-              fillRule="evenodd"
-              d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <p>Dar clic para ver el video</p>
         </div>
       </div>
     </section>
