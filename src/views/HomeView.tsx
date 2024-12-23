@@ -41,7 +41,7 @@ export default function HomeView() {
         <UrbanPlanningInterventions interventions={interventions?.slice(-3)} />
         <Statistics />
         <DocumentsSection />
-        <TeamWork />
+        {/* <TeamWork /> */}
         <Footer />
         <VideoModal />
         {/* <ContactUsSection /> */}

@@ -1,6 +1,6 @@
 export default function Banner() {
   return (
-    <div className="w-full px-4 lg:px-10">
+    <div className="w-full px-4 lg:px-10 md:mt-8 lg:mt-0">
       <div className="poster px-4 rounded-2xl md:rounded-3xl lg:rounded-[80px]">
         <figure className="absolute inset-0">
           <img

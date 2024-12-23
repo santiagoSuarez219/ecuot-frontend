@@ -3,11 +3,8 @@ import { useNavigate } from "react-router-dom";
 export default function AboutUs() {
   const navigate = useNavigate();
   return (
-    <section className="w-full px-4 lg:px-10" id="about-us">
-      <div
-        className="mt-4 lg:mt-11 poster md:
-      py-16 md:rounded-3xl md:bg-quinary text-septenary md:text-white flex flex-col-reverse md:flex-row items-center justify-between gap-6 lg:gap-24 lg:pr-24"
-      >
+    <section className="w-full px-4 lg:px-10 " id="about-us ">
+      <div className="mt-4 md:mt-11 poster md:py-16 md:rounded-3xl md:bg-quinary text-septenary md:text-white flex flex-col-reverse md:flex-row items-center justify-between gap-6 lg:gap-24 lg:pr-24">
         <div className="flex flex-col justify-center md:max-w-[300px] lg:max-w-[600px] font-semibold">
           <h2 className="text-4xl lg:text-6xl mb-3">Sobre nosotros</h2>
           <p className="text-base lg:text-xl">

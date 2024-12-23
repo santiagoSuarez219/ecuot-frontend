@@ -1,6 +1,6 @@
 export default function DocumentItem() {
   return (
-    <div className="documents__item bg-white flex flex-col justify-center items-center gap-4 px-4 py-6 rounded-lg cursor-pointer lg:hover:bg-secondary text-primary lg:hover:text-white transition-all z-10 shadow-lg ">
+    <div className="bg-white flex flex-col justify-center items-center gap-4 px-4 py-6 rounded-lg cursor-pointer text-primary  z-10 transition-all duration-200 ease-in-out hover:scale-105">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

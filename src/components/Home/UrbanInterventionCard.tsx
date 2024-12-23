@@ -16,19 +16,22 @@ export default function UrbanInterventionCard({
 
   return (
     <div
-      className="urban-interventions__item w-full md:w-[20rem] h-[25rem] rounded-xl cursor-pointer hover:scale-105 transition-all bg-secondary border-2 border-primary"
+      className="w-full h-[300px] lg:h-[460px] lg:rounded-3xl rounded-xl relative overflow-x-hidden cursor-pointer hover:scale-105 transition-all"
       onClick={handleClick}
     >
-      <figure className="item__image-container w-full h-[100%] rounded-xl relative bg-white">
+      <figure className="absolute inset-0">
         <img
           src={intervention.image ? intervention.image : "logo.avif"}
           alt={intervention.interventionName}
-          className="item__image rounded-xl object-cover h-full w-full aspect-square"
+          className="w-full h-full object-cover"
         />
-        <h2 className="item__title absolute left-6 right-6 bottom-6 px-4 py-2 rounded-xl text-xl lg:text-2xl bg-secondary font-semibold ">
-          {intervention.interventionName}
-        </h2>
       </figure>
+      <div className={`absolute inset-0 bg-quinary opacity-60`}></div>
+      <div className="relative z-10 pt-56 h-full text-white max-w-[280px] font-semibold flex items-end pb-4 lg:pb-16 px-4 lg:px-8">
+        <h1 className="text-3xl lg:text-4xl">
+          {intervention.interventionName}
+        </h1>
+      </div>
     </div>
   );
 }
