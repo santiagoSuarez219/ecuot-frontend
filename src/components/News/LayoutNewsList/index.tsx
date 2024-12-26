@@ -85,7 +85,7 @@ export default function LayoutConflictList() {
   }
   if (isError) return <p>Error al cargar las noticias</p>;
   return (
-    <>
+    <div className="px-4 lg:px-16">
       <CrudButtons
         handleDelete={handleDelete}
         handleEdit={handleEdit}
@@ -99,7 +99,7 @@ export default function LayoutConflictList() {
           setSearchByIntervention={setSearchByIntervention}
         />
       )}
-      <div className="w-full mt-6 mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="w-full mt-6 mb-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredData?.length ? (
           filteredData.map((news) => (
             <CardNew
@@ -115,6 +115,6 @@ export default function LayoutConflictList() {
         )}
       </div>
       <DialogDeleteNews news={oneNews} />
-    </>
+    </div>
   );
 }

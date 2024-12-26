@@ -46,13 +46,15 @@ export default function NavBar({ user }: NavBarProps) {
         handleNavBar(location.pathname) ? "block" : "hidden"
       }`}
     >
-      <figure className="w-4/5 md:w-[250px] md:mr-16 ">
-        <img
-          src="/logo2.png"
-          alt="ecuot-logo"
-          className="w-full h-full object-cover"
-        />
-      </figure>
+      <Link to="/">
+        <figure className="w-4/5 md:w-[250px] md:mr-16 ">
+          <img
+            src="/logo2.png"
+            alt="ecuot-logo"
+            className="w-full h-full object-cover"
+          />
+        </figure>
+      </Link>
       <figure className="lg:hidden w-[20%] h-full justify-self-end flex justify-end">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -106,17 +108,21 @@ export default function NavBar({ user }: NavBarProps) {
           </li>
 
           {user && user.rol === "researcher" && (
-            <li className="">
+            <li
+              className={`hover:decoration-septenary ${handleRouteActivate(
+                "/admin"
+              )}`}
+            >
               <Link to="/admin">Administrador</Link>
             </li>
           )}
         </ul>
         {user ? (
-          <ul className="nav__list flex">
+          <ul className="flex gap-4 items-center">
             <li className="">
               <p className="text-font-color font-light">{user.user}</p>
             </li>
-            <li className="" onClick={Logout}>
+            <li className="primary-button" onClick={Logout}>
               <p className={`nav__title font-semibold`}>Cerrar Sesion</p>
             </li>
           </ul>

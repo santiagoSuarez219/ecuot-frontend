@@ -4,16 +4,15 @@ import Footer from "../components/Footer";
 export default function NewsView() {
   return (
     <>
-      <section className="layout__urban-planning-interventions md:mx-20 mx-4 mt-6 md:mt-0">
-        <h2
-          className="urban-planning-interventions__title text-3xl md:text-[4.5rem] capitalize text-quaternary font-semibold md:mb-6"
-          id="urban-planning-interventions__title-id"
-        >
-          Acontecimientos noticiosos
+      <section className="font-semibold">
+        <h2 className="text-4xl lg:text-5xl capitalize text-white bg-quinary px-4 lg:px-16 py-8 lg:py-12">
+          Noticias
         </h2>
-        <p className="urban-planning-interventions__description text-base md:text-lg text-font-color">
-          Listado de todos los acontecimientos noticiosos asociados a una
-          actuacion urbanistica
+        <p className="text-base md:text-lg text-septenary px-4 lg:px-24 pt-6 lg:pt-12">
+          Resumen de los informes noticiosos que documentan los acontecimientos
+          conflictivos en el ámbito público relacionados con cada actuación
+          urbanística durante un periodo determinado. Se retoma como fuente de
+          información el periódico El Colombiano
         </p>
         <LayoutNewsList />
       </section>

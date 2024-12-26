@@ -13,6 +13,46 @@ export default function CardIntervention({
   setInterventionId: (id: string) => void;
 }) {
   const navigate = useNavigate();
+
+  const handleImage = (internalSystem: string) => {
+    if (
+      internalSystem ===
+      "Sistema de Espacio Público, Parques, Plazas, Plazoletas y Zonas Verdes"
+    ) {
+      return "sistema_espacio_publico.avif";
+    }
+    if (internalSystem === "Sistema Movilidad") {
+      return "sistema_movilidad.avif";
+    }
+    if (internalSystem === "Sistema Vial y de Transporte") {
+      return "sistema_vial.avif";
+    }
+    if (internalSystem === "Sistema de Equipamientos") {
+      return "sistema_equipamientos.avif";
+    }
+    if (internalSystem === "Sistema de Servicios Publicos") {
+      return "sistema_servicios_publicos.avif";
+    }
+    if (
+      internalSystem === "Sistema Habitacional" ||
+      internalSystem === "Asentamientos Humanos y Sistema Habitacional"
+    ) {
+      return "sistema_habitacional.avif";
+    }
+    if (internalSystem === "Sistema de Centralidades") {
+      return "centralidades_urbanas.avif";
+    }
+    if (internalSystem === "Sistema Habitacional") {
+      return "sistema_habitacional.avif";
+    }
+    // TODO: verificar sistema de Patrimonio
+    if (internalSystem === "Sistema de Patrimonio") {
+      return "logo.avif";
+    }
+    return "logo.avif";
+  };
+
+  console.log(data);
   return (
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col gap-6">
       <figure className="w-full bg-white rounded-md aspect-square relative overflow-hidden">
@@ -24,7 +64,7 @@ export default function CardIntervention({
           {data.hierarchy}
         </p>
         <img
-          src={data.image ? data.image : "logo.avif"}
+          src={data.image || handleImage(data.internalSystem)}
           alt={data.interventionName}
           className={`w-full h-full object-cover ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"

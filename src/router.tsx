@@ -18,6 +18,7 @@ import NewPassword from "./views/Users/NewPassword";
 import ConflictsView from "./views/ConflictsView";
 import LoginView from "./views/Auth/LoginView";
 import AuthLayout from "./layouts/AuthLayout";
+import ProjectView from "./views/ProjectView";
 import EditNews from "./views/News/EditNews";
 import AppLayout from "./layouts/AppLayout";
 import AddUser from "./views/Users/AddUser";
@@ -67,6 +68,7 @@ export default function Router() {
           <Route path="/users/new" element={<AddUser />} />
           <Route path="/users/:userId/edit" element={<EditUserView />} />
           <Route path="/users/:userId/new-password" element={<NewPassword />} />
+          <Route path="/project" element={<ProjectView />} />
         </Route>
         <Route element={<InterventionSheetLayout />}>
           <Route

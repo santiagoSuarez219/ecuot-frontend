@@ -14,10 +14,10 @@ export default function CardNew({
 }) {
   const navigate = useNavigate();
   return (
-    <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col gap-6">
-      <figure className="w-full bg-white rounded-md aspect-square relative overflow-hidden">
+    <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col md:flex-row">
+      <figure className="w-full md:w-2/5 bg-white rounded-md aspect-square relative overflow-hidden">
         <p
-          className={`p-2 bg-quaternary text-white rounded-md absolute top-4 left-4 ${
+          className={`p-2 bg-font-color-light text-sep rounded-md absolute top-4 left-4 ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"
           }`}
         >
@@ -80,22 +80,40 @@ export default function CardNew({
           </svg>
         </div>
       </figure>
-      <div className="flex-grow flex flex-col gap-2">
-        <h2 className="font-bold text-2xl text-quaternary">{data.newsName}</h2>
-        <p>{data.description}</p>
+      <div className="w-full md:w-3/5 mt-4 lg:mt-0 md:p-4 flex flex-col">
+        <h2 className="font-bold text-2xl text-septenary mb-4">
+          {data.newsName}
+        </h2>
+        <p className="font-semibold text-base lg:text-lg">{data.description}</p>
+        <div className="flex gap-4 text-sm mt-4 lg:mt-auto">
+          <input
+            type="button"
+            value="Leer noticia completa"
+            className="bg-quinary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:bg-quinary transition-all"
+            onClick={() =>
+              navigate(`/interventions/${data.intervention._id}/datasheet`)
+            }
+          />
+          <input
+            type="button"
+            value="Ir actuacion urbanistica"
+            className="bg-primary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:bg-quinary transition-all"
+            onClick={() =>
+              navigate(`/interventions/${data.intervention._id}/datasheet`)
+            }
+          />
+        </div>
       </div>
-      <div>
-        <p className="text-quaternary font-medium text-lg">Fecha</p>
-        <p>{new Date(data.newsDate).toISOString().split("T")[0]}</p>
-      </div>
-      <input
-        type="button"
-        value="Ir a la actuacion urbanistica asociada"
-        className="bg-quaternary text-white rounded-md text-lg font-semibold w-full py-2 cursor-pointer hover:bg-quinary transition-all"
-        onClick={() =>
-          navigate(`/interventions/${data.intervention._id}/datasheet`)
-        }
-      />
+      {/* <div>
+        // <div className="flex-grow flex flex-col gap-2">
+        //   
+        // </div>
+        // <div>
+        //   <p className="text-quaternary font-medium text-lg">Fecha</p>
+        //   <p>{new Date(data.newsDate).toISOString().split("T")[0]}</p>
+        // </div>
+        // 
+      </div> */}
     </div>
   );
 }

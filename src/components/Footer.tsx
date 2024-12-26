@@ -85,7 +85,9 @@ export default function Footer() {
             <li className=" cursor-pointer">
               <Link to="/conflicts">Conflictos</Link>
             </li>
-            <li>El Proyecto</li>
+            <li className=" cursor-pointer">
+              <Link to="/project">El Proyecto</Link>
+            </li>
           </ul>
         </div>
         <div className="md:w-1/3 h-full flex flex-col py-4 md:py-10 justify-center">

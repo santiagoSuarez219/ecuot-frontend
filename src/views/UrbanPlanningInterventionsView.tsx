@@ -4,15 +4,15 @@ import Footer from "../components/Footer";
 export default function UrbanPlanningInterventions() {
   return (
     <>
-      <section className="layout__urban-planning-interventions md:mx-20 mx-4 mt-6 md:mt-0">
-        <h2
-          className="urban-planning-interventions__title text-3xl md:text-[4.5rem] capitalize text-primary font-semibold md:mb-6"
-          id="urban-planning-interventions__title-id"
-        >
-          Actuaciones Urbanisticas
+      <section className="font-semibold">
+        <h2 className="text-5xl capitalize text-white bg-primary  px-16 py-12">
+          Actuaciones Urbanísticas
         </h2>
-        <p className="urban-planning-interventions__description text-base md:text-lg text-font-color">
-          Listado de todas las actuaciones urbanisticas
+        <p className="text-base md:text-lg text-septenary px-24 pt-12">
+          Expone las intervenciones físico-espaciales de la ciudad de Medellín
+          diseñadas para transformar, producir o modificar el suelo urbano y
+          rural que han generado conflictividad. Por ejemplo: Construcción del
+          Metro de la 80, Construcción del Metroplús, etc.
         </p>
         <LayoutInterventionList />
       </section>

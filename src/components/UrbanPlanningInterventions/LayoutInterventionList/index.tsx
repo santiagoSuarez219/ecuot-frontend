@@ -95,7 +95,7 @@ export default function LayoutInterventionList() {
   }
   if (isError) return <p>Error al cargar las actuaciones urbanisticas</p>;
   return (
-    <>
+    <div className="px-16">
       <CrudButtons
         handleDelete={handleDelete}
         handleEdit={handleEdit}
@@ -128,6 +128,6 @@ export default function LayoutInterventionList() {
       )}
 
       <DialogDeleteIntervention interventionId={interventionId} />
-    </>
+    </div>
   );
 }

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Banner() {
   return (
     <div className="w-full px-4 lg:px-10 md:mt-8 lg:mt-0">
@@ -16,9 +18,12 @@ export default function Banner() {
             Estudios sobre el conflicto urbano asociados a decisiones de
             ordenamiento territorial
           </h1>
-          <p className="mt-4 md:mt-11 text-lg lg:text-xl underline underline-offset-8 cursor-pointer ">
+          <Link
+            to="/project"
+            className="mt-4 md:mt-11 text-lg lg:text-xl underline underline-offset-8 cursor-pointer "
+          >
             Conoce el proyecto
-          </p>
+          </Link>
         </div>
       </div>
     </div>

@@ -102,7 +102,7 @@ export default function LayoutConflictList() {
   }
   if (isError) return <p>Error al cargar los conflictos</p>;
   return (
-    <>
+    <div className="px-16">
       <CrudButtons
         handleDelete={handleDelete}
         handleEdit={handleEdit}
@@ -133,6 +133,6 @@ export default function LayoutConflictList() {
         )}
       </div>
       <DialogDeleteConflict conflict={conflict} />
-    </>
+    </div>
   );
 }

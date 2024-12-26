@@ -6,7 +6,6 @@ import { getInterventions } from "../api/InterventionAPI";
 import Statistics from "../components/Home/Statistics";
 import VideoModal from "../components/Home/VideoModal";
 import ShortCuts from "../components/Home/ShortCuts";
-import TeamWork from "../components/Home/TeamWork";
 import AboutUs from "../components/Home/AboutUs";
 import { getInfo } from "../api/InformationAPI";
 import Banner from "../components/Home/Banner";
@@ -41,7 +40,6 @@ export default function HomeView() {
         <UrbanPlanningInterventions interventions={interventions?.slice(-3)} />
         <Statistics />
         <DocumentsSection />
-        {/* <TeamWork /> */}
         <Footer />
         <VideoModal />
         {/* <ContactUsSection /> */}

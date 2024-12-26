@@ -10,7 +10,7 @@ export default function FilterForm({
   setSearchBySystem,
 }: FilterFormProps) {
   return (
-    <form className="urban-planning-interventions__form w-full md:mt-6 grid grid-cols-1 md:grid-cols-3 rounded-lg md:border shadow-sm items-center px-0 py-6 md:p-6 gap-6 justify-between">
+    <form className="w-full md:mt-6 grid grid-cols-1 md:grid-cols-3 rounded-lg md:border shadow-sm items-center px-0 py-6 md:p-6 gap-6 justify-between">
       <div className="space-y-4">
         <div className="space-y-1">
           <label
