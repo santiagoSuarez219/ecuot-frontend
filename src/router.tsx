@@ -27,6 +27,7 @@ import UsersView from "./views/UsersView";
 import AdminView from "./views/AdminView";
 import NewsView from "./views/NewsView";
 import HomeView from "./views/HomeView";
+import CompleteNews from "./views/News/CompleNews";
 
 export default function Router() {
   return (
@@ -63,6 +64,7 @@ export default function Router() {
           />
           <Route path="/news" element={<NewsView />} />
           <Route path="/news/new" element={<AddNews />} />
+          <Route path="/news/:newsId/complete" element={<CompleteNews />} />
           <Route path="/news/:newsId/edit" element={<EditNews />} />
           <Route path="/users" element={<UsersView />} />
           <Route path="/users/new" element={<AddUser />} />

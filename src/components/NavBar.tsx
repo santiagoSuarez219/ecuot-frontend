@@ -26,7 +26,7 @@ export default function NavBar({ user }: NavBarProps) {
   };
 
   const handleNavBar = (path: string) => {
-    if (path === "/news") {
+    if (path === "/news" || path.includes("/complete")) {
       return true;
     }
 

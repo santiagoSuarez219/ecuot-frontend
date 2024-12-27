@@ -92,9 +92,7 @@ export default function CardNew({
             type="button"
             value="Leer noticia completa"
             className="bg-quinary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:bg-quinary transition-all"
-            onClick={() =>
-              navigate(`/interventions/${data.intervention._id}/datasheet`)
-            }
+            onClick={() => navigate(`/news/${data._id}/complete`)}
           />
           <input
             type="button"
