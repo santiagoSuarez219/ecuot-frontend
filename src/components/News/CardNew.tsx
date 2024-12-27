@@ -17,7 +17,7 @@ export default function CardNew({
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col md:flex-row">
       <figure className="w-full md:w-2/5 bg-white rounded-md aspect-square relative overflow-hidden">
         <p
-          className={`p-2 bg-font-color-light text-sep rounded-md absolute top-4 left-4 ${
+          className={`p-2 bg-font-color-light text-septenary rounded-r-md absolute top-4 left-0 right-4 ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"
           }`}
         >
@@ -84,8 +84,10 @@ export default function CardNew({
         <h2 className="font-bold text-2xl text-septenary mb-4">
           {data.newsName}
         </h2>
-        <p className="font-semibold text-base lg:text-lg">{data.description}</p>
-        <div className="flex gap-4 text-sm mt-4 lg:mt-auto">
+        <p className="font-semibold text-base lg:text-lg">
+          {data.description.slice(0, 150) + " ..."}
+        </p>
+        <div className="flex gap-4 text-sm mt-4 lg:mt-8">
           <input
             type="button"
             value="Leer noticia completa"
