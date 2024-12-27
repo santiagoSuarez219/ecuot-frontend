@@ -5,6 +5,9 @@ import { UserItemList } from "./types";
 interface Ecuot {
   user: UserItemList | undefined;
   setUser: (user: UserItemList | undefined) => void;
+  isSideMenuOpen: boolean;
+  openSideMenu: () => void;
+  closeSideMenu: () => void;
 }
 
 export const useEcuot = create<Ecuot>((set) => ({
@@ -12,4 +15,7 @@ export const useEcuot = create<Ecuot>((set) => ({
   setUser: (user) => {
     set({ user });
   },
+  isSideMenuOpen: false,
+  openSideMenu: () => set({ isSideMenuOpen: true }),
+  closeSideMenu: () => set({ isSideMenuOpen: false }),
 }));

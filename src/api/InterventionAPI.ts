@@ -103,7 +103,6 @@ export async function createInterventionDataSheet({
 export async function getInterventionDataSheetById(id: Intervention["_id"]) {
   try {
     const { data } = await api(`/intervention_datasheet/${id}`);
-    console.log(data);
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response) {

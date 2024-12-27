@@ -52,7 +52,6 @@ export default function CardIntervention({
     return "logo.avif";
   };
 
-  console.log(data);
   return (
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col gap-6">
       <figure className="w-full bg-white rounded-md aspect-square relative overflow-hidden">

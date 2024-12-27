@@ -6,6 +6,7 @@ import { useAuth } from "../hooks/useAuth";
 import NavBar from "../components/NavBar";
 import "./scroll.css";
 import ScrollToTop from "../components/ScrollToTop";
+import { Sidebar } from "../components/Sidebar/Sidebar";
 
 export default function AppLayout() {
   const { data, isLoading } = useAuth();
@@ -19,6 +20,7 @@ export default function AppLayout() {
       <ScrollToTop />
       <Outlet />
       <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false} />
+      <Sidebar />
     </div>
   );
 }

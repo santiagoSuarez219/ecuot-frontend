@@ -100,8 +100,8 @@ export default function CardConflict({
       </div>
       <input
         type="button"
-        value="Ir a la actuacion urbanistica asociada"
-        className="bg-septenary text-white rounded-md text-lg font-semibold w-full py-2 cursor-pointer hover:bg-senary transition-all"
+        value="Ir actuacion urbanistica"
+        className="bg-septenary text-white rounded-md text-base md:text-lg font-semibold w-full py-2 cursor-pointer hover:bg-senary transition-all"
         onClick={() =>
           navigate(`/interventions/${data.intervention._id}/datasheet`)
         }

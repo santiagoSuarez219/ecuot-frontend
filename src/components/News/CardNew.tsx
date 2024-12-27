@@ -87,7 +87,7 @@ export default function CardNew({
         <p className="font-semibold text-base lg:text-lg">
           {data.description.slice(0, 150) + " ..."}
         </p>
-        <div className="flex gap-4 text-sm mt-4 lg:mt-8">
+        <div className="flex flex-col md:flex-row gap-4 text-sm mt-4 lg:mt-8">
           <input
             type="button"
             value="Leer noticia completa"

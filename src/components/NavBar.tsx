@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 import { UserItemList } from "../types";
+import { useEcuot } from "../ecuot";
 
 type NavBarProps = {
   user?: UserItemList;
@@ -12,6 +13,8 @@ export default function NavBar({ user }: NavBarProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const queryClient = useQueryClient();
+  // const isSideMenuOpen = useEcuot((state) => state.isSideMenuOpen);
+  const openMenu = useEcuot((state) => state.openSideMenu);
 
   const Logout = () => {
     localStorage.removeItem("AUTH_TOKEN");
@@ -55,7 +58,10 @@ export default function NavBar({ user }: NavBarProps) {
           />
         </figure>
       </Link>
-      <figure className="lg:hidden w-[20%] h-full justify-self-end flex justify-end">
+      <figure
+        className="lg:hidden w-[20%] h-full justify-self-end flex justify-end"
+        onClick={openMenu}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
