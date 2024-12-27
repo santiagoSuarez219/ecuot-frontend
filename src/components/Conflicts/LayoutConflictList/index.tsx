@@ -102,7 +102,7 @@ export default function LayoutConflictList() {
   }
   if (isError) return <p>Error al cargar los conflictos</p>;
   return (
-    <div className="px-16">
+    <div className="px-4 lg:px-16">
       <CrudButtons
         handleDelete={handleDelete}
         handleEdit={handleEdit}
@@ -117,7 +117,7 @@ export default function LayoutConflictList() {
           setSearchByTimeStressOccurrence={setSearchByTimeStressOccurrence}
         />
       )}
-      <div className="w-full mt-6 mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="w-full mt-6 mb-12 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
         {filteredData?.length ? (
           filteredData.map((conflict) => (
             <CardConflict

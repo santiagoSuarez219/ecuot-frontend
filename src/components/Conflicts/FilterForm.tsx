@@ -25,7 +25,7 @@ export default function FilterForm({
   if (isError) return <p>Ha ocurrido un error</p>;
   if (interventions)
     return (
-      <form className="urban-planning-interventions__form w-full mt-6 grid grid-cols-3 rounded-lg border shadow-sm items-center p-6 gap-6 justify-between">
+      <form className="urban-planning-interventions__form w-full mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-lg border shadow-sm items-center p-6 gap-6 justify-between">
         <div className="space-y-4">
           <div className="space-y-1">
             <label

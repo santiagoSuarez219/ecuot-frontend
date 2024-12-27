@@ -95,7 +95,7 @@ export default function LayoutInterventionList() {
   }
   if (isError) return <p>Error al cargar las actuaciones urbanisticas</p>;
   return (
-    <div className="px-16">
+    <div className="px-4 lg:px-16">
       <CrudButtons
         handleDelete={handleDelete}
         handleEdit={handleEdit}
@@ -112,7 +112,7 @@ export default function LayoutInterventionList() {
       )}
 
       {filteredData?.length ? (
-        <div className="urban-planning-interventions__list w-full mt-6 mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="urban-planning-interventions__list w-full mt-6 mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredData.map((intervention, index) => (
             <CardIntervention
               key={index}
