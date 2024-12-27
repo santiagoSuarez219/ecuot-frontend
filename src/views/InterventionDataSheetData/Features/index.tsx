@@ -19,7 +19,7 @@ export default function Features() {
   if (data)
     return (
       <>
-        <article className="datasheet__content w-[50%] p-12 overflow-auto bg-white">
+        <article className="lg:datasheet__content lg:w-[50%] p-4 lg:p-12 lg:overflow-auto bg-white">
           <h1 className="text-5xl font-semibold capitalize text-primary mb-6">
             Caracteristicas
           </h1>
@@ -27,7 +27,7 @@ export default function Features() {
             {data?.features}
           </p>
         </article>
-        <figure className="w-[50%] relative bg-white">
+        <figure className="lg:w-[50%] relative bg-white pb-[76px] lg:pb-0">
           {data !== null && (
             <img
               src={data.image_features ? data.image_features : "/logo.avif"}

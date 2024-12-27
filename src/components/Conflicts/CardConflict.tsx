@@ -84,7 +84,7 @@ export default function CardConflict({
         <h2 className="font-bold text-2xl text-septenary">
           {data.conflictName}
         </h2>
-        <p>{data.description}</p>
+        <p>{data.description.slice(0, 150) + " ..."}</p>
         <div>
           <p className="text-septenary font-medium text-lg">
             Momento en el que se presenta la tension

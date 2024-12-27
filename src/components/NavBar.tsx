@@ -77,7 +77,7 @@ export default function NavBar({ user }: NavBarProps) {
       </figure>
       {/* <NavBarMobile /> */}
       <nav className="hidden lg:flex w-[calc(100%-314px)] items-center justify-between">
-        <ul className="flex gap-9 [&>li]:cursor-pointer text-septenary [&>li]:underline [&>li]:underline-offset-4">
+        <ul className="flex gap-6 [&>li]:cursor-pointer text-septenary [&>li]:underline [&>li]:underline-offset-4">
           <li
             className={`hover:decoration-septenary ${handleRouteActivate("/")}`}
           >

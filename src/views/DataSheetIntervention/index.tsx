@@ -19,7 +19,7 @@ export default function DataSheetIntervention() {
   if (data) {
     if (data.datasheet === null) {
       return (
-        <div className="layout__intervention-sheet w-full h-[calc(100vh-137px)] px-4 md:px-20 py-4 md:py-12 flex gap-6 justify-center items-center bg-gradient-to-r from-quaternary">
+        <div className="w-full h-[calc(100vh-160px)] px-4 md:px-20 py-4 md:py-12 flex gap-6 justify-center items-center bg-gradient-to-r from-quaternary">
           <div className="layout__intervention-sheet__content w-full md:w-[90%] md:h-[100%] rounded-2xl flex overflow-hidden bg-primary">
             <NoInterventionDataSheet
               interventionId={data._id}

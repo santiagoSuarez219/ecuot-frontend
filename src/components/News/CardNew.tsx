@@ -91,29 +91,19 @@ export default function CardNew({
           <input
             type="button"
             value="Leer noticia completa"
-            className="bg-quinary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:bg-quinary transition-all"
+            className="bg-quinary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:scale-105 transition-all"
             onClick={() => navigate(`/news/${data._id}/complete`)}
           />
           <input
             type="button"
             value="Ir actuacion urbanistica"
-            className="bg-primary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:bg-quinary transition-all"
+            className="bg-primary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:scale-105 transition-all"
             onClick={() =>
               navigate(`/interventions/${data.intervention._id}/datasheet`)
             }
           />
         </div>
       </div>
-      {/* <div>
-        // <div className="flex-grow flex flex-col gap-2">
-        //   
-        // </div>
-        // <div>
-        //   <p className="text-quaternary font-medium text-lg">Fecha</p>
-        //   <p>{new Date(data.newsDate).toISOString().split("T")[0]}</p>
-        // </div>
-        // 
-      </div> */}
     </div>
   );
 }

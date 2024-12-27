@@ -40,9 +40,6 @@ export default function AdminView() {
         >
           Usuarios
         </Link>
-        <div className="w-full px-4 md:px-6 aspect-square rounded-lg text-white bg-primary flex justify-center items-center text-xl text-center md:text-2xl font-bold hover:bg-secondary transition-all duration-300 ease-in-out cursor-pointer ">
-          Editar pagina de Inicio
-        </div>
       </div>
     </section>
   );
