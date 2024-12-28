@@ -1,4 +1,5 @@
 import LayoutNewsList from "../components/News/LayoutNewsList";
+import NewsModal from "../components/News/NewsModal/NewsModal";
 import Footer from "../components/Footer";
 
 export default function NewsView() {
@@ -17,6 +18,7 @@ export default function NewsView() {
         <LayoutNewsList />
       </section>
       <Footer />
+      <NewsModal />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { NewsResponse } from "../../types";
+import { useEcuot } from "../../ecuot";
 
 export default function CardNew({
   data,
@@ -13,6 +14,7 @@ export default function CardNew({
   setOneNews: (news: NewsResponse) => void;
 }) {
   const navigate = useNavigate();
+  const setNews = useEcuot((state) => state.setNews);
   return (
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col md:flex-row">
       <figure className="w-full md:w-2/5 bg-white rounded-md aspect-square relative overflow-hidden">
@@ -92,7 +94,10 @@ export default function CardNew({
             type="button"
             value="Leer noticia completa"
             className="bg-quinary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:scale-105 transition-all"
-            onClick={() => navigate(`/news/${data._id}/complete`)}
+            onClick={() => {
+              setNews(data);
+              navigate("?completeNewsInformation=true");
+            }}
           />
           <input
             type="button"

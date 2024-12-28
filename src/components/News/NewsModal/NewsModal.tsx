@@ -7,16 +7,15 @@ import {
 } from "@headlessui/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEcuot } from "../../../ecuot";
+import handleDate from "../../../utils/formatDate";
 
-export default function ConflictModal() {
+export default function NewsModal() {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const showModal = queryParams.get("completeConflictInformation")
-    ? true
-    : false;
+  const showModal = queryParams.get("completeNewsInformation") ? true : false;
 
-  const conflict = useEcuot((state) => state.conflict);
+  const news = useEcuot((state) => state.news);
 
   return (
     <>
@@ -61,20 +60,14 @@ export default function ConflictModal() {
                     X
                   </span>
                   <h2 className="text-xl lg:text-3xl font-semibold">
-                    {conflict?.conflictName}
+                    {news?.newsName}
                   </h2>
-                  <p>{conflict?.description}</p>
+                  <p>{news?.description}</p>
                   <p>
                     <span>
-                      Momento en el que se presenta la tensión: <br />{" "}
+                      Fecha de la noticia: <br />{" "}
                     </span>
-                    {conflict?.timeStressOccurrence}
-                  </p>
-                  <p>
-                    <span>
-                      Actores demandantes: <br />{" "}
-                    </span>
-                    {conflict?.actorsInvolved}
+                    {news ? handleDate(news?.newsDate) : "No hay fecha"}
                   </p>
                   <div className="w-full flex justify-center mt-10">
                     <input
@@ -83,7 +76,7 @@ export default function ConflictModal() {
                       className="bg-primary text-white text-lg lg:text-xl rounded-md font-semibold py-2 px-4 cursor-pointer hover:scale-105 transition-all"
                       onClick={() =>
                         navigate(
-                          `/interventions/${conflict?.intervention._id}/datasheet`
+                          `/interventions/${news?.intervention._id}/datasheet`
                         )
                       }
                     />

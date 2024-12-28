@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { ConflictResponse, UserItemList } from "./types";
+import { ConflictResponse, NewsResponse, UserItemList } from "./types";
 
 interface Ecuot {
   user: UserItemList | undefined;
@@ -10,6 +10,8 @@ interface Ecuot {
   closeSideMenu: () => void;
   conflict: ConflictResponse | undefined;
   setConflict: (conflict: ConflictResponse | undefined) => void;
+  news: NewsResponse | undefined;
+  setNews: (news: NewsResponse | undefined) => void;
 }
 
 export const useEcuot = create<Ecuot>((set) => ({
@@ -23,5 +25,9 @@ export const useEcuot = create<Ecuot>((set) => ({
   conflict: undefined,
   setConflict: (conflict) => {
     set({ conflict });
+  },
+  news: undefined,
+  setNews: (news) => {
+    set({ news });
   },
 }));
