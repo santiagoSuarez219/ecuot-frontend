@@ -109,19 +109,6 @@ export default function CardConflict({
             }
           />
         </div>
-
-        {/* <div>
-          <p className="text-septenary font-medium text-lg">
-            Momento en el que se presenta la tension
-          </p>
-          <p>{data.timeStressOccurrence}</p>
-        </div>
-        <div>
-          <p className="text-septenary font-medium text-lg">
-            Actores demandantes
-          </p>
-          <p>{data.actorsInvolved}</p>
-        </div> */}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { NewsResponse } from "../../types";
 import { useEcuot } from "../../ecuot";
+import handleImage from "../../utils/handleImage";
 
 export default function CardNew({
   data,
@@ -26,7 +27,7 @@ export default function CardNew({
           {data.intervention.interventionName}
         </p>
         <img
-          src={data.image ? data.image : "logo.avif"}
+          src={data.image || handleImage(data.intervention.internalSystem)}
           alt={data.newsName}
           className={`w-full h-full object-cover ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"
