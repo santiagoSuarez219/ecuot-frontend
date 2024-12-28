@@ -117,7 +117,7 @@ export default function LayoutConflictList() {
           setSearchByTimeStressOccurrence={setSearchByTimeStressOccurrence}
         />
       )}
-      <div className="w-full mt-6 mb-12 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
+      <div className="w-full mt-6 mb-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredData?.length ? (
           filteredData.map((conflict) => (
             <CardConflict

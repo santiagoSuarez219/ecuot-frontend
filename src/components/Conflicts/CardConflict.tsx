@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ConflictResponse } from "../../types";
+import handleImage from "../../utils/handleImage";
+import { useEcuot } from "../../ecuot";
 
 export default function CardConflict({
   data,
@@ -13,18 +15,19 @@ export default function CardConflict({
   setConflict: (conflict: ConflictResponse) => void;
 }) {
   const navigate = useNavigate();
+  const setConflictInformation = useEcuot((state) => state.setConflict);
   return (
-    <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col gap-6">
-      <figure className="w-full bg-white rounded-md aspect-square relative overflow-hidden">
+    <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col md:flex-row">
+      <figure className="w-full md:w-2/5 bg-white rounded-md aspect-square relative overflow-hidden">
         <p
-          className={`p-2 bg-septenary text-white rounded-md absolute top-4 left-4 ${
+          className={`p-2 bg-font-color-light text-septenary rounded-r-md absolute top-4 left-0 right-4  ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"
           }`}
         >
           {data.intervention.interventionName}
         </p>
         <img
-          src={data.image ? data.image : "logo.avif"}
+          src={data.image || handleImage(data.intervention.internalSystem)}
           alt={data.conflictName}
           className={`w-full h-full object-cover ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"
@@ -80,12 +83,34 @@ export default function CardConflict({
           </svg>
         </div>
       </figure>
-      <div className="flex-grow flex flex-col gap-2">
-        <h2 className="font-bold text-2xl text-septenary">
-          {data.conflictName}
+      <div className="w-full md:w-3/5 mt-4 lg:mt-0 md:p-4 flex flex-col">
+        <h2 className="font-bold text-2xl text-septenary mb-4">
+          {data.conflictName.slice(0, 80) + " ..."}
         </h2>
-        <p>{data.description.slice(0, 150) + " ..."}</p>
-        <div>
+        <p className="font-semibold text-base lg:text-lg">
+          {data.description.slice(0, 150) + " ..."}
+        </p>
+        <div className="flex flex-col md:flex-row gap-4 text-sm mt-4 lg:mt-8">
+          <input
+            type="button"
+            value="Leer mas"
+            className="bg-quinary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:scale-105 transition-all"
+            onClick={() => {
+              setConflictInformation(data);
+              navigate("?completeConflictInformation=true");
+            }}
+          />
+          <input
+            type="button"
+            value="Ir actuacion urbanistica"
+            className="bg-septenary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:scale-105 transition-all"
+            onClick={() =>
+              navigate(`/interventions/${data.intervention._id}/datasheet`)
+            }
+          />
+        </div>
+
+        {/* <div>
           <p className="text-septenary font-medium text-lg">
             Momento en el que se presenta la tension
           </p>
@@ -96,16 +121,8 @@ export default function CardConflict({
             Actores demandantes
           </p>
           <p>{data.actorsInvolved}</p>
-        </div>
+        </div> */}
       </div>
-      <input
-        type="button"
-        value="Ir actuacion urbanistica"
-        className="bg-septenary text-white rounded-md text-base md:text-lg font-semibold w-full py-2 cursor-pointer hover:bg-senary transition-all"
-        onClick={() =>
-          navigate(`/interventions/${data.intervention._id}/datasheet`)
-        }
-      />
     </div>
   );
 }

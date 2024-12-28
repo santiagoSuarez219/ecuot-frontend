@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { UserItemList } from "./types";
+import { ConflictResponse, UserItemList } from "./types";
 
 interface Ecuot {
   user: UserItemList | undefined;
@@ -8,6 +8,8 @@ interface Ecuot {
   isSideMenuOpen: boolean;
   openSideMenu: () => void;
   closeSideMenu: () => void;
+  conflict: ConflictResponse | undefined;
+  setConflict: (conflict: ConflictResponse | undefined) => void;
 }
 
 export const useEcuot = create<Ecuot>((set) => ({
@@ -18,4 +20,8 @@ export const useEcuot = create<Ecuot>((set) => ({
   isSideMenuOpen: false,
   openSideMenu: () => set({ isSideMenuOpen: true }),
   closeSideMenu: () => set({ isSideMenuOpen: false }),
+  conflict: undefined,
+  setConflict: (conflict) => {
+    set({ conflict });
+  },
 }));

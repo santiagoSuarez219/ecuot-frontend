@@ -1,3 +1,4 @@
+import ConflictModal from "../components/Conflicts/ConflictModal/ConflictModal";
 import LayoutConflictList from "../components/Conflicts/LayoutConflictList";
 import Footer from "../components/Footer";
 
@@ -16,6 +17,7 @@ export default function ConflictsView() {
         <LayoutConflictList />
       </section>
       <Footer />
+      <ConflictModal />
     </>
   );
 }
