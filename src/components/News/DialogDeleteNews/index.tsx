@@ -21,7 +21,7 @@ export default function DialogDeleteNews({ news }: DialogDeleteNewsProps) {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["news"] });
       toast.success(data);
-      navigate("/conflicts");
+      navigate("/news");
     },
   });
 
