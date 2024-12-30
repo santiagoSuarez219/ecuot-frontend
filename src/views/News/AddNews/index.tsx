@@ -20,6 +20,7 @@ export default function AddNews() {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
@@ -65,7 +66,11 @@ export default function AddNews() {
           noValidate
         >
           <div className="content__section overflow-y-auto pl-1 pr-6 mb-4">
-            <NewFormAdd register={register} errors={errors} />
+            <NewFormAdd
+              register={register}
+              setValue={setValue}
+              errors={errors}
+            />
           </div>
           <div className="pr-6">
             <input

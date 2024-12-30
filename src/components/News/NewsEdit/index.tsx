@@ -25,6 +25,8 @@ export default function NewsEdit({ news }: NewsEditProps) {
     register,
     handleSubmit,
     reset,
+    setValue,
+    getValues,
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
@@ -79,7 +81,13 @@ export default function NewsEdit({ news }: NewsEditProps) {
           noValidate
         >
           <div className="content__section overflow-y-auto pl-1 pr-6 mb-4">
-            <NewFormAdd register={register} errors={errors} />
+            <NewFormAdd
+              register={register}
+              errors={errors}
+              setValue={setValue}
+              getValues={getValues}
+              interventionId={initialValues.intervention}
+            />
           </div>
           <div className="pr-6">
             <input
