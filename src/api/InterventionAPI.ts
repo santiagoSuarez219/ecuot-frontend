@@ -34,6 +34,20 @@ export async function getInterventions() {
   }
 }
 
+export async function getLatestInterventions() {
+  try {
+    const { data } = await api("/interventions/latest");
+    const response = dashboardInterventionSchema.safeParse(data);
+    if (response.success) {
+      return response.data;
+    }
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.error);
+    }
+  }
+}
+
 export async function getInterventionsById(id: Intervention["_id"]) {
   try {
     const { data } = await api(`/interventions/${id}`);
