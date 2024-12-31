@@ -10,6 +10,7 @@ import NoDataFound from "../../NoDataFound";
 import CardConflict from "../CardConflict";
 import { useEcuot } from "../../../ecuot";
 import FilterForm from "../FilterForm";
+import Loader from "../../Loader/Loader";
 
 export default function LayoutConflictList() {
   const [isEditing, setIsEditing] = useState(false);
@@ -90,16 +91,7 @@ export default function LayoutConflictList() {
     conflicts,
   ]);
 
-  if (isLoading) {
-    return (
-      <div className="mx-20 animate-pulse shadow overflow-hidden mb-20 flex flex-col gap-6">
-        <div className="w-full h-[136px] bg-slate-300 rounded-lg"></div>
-        <div className="w-full h-[64px] bg-slate-300 rounded-lg"></div>
-        <div className="w-full h-[139px] bg-slate-300 rounded-lg"></div>
-        <div className="w-full h-[534px] bg-slate-300 rounded-lg"></div>
-      </div>
-    );
-  }
+  if (isLoading) return <Loader />;
   if (isError) return <p>Error al cargar los conflictos</p>;
   return (
     <div className="px-4 lg:px-16">

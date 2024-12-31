@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { getNewsById } from "../../../api/NewsAPI";
 import NewsEdit from "../../../components/News/NewsEdit";
+import Loader from "../../../components/Loader/Loader";
 
 export default function EditNews() {
   const params = useParams();
@@ -15,7 +16,7 @@ export default function EditNews() {
     queryFn: () => getNewsById(params.newsId ? params.newsId : ""),
   });
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>Error</p>;
   if (news) return <NewsEdit news={news} />;
 }

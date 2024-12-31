@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import NoInterventionDataSheet from "../../components/UrbanPlanningInterventions/NoInterventionDataSheet";
 import { getInterventionsById } from "../../api/InterventionAPI";
 import InterventionDataSheetStart from "../../components/InterventionDataSheet/InterventioDataSheetStart";
+import Loader from "../../components/Loader/Loader";
 
 export default function DataSheetIntervention() {
   const params = useParams();
@@ -14,7 +15,7 @@ export default function DataSheetIntervention() {
     queryFn: () => getInterventionsById(interventionId),
   });
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>Error</p>;
   if (data) {
     if (data.datasheet === null) {

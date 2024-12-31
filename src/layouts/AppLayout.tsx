@@ -7,13 +7,13 @@ import NavBar from "../components/NavBar";
 import "./scroll.css";
 import ScrollToTop from "../components/ScrollToTop";
 import { Sidebar } from "../components/Sidebar/Sidebar";
+import Loader from "../components/Loader/Loader";
 
 export default function AppLayout() {
   const { data, isLoading } = useAuth();
 
   //TODO: Cambiar por un loading
-  if (isLoading) return "Cargando ...";
-
+  if (isLoading) return <Loader />;
   return (
     <div className="layout content_page">
       <NavBar user={data} />

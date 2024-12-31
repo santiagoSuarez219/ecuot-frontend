@@ -6,6 +6,7 @@ import { ConflictFormData, ConflictResponse } from "../../types";
 import { useQuery } from "@tanstack/react-query";
 import { getInterventions } from "../../api/InterventionAPI";
 import ImageUpload from "../ImageUpload";
+import Loader from "../Loader/Loader";
 
 type ConflictAddFormProps = {
   register: UseFormRegister<ConflictFormData>;
@@ -28,7 +29,7 @@ export default function ConflictAddForm({
     queryFn: getInterventions,
   });
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>Ha ocurrido un error</p>;
   return (
     <>

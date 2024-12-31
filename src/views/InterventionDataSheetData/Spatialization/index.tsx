@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
 import { getInterventionDataSheetById } from "../../../api/InterventionAPI";
+import Loader from "../../../components/Loader/Loader";
 
 export default function Spatialization() {
   const params = useParams();
@@ -14,7 +15,7 @@ export default function Spatialization() {
       ),
   });
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>Error</p>;
   if (data)
     return (

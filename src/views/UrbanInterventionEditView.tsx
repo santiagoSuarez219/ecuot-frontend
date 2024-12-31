@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import UrbanInterventionEdit from "../components/UrbanPlanningInterventions/UrbanInterventionEdit";
 import { getInterventionsById } from "../api/InterventionAPI";
+import Loader from "../components/Loader/Loader";
 
 export default function UrbanInterventionEditView() {
   const params = useParams();
@@ -13,7 +14,7 @@ export default function UrbanInterventionEditView() {
     queryFn: () => getInterventionsById(interventionId),
   });
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>Error</p>;
   if (data)
     return (

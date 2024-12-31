@@ -5,6 +5,7 @@ import {
   getInterventionDataSheetById,
   getInterventionsById,
 } from "../../../api/InterventionAPI";
+import Loader from "../../../components/Loader/Loader";
 
 export default function Description() {
   const params = useParams();
@@ -27,7 +28,7 @@ export default function Description() {
       getInterventionsById(params.interventionId ? params.interventionId : ""),
   });
 
-  if (isLoading || isLoadingIntervention) return <p>Cargando...</p>;
+  if (isLoading || isLoadingIntervention) return <Loader />;
   if (isError || isErrorIntervention) return <p>Error</p>;
   if (data)
     return (

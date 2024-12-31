@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getInterventions } from "../../api/InterventionAPI";
 import { Intervention, NewsFormData } from "../../types";
 import ImageUpload from "../ImageUpload";
+import Loader from "../Loader/Loader";
 
 type NewFormAddProps = {
   register: UseFormRegister<NewsFormData>;
@@ -117,7 +118,7 @@ export default function NewFormAdd({
     }
   }, [selectedOption, selectedIntervention, setValue]);
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>Ha ocurrido un error</p>;
 
   return (

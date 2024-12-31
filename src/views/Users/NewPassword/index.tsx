@@ -9,6 +9,7 @@ import {
   getUserByIdRequest,
 } from "../../../api/UserAPI";
 import { ChangePasswordType } from "../../../types";
+import Loader from "../../../components/Loader/Loader";
 
 export default function NewPassword() {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ export default function NewPassword() {
     mutate(data);
   };
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>Error...</p>;
   if (user)
     return (

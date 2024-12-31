@@ -7,6 +7,7 @@ import Statistics from "../components/Home/Statistics";
 import VideoModal from "../components/Home/VideoModal";
 import ShortCuts from "../components/Home/ShortCuts";
 import AboutUs from "../components/Home/AboutUs";
+import Loader from "../components/Loader/Loader";
 import Banner from "../components/Home/Banner";
 import Footer from "../components/Footer";
 
@@ -20,7 +21,7 @@ export default function HomeView() {
     queryFn: getLatestInterventions,
   });
 
-  if (isLoadingIntervention) return "Cargando ...";
+  if (isLoadingIntervention) return <Loader />;
   if (errorInterventions) return "Ha ocurrido un error";
 
   if (interventions)

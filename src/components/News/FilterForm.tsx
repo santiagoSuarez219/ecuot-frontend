@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getInterventions } from "../../api/InterventionAPI";
+import Loader from "../Loader/Loader";
 
 type FilterFormProps = {
   setSearchKeyWords: (value: string) => void;
@@ -19,7 +20,7 @@ export default function FilterForm({
     queryFn: getInterventions,
   });
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>Ha ocurrido un error</p>;
   if (interventions)
     return (

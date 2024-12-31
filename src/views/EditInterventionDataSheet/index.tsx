@@ -6,6 +6,7 @@ import {
   getInterventionsById,
 } from "../../api/InterventionAPI";
 import InterventionDataSheetEdit from "../../components/InterventionDataSheet/InterventionDataSheetEdit";
+import Loader from "../../components/Loader/Loader";
 
 export default function EditInterventionDataSheet() {
   const params = useParams();
@@ -28,7 +29,8 @@ export default function EditInterventionDataSheet() {
       getInterventionsById(params.interventionId ? params.interventionId : ""),
   });
 
-  if (isLoading || isLoadingIntervention) return <p>Cargando...</p>;
+  if (isLoading || isLoadingIntervention) return <Loader />;
+
   if (isError || isErrorIntervention) return <p>Error</p>;
   if (data)
     return (
