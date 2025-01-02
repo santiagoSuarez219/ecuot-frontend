@@ -17,7 +17,7 @@ export default function ImageUpload({
     formData.append("file", file);
     formData.append("upload_preset", "x9o8xzzx");
 
-    // TODO: CAMBIAR A VARIABLES DE ENTORNO
+    // TODO: CAMBIAR A VARIABLES DE ENTORNO Y AGREGAR A .ENV
 
     try {
       const response = await axios.post(
