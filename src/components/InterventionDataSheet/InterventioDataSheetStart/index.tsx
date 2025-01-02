@@ -19,7 +19,7 @@ export default function InterventionDataSheetStart({
         <div className="lg:w-[90%] h-[100%] rounded-2xl flex overflow-hidden relative">
           <figure className="absolute inset-0">
             <img
-              src="main-poster.avif"
+              src="/main-poster.avif"
               alt="main-poster"
               className="w-full h-full object-cover"
             />

@@ -40,7 +40,7 @@ export default function LoginView() {
     <main className="w-full h-screen flex px-4 md:px-6 lg:px-0 justify-center items-center relative  ">
       <figure className="absolute inset-0 -z-10">
         <img
-          src="sistema_movilidad.avif"
+          src="/sistema_movilidad.avif"
           alt="main-poster"
           className="w-full h-full object-cover"
         />
