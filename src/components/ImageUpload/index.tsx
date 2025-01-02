@@ -1,7 +1,7 @@
 import axios from "axios";
 
 type FormInterventionProps = {
-  setImage: React.Dispatch<React.SetStateAction<string>>;
+  setImage: (image: string) => void; // Acepta solo strings
   image: string;
 };
 
