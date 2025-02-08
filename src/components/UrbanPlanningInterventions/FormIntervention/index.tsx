@@ -125,32 +125,34 @@ export default function FormIntervention({
             })}
           >
             <option value="">Seleccione un sistema interno</option>
-            <option value="Sistema de Espacio Público, Parques, Plazas, Plazoletas y Zonas Verdes">
-              Sistema de Espacio Público, Parques, Plazas, Plazoletas y Zonas
-              Verdes
+            <option
+              value="Sistema de Espacio Público de esparcimiento y
+encuentro"
+            >
+              Sistema de Espacio Público de esparcimiento y encuentro
             </option>
-            <option value="Sistema Movilidad">Sistema Movilidad</option>
-            <option value="Sistema Vial y de Transporte">
-              {" "}
-              Sistema Vial y de Transporte
+            <option
+              value="Sistema de Movilidad (vías, caminos, ciclorutas,
+transporte)"
+            >
+              Sistema de Movilidad (vías, caminos, ciclorutas, transporte)
             </option>
             <option value="Sistema de Equipamientos">
               Sistema de Equipamientos
             </option>
-            <option value="Sistema de Servicios Publicos">
-              Sistema de Servicios Publicos
+            <option
+              value="Sistema de Servicios Públicos (domiciliarios y no
+domiciliarios)"
+            >
+              Sistema de Servicios Públicos (domiciliarios y no domiciliarios)
             </option>
             <option value="Sistema Habitacional">Sistema Habitacional</option>
-            <option value="Asentamientos Humanos y Sistema Habitacional">
-              Asentamientos Humanos y Sistema Habitacional
-            </option>
             <option value="Sistema de Centralidades">
               Sistema de Centralidades
             </option>
-            <option value="Sistema de Centralidades">
-              Sistema de Patrimonio
+            <option value="Sistema de Patrimonio Cultural Inmueble">
+              Sistema de Patrimonio Cultural Inmueble
             </option>
-            <option value="No Aplica">No Aplica</option>
           </select>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { Intervention } from "../../../types";
-import handleImage from "../../../utils/handleImage";
 
 export default function CardIntervention({
   data,
@@ -26,7 +25,7 @@ export default function CardIntervention({
           {data.hierarchy}
         </p>
         <img
-          src={data.image || handleImage(data.internalSystem)}
+          src={data.image || "logo.avif"}
           alt={data.interventionName}
           className={`w-full h-full object-cover ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"
