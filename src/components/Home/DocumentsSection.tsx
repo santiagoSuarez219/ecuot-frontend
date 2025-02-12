@@ -4,19 +4,19 @@ export default function DocumentsSection() {
   const documents = [
     {
       title: "Proyecto de investigación",
-      link: "../../../public/pdf/Proyecto Investigación.pdf",
+      link: "/pdf/Proyecto_Investigacion.pdf",
     },
     {
       title: "Ecuot",
-      link: "../../../public/pdf/Ecuot.pdf",
+      link: "/pdf/Ecuot.pdf",
     },
     {
       title: "Caracterización de acciones urbanísticas",
-      link: "../../../public/pdf/Caracterizacion Acciones urbanisticas.pdf",
+      link: "/pdf/Caracterizacion_Acciones_urbanisticas.pdf",
     },
     {
       title: "Tendencias de la conflictividad",
-      link: "../../../public/pdf/Tendencias Conflictividad.pdf",
+      link: "/pdf/Tendencias_Conflictividad.pdf",
     },
   ];
 
@@ -34,9 +34,9 @@ export default function DocumentsSection() {
         <div className="relative z-10 flex flex-col justify-center items-center h-full text-white font-semibold">
           <h1 className="text-6xl ">Documentos</h1>
           <div className="grid grid-cols-1 min-[320px]:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:gap-10 mt-8 lg:mt-14 lg:px-8 xl:px-0">
-            {documents.map((document, index) => (
+            {documents.map((document) => (
               <DocumentItem
-                key={index}
+                key={document.link}
                 title={document.title}
                 link={document.link}
               />
