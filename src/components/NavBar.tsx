@@ -45,12 +45,12 @@ export default function NavBar({ user }: NavBarProps) {
 
   return (
     <header
-      className={`w-full lg:h-14 my-4 lg:mt-16 lg:mb-10 flex items-center justify-between px-4 lg:px-12 ${
+      className={`w-full lg:h-14 my-4 lg:mt-16 lg:mb-10 flex items-center justify-between px-4 lg:px-10 ${
         handleNavBar(location.pathname) ? "block" : "hidden"
       }`}
     >
       <Link to="/">
-        <figure className="w-4/5 md:w-[250px] md:mr-16 ">
+        <figure className="w-4/5 md:w-[250px] lg:w-[200px] xl:w-[250px] md:mr-16 lg:mr-0 xl:mr-16">
           <img
             src="/logo2.png"
             alt="ecuot-logo"
@@ -76,8 +76,8 @@ export default function NavBar({ user }: NavBarProps) {
         </svg>
       </figure>
       {/* <NavBarMobile /> */}
-      <nav className="hidden lg:flex w-[calc(100%-314px)] items-center justify-between">
-        <ul className="flex gap-6 [&>li]:cursor-pointer text-septenary [&>li]:underline [&>li]:underline-offset-4">
+      <nav className="hidden ml-4  lg:flex items-center justify-between lg:flex-1">
+        <ul className="flex gap-3 xl:gap-6 [&>li]:cursor-pointer text-septenary [&>li]:underline [&>li]:underline-offset-4 text-[0.9rem] xl:text-base">
           <li
             className={`hover:decoration-septenary ${handleRouteActivate("/")}`}
           >
@@ -115,7 +115,7 @@ export default function NavBar({ user }: NavBarProps) {
 
           {user && user.rol === "researcher" && (
             <li
-              className={`hover:decoration-septenary ${handleRouteActivate(
+              className={`hover:decoration-septenary lg:hidden 2xl:block ${handleRouteActivate(
                 "/admin"
               )}`}
             >
@@ -125,7 +125,7 @@ export default function NavBar({ user }: NavBarProps) {
         </ul>
         {user ? (
           <ul className="flex gap-4 items-center">
-            <li className="">
+            <li className="lg:hidden 2xl:block">
               <p className="text-font-color font-light">{user.user}</p>
             </li>
             <li className="primary-button" onClick={Logout}>

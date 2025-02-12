@@ -27,7 +27,7 @@ export default function CardNew({
           {data.intervention.interventionName}
         </p>
         <img
-          src={data.image || handleImage(data.intervention.internalSystem)}
+          src={handleImage(data.intervention.internalSystem)}
           alt={data.newsName}
           className={`w-full h-full object-cover ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"
@@ -93,7 +93,7 @@ export default function CardNew({
         <div className="flex flex-col md:flex-row gap-4 text-sm mt-4 lg:mt-8">
           <input
             type="button"
-            value="Leer noticia completa"
+            value="Leer más"
             className="bg-quinary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:scale-105 transition-all"
             onClick={() => {
               setNews(data);

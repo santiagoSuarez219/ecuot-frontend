@@ -7,7 +7,11 @@ export default function TeamWork() {
       <div className="w-full mx-auto flex flex-col md:flex-row gap-4 md:gap-4 lg:px-12">
         <div className="bg-white z-10 shadow-xl p-4 lg:p-12 rounded-xl w-full flex-1 font-semibold">
           <h2 className="text-xl lg:text-2xl text-quinary">
-            Investigador principal
+            Investigación Institución Universitaria Colegio Mayor de Antioquia –
+            Facultad de Ciencias Sociales y Educación.
+          </h2>
+          <h2 className="text-xl lg:text-2xl text-quinary mt-4">
+            Investigador Principal:
           </h2>
           <p className="lg:text-lg mt-4">Claudia María González Hernández</p>
           <p className="text-sm lg:text-lg italic">
@@ -17,53 +21,55 @@ export default function TeamWork() {
             Colaboradores
           </h2>
           <p className="text-base lg:text-lg mt-4">
-            Yuly Andrea Sanchez Velasquez
+            Yuly Andrea Sánchez Velásquez
           </p>
           <p className="text-sm lg:text-lg italic">
-            Profesional en planeacion y desarrollo social
+            Profesional en Planeación y Desarrollo Social
           </p>
           <p className="text-base lg:text-lg mt-4">
-            Julio Cesar Escobar Quiroga
+            Julio Cesar Escobar Quiroga.
           </p>
           <p className="text-sm lg:text-lg italic">
-            Sociologo: Especialista en sistema de informacion geografica
+            Sociólogo; Especialista en Sistemas de Información Geográfica
           </p>
           <h2 className="text-xl lg:text-2xl font-semibold mt-6 text-quinary">
-            Estudiantes del programa de planeacion y desarrollo social
+            Estudiantes del programa de Planeación y Desarrollo Social
           </h2>
           <h3 className="text-base lg:text-lg font-semibold mt-4">
-            <span className="italic">Estudiantes en practica profesional:</span>{" "}
+            <span className="italic">Estudiantes en práctica profesional:</span>{" "}
             Carlos Andrés Narváez Jiménez, Danid Elías Tapias Restrepo, Camila
             Beltrán Gaviria
           </h3>
           <h3 className="text-base lg:text-lg font-semibold mt-4">
-            <span className="italic">Estudiantes Asistentes - Auxiliares:</span>{" "}
+            <span className="italic">
+              Estudiantes Asistentes – Auxiliares:{" "}
+            </span>{" "}
             Daniela Arboleda Cano, Gina Alejandra Giraldo Estrada, Natalia
-            España, Vanessa Gómez
+            España Aguirre, Angie Vanesa Gómez Agudelo
           </h3>
         </div>
         <div className="bg-white z-10 shadow-xl p-4 lg:p-12 rounded-xl w-full flex-1 font-semibold">
           <h2 className="text-xl lg:text-2xl font-semibold mb-2 text-quinary">
-            Espacialización
+            Espacialización:
           </h2>
-          <p className="text-base lg:text-lg">Valentina Yépez</p>
+          <p className="text-base lg:text-lg">Valentina Yepes Arias</p>
           <p className="text-sm lg:text-lg italic">
             Profesional en Planeación y Desarrollo Social
           </p>
           <h2 className="text-xl lg:text-2xl text-quinary mb-2 mt-6">
-            Fotografía
+            Fotografías:
           </h2>
           <p className="text-base lg:text-lg">Arbey Antonio Gómez Muñoz</p>
           <p className="text-sm lg:text-lg italic">
-            Estudiante del programa Planeación y Desarrollo Social
+            Estudiante del programa Planeación y Desarrollo Social.
           </p>
           <h2 className="text-xl lg:text-2xl text-quinary font-semibold mb-4 mt-6">
-            Desarrolllo del software
+            Desarrollo del software. Instituto Tecnológico Metropolitano. Grupo
+            de Automática, Electrónica y Ciencias Computacionales:
           </h2>
           <p className="text-base lg:text-lg">
             <span className="italic">
-              Estudiantes de la tecnología en sistemas de información del
-              Instituto Tecnológico Metropolitano:
+              Estudiantes de la Tecnología en Sistemas de Información
             </span>{" "}
             Kevin Ruda Ortiz, Michael Andrés Trujillo Acosta, Wilmar Andrés
             Chaverra Montoya

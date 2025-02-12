@@ -27,7 +27,7 @@ export default function CardConflict({
           {data.intervention.interventionName}
         </p>
         <img
-          src={data.image || handleImage(data.intervention.internalSystem)}
+          src={handleImage(data.intervention.internalSystem)}
           alt={data.conflictName}
           className={`w-full h-full object-cover ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"

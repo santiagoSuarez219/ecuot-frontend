@@ -20,7 +20,6 @@ export default function AddNews() {
     register,
     handleSubmit,
     reset,
-    setValue,
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
@@ -54,7 +53,7 @@ export default function AddNews() {
       >
         Volver
       </Link>
-      <div className="intervention__form w-full flex flex-col pb-4 max-w-screen-lg md:mx-auto rounded-2xl shadow-lg md:px-6 bg-white md:pt-4 md:overflow-y-auto md:my-6 ">
+      <div className=" w-full h-max pb-4 max-w-screen-lg md:mx-auto rounded-2xl shadow-lg md:px-6 bg-white md:pt-4 md:overflow-y-auto md:my-6 ">
         <div className=" w-full flex flex-col px-4 md:px-0 py-4 md:py-0 ">
           <p className=" text-font-color md:mb-4">
             Llena el formulario para agregar un acontecimiento noticioso
@@ -66,11 +65,7 @@ export default function AddNews() {
           noValidate
         >
           <div className="content__section overflow-y-auto pl-1 pr-6 mb-4">
-            <NewFormAdd
-              register={register}
-              setValue={setValue}
-              errors={errors}
-            />
+            <NewFormAdd register={register} errors={errors} />
           </div>
           <div className="pr-6">
             <input

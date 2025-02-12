@@ -1,11 +1,8 @@
-import { useState } from "react";
-
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 import { ConflictFormData, ConflictResponse } from "../../types";
 import { useQuery } from "@tanstack/react-query";
 import { getInterventions } from "../../api/InterventionAPI";
-import ImageUpload from "../ImageUpload";
 import Loader from "../Loader/Loader";
 
 type ConflictAddFormProps = {
@@ -18,8 +15,6 @@ export default function ConflictAddForm({
   errors,
   register,
 }: ConflictAddFormProps) {
-  const [image, setImage] = useState<string>("");
-
   const {
     data: interventions,
     isError,
@@ -103,7 +98,7 @@ export default function ConflictAddForm({
         />
       </div>
 
-      <div className="flex flex-col md:flex-row gap-2 md:gap-4 text-sm md:text-base">
+      <div className="flex flex-col gap-2 md:gap-4 text-sm md:text-base">
         <div className="mb-2 space-y-2 flex-grow">
           <label htmlFor="actorsInvolved" className="font-medium">
             Actores demandantes
@@ -148,34 +143,6 @@ export default function ConflictAddForm({
           </select>
         </div>
       </div>
-      <div className="mb-2 space-y-2 flex-grow gap-2 md:gap-4 text-sm md:text-base">
-        <div className="flex justify-between">
-          <label htmlFor="image" className="font-medium">
-            Imagen
-          </label>
-          <a
-            href="https://imgto.xyz/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary border-b border-primary"
-          >
-            Optimizador de imagenes
-          </a>
-        </div>
-        <input
-          id="image"
-          className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors`}
-          type="text"
-          placeholder={"URL de la imagen"}
-          {...register("image")}
-        />
-      </div>
-      <div className="mb-2 space-y-2">
-        <p className="w-full mt-2 p-3 border border-neutral-300 rounded-lg bg-gray-50  text-sm md:text-base">
-          {image ? image : "Carga una imagen"}
-        </p>
-      </div>
-      <ImageUpload image={image} setImage={setImage} />
     </>
   );
 }

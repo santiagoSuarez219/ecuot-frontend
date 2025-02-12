@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <footer className="mt-8 lg:mt-16 ">
-      <div className="px-4 lg:px-56 grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-16 items-center lg:[&>figure]:h-[120px] [&>figure]:flex [&>figure]:justify-center [&>figure]:items-center">
+      <div className="px-4 xl:px-56 grid grid-cols-1 md:grid-cols-4  gap-4 lg:gap-16 items-center lg:[&>figure]:h-[120px] [&>figure]:flex [&>figure]:justify-center [&>figure]:items-center">
         <a
           href="https://www.colmayor.edu.co/"
           target="_blank"

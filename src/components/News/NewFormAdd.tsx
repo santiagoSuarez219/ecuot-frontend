@@ -1,80 +1,16 @@
-import { useEffect, useReducer } from "react";
-import {
-  FieldErrors,
-  UseFormGetValues,
-  UseFormRegister,
-  UseFormSetValue,
-} from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 
 import { getInterventions } from "../../api/InterventionAPI";
-import { Intervention, NewsFormData } from "../../types";
-import ImageUpload from "../ImageUpload";
+import { NewsFormData } from "../../types";
 import Loader from "../Loader/Loader";
 
 type NewFormAddProps = {
   register: UseFormRegister<NewsFormData>;
   errors: FieldErrors<NewsFormData>;
-  setValue: UseFormSetValue<NewsFormData>;
-  getValues?: UseFormGetValues<NewsFormData>;
-  interventionId?: string;
 };
 
-// Estado inicial para el reducer
-const initialState = {
-  image: "",
-  selectedOption: "sameImage",
-  selectedInterventionId: "",
-  selectedIntervention: null as Intervention | null,
-  flag: false,
-};
-
-// Acciones del reducer
-type Action =
-  | { type: "SET_IMAGE"; payload: string }
-  | { type: "SET_SELECTED_OPTION"; payload: string }
-  | { type: "SET_SELECTED_INTERVENTION_ID"; payload: string }
-  | { type: "SET_SELECTED_INTERVENTION"; payload: Intervention | null }
-  | { type: "SET_FLAG"; payload: boolean };
-
-// Reducer para manejar el estado
-function reducer(state: typeof initialState, action: Action) {
-  switch (action.type) {
-    case "SET_IMAGE":
-      return { ...state, image: action.payload };
-    case "SET_SELECTED_OPTION":
-      return { ...state, selectedOption: action.payload };
-    case "SET_SELECTED_INTERVENTION_ID":
-      return { ...state, selectedInterventionId: action.payload };
-    case "SET_SELECTED_INTERVENTION":
-      return { ...state, selectedIntervention: action.payload };
-    case "SET_FLAG":
-      return { ...state, flag: action.payload };
-    default:
-      return state;
-  }
-}
-
-export default function NewFormAdd({
-  errors,
-  register,
-  setValue,
-  getValues,
-  interventionId,
-}: NewFormAddProps) {
-  const [state, dispatch] = useReducer(reducer, {
-    ...initialState,
-    selectedInterventionId: interventionId || "",
-  });
-
-  const {
-    image,
-    selectedOption,
-    selectedInterventionId,
-    selectedIntervention,
-    flag,
-  } = state;
-
+export default function NewFormAdd({ errors, register }: NewFormAddProps) {
   const {
     data: interventions,
     isError,
@@ -83,40 +19,6 @@ export default function NewFormAdd({
     queryKey: ["interventions"],
     queryFn: getInterventions,
   });
-
-  useEffect(() => {
-    if (interventions) {
-      const intervention = interventions.find(
-        (int) => int._id === selectedInterventionId
-      );
-      dispatch({
-        type: "SET_SELECTED_INTERVENTION",
-        payload: intervention || null,
-      });
-    }
-  }, [interventions, selectedInterventionId]);
-
-  useEffect(() => {
-    if (getValues && selectedIntervention) {
-      if (!flag) {
-        const currentImage = getValues("image");
-        if (currentImage === selectedIntervention.image) {
-          dispatch({ type: "SET_FLAG", payload: true });
-          dispatch({ type: "SET_SELECTED_OPTION", payload: "sameImage" });
-        } else {
-          dispatch({ type: "SET_SELECTED_OPTION", payload: "otherImage" });
-        }
-      }
-    }
-  }, [getValues, selectedIntervention, flag]);
-
-  useEffect(() => {
-    if (selectedOption === "sameImage" && selectedIntervention?.image) {
-      setValue("image", selectedIntervention.image);
-    } else if (selectedOption === "otherImage") {
-      setValue("image", "");
-    }
-  }, [selectedOption, selectedIntervention, setValue]);
 
   if (isLoading) return <Loader />;
   if (isError) return <p>Ha ocurrido un error</p>;
@@ -197,12 +99,6 @@ export default function NewFormAdd({
           {...register("intervention", {
             required: "Este campo es obligatorio",
           })}
-          onChange={(e) =>
-            dispatch({
-              type: "SET_SELECTED_INTERVENTION_ID",
-              payload: e.target.value,
-            })
-          }
         >
           <option value="">Seleccione una opción</option>
           {interventions?.map((intervention) => (
@@ -212,93 +108,6 @@ export default function NewFormAdd({
           ))}
         </select>
       </div>
-      <div className="mb-2 space-y-2 flex-grow gap-2 md:gap-4 text-sm md:text-base">
-        <div className="flex justify-between">
-          <label htmlFor="image" className="font-medium">
-            Imagen
-          </label>
-          <a
-            href="https://imgto.xyz/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary border-b border-primary"
-          >
-            Optimizador de imágenes
-          </a>
-        </div>
-        <fieldset className="w-full mb-4">
-          <legend>Seleccione una opción:</legend>
-          <div className="flex gap-6 items-center [&>div]:flex [&>div]:gap-2">
-            <div>
-              <input
-                type="radio"
-                id="sameImage"
-                name="imageOption"
-                value="sameImage"
-                checked={selectedOption === "sameImage"}
-                onChange={(e) =>
-                  dispatch({
-                    type: "SET_SELECTED_OPTION",
-                    payload: e.target.value,
-                  })
-                }
-              />
-              <label htmlFor="sameImage">
-                Utilizar imagen de la actuación urbanística
-              </label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="otherImage"
-                name="imageOption"
-                value="otherImage"
-                checked={selectedOption === "otherImage"}
-                onChange={(e) =>
-                  dispatch({
-                    type: "SET_SELECTED_OPTION",
-                    payload: e.target.value,
-                  })
-                }
-              />
-              <label htmlFor="otherImage">Utilizar nueva imagen</label>
-            </div>
-          </div>
-        </fieldset>
-        <input
-          id="image"
-          className={`${
-            selectedOption === "sameImage" ? "hidden" : ""
-          } w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors `}
-          type="text"
-          placeholder={"URL de la imagen"}
-          {...register("image")}
-        />
-      </div>
-      {selectedOption === "sameImage" && selectedIntervention?.image && (
-        <div className="w-full h-56 bg-slate-100 border-neutral-300 justify-center items-center flex">
-          <figure className="h-full aspect-square bg-center bg-cover">
-            <img
-              src={selectedIntervention.image}
-              alt={`Imagen de ${selectedIntervention.interventionName}`}
-              className="h-full w-full object-cover"
-            />
-          </figure>
-        </div>
-      )}
-      {selectedOption === "otherImage" && (
-        <>
-          <div className="mb-2 space-y-2">
-            <p className="w-full mt-2 p-3 border border-neutral-300 rounded-lg bg-gray-50 text-sm md:text-base">
-              {image ? image : "Carga una imagen"}
-            </p>
-          </div>
-          <ImageUpload
-            image={image}
-            setImage={(img) => dispatch({ type: "SET_IMAGE", payload: img })}
-          />
-        </>
-      )}
     </>
   );
 }

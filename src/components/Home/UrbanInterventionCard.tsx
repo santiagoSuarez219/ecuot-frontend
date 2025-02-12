@@ -16,7 +16,7 @@ export default function UrbanInterventionCard({
 
   return (
     <div
-      className="w-full h-[300px] lg:h-[460px] lg:rounded-3xl rounded-xl relative overflow-x-hidden cursor-pointer hover:scale-105 transition-all"
+      className="w-full h-[400px] lg:h-[460px] lg:rounded-3xl rounded-xl relative overflow-x-hidden cursor-pointer hover:scale-105 transition-all"
       onClick={handleClick}
     >
       <figure className="absolute inset-0">
@@ -27,10 +27,8 @@ export default function UrbanInterventionCard({
         />
       </figure>
       <div className={`absolute inset-0 bg-quinary opacity-60`}></div>
-      <div className="relative z-10 pt-56 h-full text-white max-w-[280px] font-semibold flex items-end pb-4 lg:pb-16 px-4 lg:px-8">
-        <h1 className="text-3xl lg:text-4xl">
-          {intervention.interventionName}
-        </h1>
+      <div className="relative z-10 pt-56 h-full text-white max-w-[380px] md:max-w-[280px] font-semibold flex items-end pb-12 lg:pb-16 px-4 lg:px-8">
+        <h1 className="text-4xl">{intervention.interventionName}</h1>
       </div>
     </div>
   );
