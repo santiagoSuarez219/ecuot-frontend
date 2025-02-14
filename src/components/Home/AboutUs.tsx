@@ -9,13 +9,13 @@ export default function AboutUs() {
           <h2 className="text-5xl lg:text-6xl mb-3">Sobre nosotros</h2>
           <p className="text-lg lg:text-xl">
             ECOUT surge de un proyecto del Grupo de Estudios sobre Desarrollo
-            Local y Gestión Territorial de la IUCMA, enfocado en los conflictos
-            urbanos por las intervenciones y decisiones sobre el ordenamiento
-            territorial de Medellín, Colombia. Iniciado en 2018, la
-            investigación caracterizó, mediante el análisis de prensa, las
-            tensiones asociadas al ordenamiento territorial en Medellín entre
-            1999 y 2014, resultando en un sistema de información que organiza
-            dicha conflictividad.
+            Local y Gestión Territorial de la Institución Universitaria Colegio
+            Mayor de Antioquia, enfocado en los conflictos urbanos generados por
+            las intervenciones y decisiones sobre el ordenamiento territorial de
+            Medellín, Colombia. Iniciado en 2018, la investigación caracterizó,
+            mediante el análisis de prensa, las tensiones asociadas al
+            ordenamiento territorial en Medellín entre 1999 y 2014, resultando
+            en un sistema de información que organiza dicha conflictividad.
           </p>
         </div>
         <div className="w-full md:max-w-[317px] lg:max-w-[634px] flex flex-col items-center text-lg lg:text-xl font-semibold ">

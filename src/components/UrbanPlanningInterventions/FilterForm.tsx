@@ -10,8 +10,8 @@ export default function FilterForm({
   setSearchBySystem,
 }: FilterFormProps) {
   return (
-    <form className="w-full md:mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-lg md:border shadow-sm items-center px-0 py-6 md:p-6 gap-6 justify-between">
-      <div className="space-y-4">
+    <form className="w-full md:mt-6 grid grid-cols-1 lg:grid-cols-2 min-[1704px]:grid-cols-3  rounded-lg md:border shadow-sm items-center px-0 py-6 md:p-4 gap-6 justify-between">
+      <div className="flex flex-col justify-between h-full mb-2">
         <div className="space-y-1">
           <label
             htmlFor="search"
@@ -31,7 +31,7 @@ export default function FilterForm({
           onChange={(event) => setSearchKeyWords(event.target.value)}
         />
       </div>
-      <div className="space-y-4 ">
+      <div className="flex flex-col justify-between h-full mb-2">
         <div className="space-y-1">
           <label
             htmlFor="hierarchy"
@@ -40,7 +40,9 @@ export default function FilterForm({
             Jerarquia
           </label>
           <p className="text-md text-font-color leading-tight">
-            Filtrar por una jerarquia
+            Organización y clasificación de las acciones urbanística según los
+            niveles de importancia y función dentro del ordenamiento del
+            territorio.
           </p>
         </div>
         <select
@@ -58,7 +60,7 @@ export default function FilterForm({
           <option value="Zonal y Corregimental">Zonal y Corregimental</option>
         </select>
       </div>
-      <div className="space-y-4">
+      <div className="flex flex-col justify-between h-full mb-2">
         <div className="space-y-1">
           <label
             htmlFor="hierarchy"
@@ -67,7 +69,8 @@ export default function FilterForm({
             Sistema
           </label>
           <p className="text-md text-font-color leading-tight">
-            Filtrar por un sistema al que pertenece
+            Elementos en torno a los cuales se organiza y estructura el
+            territorio para favorecer su desarrollo.
           </p>
         </div>
         <select

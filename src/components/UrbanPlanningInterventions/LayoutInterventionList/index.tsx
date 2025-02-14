@@ -87,7 +87,7 @@ export default function LayoutInterventionList() {
   if (isLoading) return <Loader />;
   if (isError) return <p>Error al cargar las actuaciones urbanisticas</p>;
   return (
-    <div className="px-4 lg:px-16">
+    <div className="px-4 xl:px-16">
       <CrudButtons
         handleDelete={handleDelete}
         handleEdit={handleEdit}

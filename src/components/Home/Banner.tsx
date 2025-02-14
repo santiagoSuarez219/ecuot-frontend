@@ -20,7 +20,7 @@ export default function Banner() {
 
         <div className="relative z-10 flex flex-col justify-center h-full text-white max-w-[817px] font-semibold py-4 md:py-16">
           <h1 className="text-5xl md:text-5xl lg:text-6xl ">
-            Estudios sobre el conflicto urbano asociados a decisiones de
+            Estudios sobre el conflicto urbano asociado a decisiones de
             ordenamiento territorial
           </h1>
           <Link
