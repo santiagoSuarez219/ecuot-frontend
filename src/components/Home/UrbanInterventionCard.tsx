@@ -28,7 +28,9 @@ export default function UrbanInterventionCard({
       </figure>
       <div className={`absolute inset-0 bg-quinary opacity-60`}></div>
       <div className="relative z-10 pt-56 h-full text-white max-w-[380px] md:max-w-[280px] font-semibold flex items-end pb-12 lg:pb-16 px-4 lg:px-8">
-        <h1 className="text-4xl">{intervention.interventionName}</h1>
+        <h1 className="text-[1.79rem] leading-9">
+          {intervention.interventionName}
+        </h1>
       </div>
     </div>
   );

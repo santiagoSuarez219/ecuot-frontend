@@ -20,8 +20,8 @@ export default function InterventionSheetLayout() {
   };
 
   return (
-    <div className="w-full lg:h-screen lg:px-20 lg:py-12 flex gap-6 lg:justify-center lg:bg-gradient-to-r from-septenary to-senary relative ">
-      <div className="w-full lg:w-[85%] h-[100%] rounded-2xl flex flex-col lg:flex-row lg:overflow-hidden relative">
+    <div className="w-full lg:h-screen xl:px-20 xl:py-12 py-4 flex gap-6 lg:justify-center lg:bg-gradient-to-r from-septenary to-senary relative ">
+      <div className="w-full  lg:w-[85%] h-[100%] rounded-2xl flex flex-col lg:flex-row lg:overflow-hidden relative">
         <Outlet />
       </div>
       <nav className="hidden lg:block intervention-sheet__nav w-[10%] h-full shadow-xl rounded-2xl bg-white">
@@ -53,22 +53,22 @@ export default function InterventionSheetLayout() {
           />
         </ul>
       </nav>
-      <nav className="lg:hidden w-full fixed bottom-0 bg-primary text-white font-semibold py-2 md:px-4">
-        <ul className="w-full flex justify-between text-xs md:text-sms [&>li]:flex [&>li]:flex-col [&>li]:gap-1 [&>li]:items-center">
+      <nav className="lg:hidden w-full fixed bottom-0 bg-primary text-white font-semibold py-2 px-4">
+        <ul className="w-full flex justify-between text-sm md:text-base [&>li]:flex [&>li]:flex-col [&>li]:gap-1 [&>li]:items-center">
           <li onClick={() => handleClick("description")}>
-            <IoMenuOutline className="size-5" />
+            <IoMenuOutline className="size-8" />
             <p>Descripción</p>
           </li>
           <li onClick={() => handleClick("features")}>
-            <IoBookOutline className="size-5" />
+            <IoBookOutline className="size-8" />
             <p>Caracteristicas</p>
           </li>
           <li onClick={() => handleClick("conflictivity")}>
-            <IoNewspaperOutline className="size-5" />
+            <IoNewspaperOutline className="size-8" />
             <p>Conflictividad</p>
           </li>
           <li onClick={() => navigate(-1)}>
-            <IoReturnUpBack className="size-5" />
+            <IoReturnUpBack className="size-8" />
             <p>Volver</p>
           </li>
         </ul>

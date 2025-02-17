@@ -15,8 +15,8 @@ export default function InterventionDataSheetStart({
 
   return (
     <>
-      <div className="w-full h-[calc(100vh-80px)] lg:h-[calc(100vh-160px)] md:px-20 py-4 md:py-12 flex gap-6 justify-center bg-gradient-to-r from-quaternary px-4 lg:px-0">
-        <div className="lg:w-[90%] h-[100%] rounded-2xl flex overflow-hidden relative">
+      <div className="w-full h-[calc(100vh-80px)] lg:h-[calc(100vh-160px)] py-4 lg:py-12 flex gap-6 justify-center bg-gradient-to-r from-quaternary px-4 lg:px-0">
+        <div className="w-full lg:w-[90%] h-[100%] rounded-2xl flex overflow-hidden relative">
           <figure className="absolute inset-0">
             <img
               src="/main-poster.avif"

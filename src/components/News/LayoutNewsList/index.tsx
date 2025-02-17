@@ -23,6 +23,8 @@ export default function LayoutConflictList() {
 
   const user = useEcuot((state) => state.user);
 
+  const [visibleCount, setVisibleCount] = useState(30);
+
   const {
     data: news,
     isError,
@@ -71,6 +73,7 @@ export default function LayoutConflictList() {
       if (searchKeyWords) filterType += "BY_KEYWORDS";
       if (searchByIntervention) filterType += "BY_INTERVENTION";
       setFilteredData(filterData(news, filterType));
+      setVisibleCount(30);
     }
   }, [searchKeyWords, searchByIntervention, news]);
 
@@ -91,21 +94,36 @@ export default function LayoutConflictList() {
           setSearchByIntervention={setSearchByIntervention}
         />
       )}
-      <div className="w-full mt-6 mb-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {filteredData?.length ? (
-          filteredData.map((news) => (
-            <CardNew
-              key={news._id}
-              data={news}
-              isEditing={isEditing}
-              isDeleting={isDeleting}
-              setOneNews={setOneNews}
-            />
-          ))
-        ) : (
-          <NoDataFound title="acontecimientos noticiosos" />
-        )}
-      </div>
+
+      {filteredData?.length ? (
+        <>
+          <div className="w-full mt-6 mb-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {filteredData.slice(0, visibleCount).map((news) => (
+              <CardNew
+                key={news._id}
+                data={news}
+                isEditing={isEditing}
+                isDeleting={isDeleting}
+                setOneNews={setOneNews}
+              />
+            ))}
+          </div>
+
+          {filteredData.length > visibleCount && (
+            <div className="text-center mt-4">
+              <button
+                className="bg-quinary text-white px-4 py-2 rounded hover:scale-105 transition-all"
+                onClick={() => setVisibleCount((prev) => prev + 15)}
+              >
+                Ver más
+              </button>
+            </div>
+          )}
+        </>
+      ) : (
+        <NoDataFound title="acontecimientos noticiosos" />
+      )}
+
       <DialogDeleteNews news={oneNews} />
     </div>
   );

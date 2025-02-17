@@ -31,6 +31,7 @@ const handleImage = (internalSystem: string) => {
   // if (internalSystem === "Sistema de Patrimonio") {
   //   return "logo.avif";
   // }
+  console.log(internalSystem);
   return "logo.avif";
 };
 

@@ -19,7 +19,7 @@ export default function ProjectView() {
         territorial
       </h3>
       <article className="w-full lg:grid grid-cols-2">
-        <p className="w-full px-4 xl:pl-24 lg:pr-12 xl:text-xl text-lg lg:leading-snug xl:leading-normal font-normal">
+        <p className="w-full px-4 xl:pl-12 2xl:pl-24 lg:pr-12 xl:text-lg 2xl:text-xl text-base lg:leading-snug xl:leading-normal font-normal ">
           Ecuot surge como resultado del proyecto de investigación “Conflictos
           urbanos asociados a las intervenciones y decisiones referidas al
           ordenamiento territorial de la ciudad de Medellín- Colombia” realizado
@@ -59,7 +59,7 @@ export default function ProjectView() {
             className="h-full w-full object-cover grayscale"
           />
         </figure>
-        <p className="w-full h-full text-lg xl:text-xl font-normal px-4 py-4 xl:pr-24 xl:pl-12 lg:py-8">
+        <p className="w-full h-full text-base xl:text-lg 2xl:text-xl font-normal px-4 py-4 xl:pr-12 xl:pl-12">
           El aplicativo Ecuot es desarrollado mediante convenio con el grupo de
           investigación en Automática, Electrónica y Ciencias Computacionales
           del Instituto Tecnológico Metropolitano y tiene como propósito
