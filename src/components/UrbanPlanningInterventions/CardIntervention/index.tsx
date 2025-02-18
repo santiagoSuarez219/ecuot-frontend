@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Intervention } from "../../../types";
+import { useEcuot } from "../../../ecuot";
 
 export default function CardIntervention({
   data,
@@ -13,6 +14,16 @@ export default function CardIntervention({
   setInterventionId: (id: string) => void;
 }) {
   const navigate = useNavigate();
+  const user = useEcuot((state) => state.user);
+
+  const handleClick = () => {
+    if (user || !data.datasheet) {
+      return navigate(`/interventions/${data._id}/datasheet`);
+    }
+    return navigate(
+      `/intervention-datasheet/${data._id}/${data.datasheet}/description`
+    );
+  };
 
   return (
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col gap-6">
@@ -101,7 +112,7 @@ export default function CardIntervention({
         type="button"
         value="Ir a la ficha tecnica"
         className="bg-primary text-white rounded-md text-lg font-semibold w-full py-2 cursor-pointer hover:bg-secondary transition-all"
-        onClick={() => navigate(`/interventions/${data._id}/datasheet`)}
+        onClick={handleClick}
       />
     </div>
   );

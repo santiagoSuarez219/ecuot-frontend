@@ -105,7 +105,9 @@ export default function CardNew({
             value="Ir actuacion urbanistica"
             className="bg-primary text-white rounded-md font-semibold py-2 px-4 cursor-pointer hover:scale-105 transition-all"
             onClick={() =>
-              navigate(`/interventions/${data.intervention._id}/datasheet`)
+              navigate(
+                `/intervention-datasheet/${data.intervention._id}/${data.intervention.datasheet}/description`
+              )
             }
           />
         </div>

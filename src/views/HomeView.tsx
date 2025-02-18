@@ -10,6 +10,7 @@ import AboutUs from "../components/Home/AboutUs";
 import Loader from "../components/Loader/Loader";
 import Banner from "../components/Home/Banner";
 import Footer from "../components/Footer";
+import StatisticsModal from "../components/Home/StatisticsModal/StatisticsModal";
 
 export default function HomeView() {
   const {
@@ -35,6 +36,7 @@ export default function HomeView() {
         <DocumentsSection />
         <Footer />
         <VideoModal />
+        <StatisticsModal />
         {/* <ContactUsSection /> */}
       </section>
     );

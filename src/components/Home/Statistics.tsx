@@ -1,6 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Statistics() {
+  const navigate = useNavigate();
+
+  const handleSpanClick = (option: number) => {
+    if (option === 1) navigate("?watchStatistic=true&option=1");
+    if (option === 2) navigate("?watchStatistic=true&option=2");
+    if (option === 3) navigate("?watchStatistic=true&option=3");
+  };
+
   return (
-    <div className="mt-20 flex px-4 lg:px-12 xl:px-56 gap-4 lg:gap-8 xl:gap-12">
+    <div className="hidden mt-20 lg:flex px-4 lg:px-12 xl:px-56 gap-4 lg:gap-8 xl:gap-12">
       <figure className="hidden lg:block w-[300px] lg:w-[500px] h-[330px] lg:h-[500px] bg-red-200 rounded-2xl overflow-hidden relative">
         <img
           src="statistics.jpg"
@@ -22,16 +32,17 @@ export default function Statistics() {
           <li>
             1. La tipología de conflictos en relación con el sistema
             estructurante y la jerarquía urbana en la que se inscribe la acción
-            urbanística. <span>(Ver)</span>
+            urbanística. <span onClick={() => handleSpanClick(1)}>(Ver)</span>
           </li>
           <li>
             {" "}
             2. El número de hechos noticiosos asociados a cada conflicto.{" "}
-            <span>(Ver)</span>
+            <span onClick={() => handleSpanClick(2)}>(Ver)</span>
           </li>
           <li>
             3. Los actores (demandantes y demandados) en función del tipo de
-            conflicto y su escalonamiento. <span>(Ver)</span>
+            conflicto y su escalonamiento.{" "}
+            <span onClick={() => handleSpanClick(3)}>(Ver)</span>
           </li>
         </ul>
       </div>

@@ -119,7 +119,7 @@ export default function NavBar({ user }: NavBarProps) {
                 "/admin"
               )}`}
             >
-              <Link to="/admin">Administrador</Link>
+              <Link to="/users">Usuarios</Link>
             </li>
           )}
         </ul>

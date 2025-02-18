@@ -19,7 +19,6 @@ export default function LoginView() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
@@ -29,9 +28,8 @@ export default function LoginView() {
       toast.error(error.message);
     },
     onSuccess: () => {
-      toast.success("Sesion iniciada correctamente");
-      navigate("/admin");
-      reset();
+      navigate("/");
+      toast.success("Inicio de sesion exitoso");
     },
   });
 
