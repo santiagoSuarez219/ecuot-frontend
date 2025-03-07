@@ -243,3 +243,10 @@ export type InterventionDataSheetFormData = Pick<
   | "image_conflictivity"
   | "spatialization"
 >;
+
+export const ConctactFormSchema = z.object({
+  user_name: z.string().min(1, "El nombre es requerido"),
+  user_email: z.string().email("El correo no es valido"),
+  message: z.string().min(1, "El mensaje es requerido"),
+});
+export type ContactFormType = z.infer<typeof ConctactFormSchema>;

@@ -10,7 +10,6 @@ const handleImage = (internalSystem: string) => {
   ) {
     return "sistema_movilidad.avif";
   }
-  // Se va modificar la imagen posteriormente
   if (internalSystem === "Sistema de Equipamientos") {
     return "sistema_equipamientos.avif";
   }
@@ -26,12 +25,9 @@ const handleImage = (internalSystem: string) => {
   if (internalSystem === "Sistema de Centralidades") {
     return "centralidades_urbanas.avif";
   }
-
-  // TODO: No hay imagen sistema de patrimonio
-  // if (internalSystem === "Sistema de Patrimonio") {
-  //   return "logo.avif";
-  // }
-  console.log(internalSystem);
+  if (internalSystem === "Sistema de Patrimonio Cultural Inmueble") {
+    return "sistema_patrimonio_cultural_inmueble.avif";
+  }
   return "logo.avif";
 };
 

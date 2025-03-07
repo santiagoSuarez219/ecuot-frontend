@@ -42,7 +42,7 @@ export default function Footer() {
           </figure>
         </a>
         <a
-          href="https://www.colmayor.edu.co/"
+          href="https://www.colmayor.edu.co/investigacion/desarrollo-gestion-territorial/"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -1,5 +1,6 @@
 import TeamWork from "../../components/Home/TeamWork";
 import Footer from "../../components/Footer";
+import ContactForm from "../../components/ContactForm/ContactForm";
 
 export default function ProjectView() {
   return (
@@ -82,6 +83,7 @@ export default function ProjectView() {
         </p>
       </article>
       <TeamWork />
+      <ContactForm />
       <Footer />
     </section>
   );
