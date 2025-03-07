@@ -73,7 +73,7 @@ export default function ContactForm() {
         noValidate
         className="text-lg [&>div>div>label]:text-white"
       >
-        <div className="flex gap-5">
+        <div className="flex flex-col lg:flex-row gap-5">
           <div className="flex-1">
             <label htmlFor="name">Nombre</label>
             <input
@@ -135,14 +135,14 @@ export default function ContactForm() {
             Acepta los <span className="italic">términos y condiciones</span>
           </label>
         </div>
-        <div className="flex justify-end gap-6">
+        <div className="flex flex-col lg:flex-row mt-8 md:mt-4 justify-end gap-6">
           <ReCAPTCHA
             sitekey="6Le5uOwqAAAAAK_kL7COC26CvUoagEr46wR9xzIQ"
             onChange={onChange}
           />
           <button
             type="submit"
-            className="bg-quaternary px-16 py-4 rounded-3xl text-lg text-white font-bold hover:scale-105 transition-all duration-300"
+            className="md:self-end  bg-quaternary px-16 py-4 rounded-3xl text-lg text-white font-bold hover:scale-105 transition-all duration-300"
           >
             Enviar
           </button>
