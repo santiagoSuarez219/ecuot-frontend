@@ -96,11 +96,7 @@ export default function Footer() {
             <li>Facultad de ciencias sociales y educación</li>
             <li>Dirección: Calle 112 #45-56</li>
             <li>Teléfono: + 57 (4) 444 56 11 Ext 128</li>
-            <li>
-              <Link to="mailto:Investigacionfcs@colmayor.edu.co">
-                Correo: Investigacionfcs@colmayor.edu.co
-              </Link>
-            </li>
+            <li>Correo: Investigacionfcs@colmayor.edu.co</li>
           </ul>
         </div>
       </div>
