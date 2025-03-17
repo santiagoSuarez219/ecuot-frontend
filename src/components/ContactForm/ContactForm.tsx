@@ -1,9 +1,12 @@
-import ReCAPTCHA from "react-google-recaptcha";
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import { ContactFormType } from "../../types";
+import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+
+import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
+
+import { ContactFormType } from "../../types";
 
 export default function ContactForm() {
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
@@ -43,10 +46,10 @@ export default function ContactForm() {
 
     emailjs
       .sendForm(
-        "service_19odtfb",
-        "template_a99ax3r",
+        import.meta.env.VITE_SERVICE_EMAIL_ID,
+        import.meta.env.VITE_TEMPLATE_EMAIL_ID,
         form.current,
-        "IymxSgipHgUQboi6z"
+        import.meta.env.VITE_PUBLIC_KEY_EMAIL
       )
       .then(
         () => {
@@ -132,12 +135,20 @@ export default function ContactForm() {
             onChange={(e) => setIsTermsAccepted(e.target.checked)}
           />
           <label htmlFor="terms">
-            Acepta los <span className="italic">términos y condiciones</span>
+            Acepta los{" "}
+            <Link
+              to={"/pdf/TratamientoDatos.pdf"}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="italic"
+            >
+              términos y condiciones
+            </Link>
           </label>
         </div>
         <div className="flex flex-col lg:flex-row mt-8 md:mt-4 justify-end gap-6">
           <ReCAPTCHA
-            sitekey="6Le5uOwqAAAAAK_kL7COC26CvUoagEr46wR9xzIQ"
+            sitekey={import.meta.env.VITE_CAPTCHA_SITE_KEY}
             onChange={onChange}
           />
           <button
