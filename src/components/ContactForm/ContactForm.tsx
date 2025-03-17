@@ -32,11 +32,13 @@ export default function ContactForm() {
   };
 
   const sendEmail = () => {
+    // Terminos y condiciones
     if (!isTermsAccepted) {
       toast.error("Debes aceptar los términos y condiciones");
       return;
     }
 
+    // Captcha
     if (!recaptchaValue) {
       toast.error("Debes completar el captcha");
       return;
