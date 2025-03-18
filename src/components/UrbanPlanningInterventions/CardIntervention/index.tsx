@@ -92,7 +92,7 @@ export default function CardIntervention({
           </svg>
         </div>
       </figure>
-      <div className="flex-grow flex flex-col gap-2">
+      <div className="flex-grow flex flex-col gap-2 whitespace-pre-line">
         <h2 className="font-bold text-2xl text-primary">
           {data.interventionName}
         </h2>

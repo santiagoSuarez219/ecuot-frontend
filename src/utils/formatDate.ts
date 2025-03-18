@@ -15,6 +15,7 @@ const months = [
 
 const handleDate = (date: string) => {
   const dateFormated = new Date(date);
+  dateFormated.setDate(dateFormated.getDate() + 1);
 
   return `${dateFormated.getDate()} de ${
     months[dateFormated.getMonth()]

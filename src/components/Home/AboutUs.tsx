@@ -12,10 +12,9 @@ export default function AboutUs() {
             Local y Gestión Territorial de la Institución Universitaria Colegio
             Mayor de Antioquia, enfocado en los conflictos urbanos generados por
             las intervenciones y decisiones sobre el ordenamiento territorial de
-            Medellín, Colombia. Iniciado en 2018, la investigación caracterizó,
-            mediante el análisis de prensa, las tensiones asociadas al
-            ordenamiento territorial en Medellín entre 1999 y 2014, resultando
-            en un sistema de información que organiza dicha conflictividad.
+            Medellín, Colombia. La investigación caracterizó, mediante el
+            análisis de prensa, las tensiones asociadas al ordenamiento
+            territorial en Medellín entre 1999 y 2014.
           </p>
         </div>
         <div className="w-full md:max-w-[317px] lg:max-w-[634px] flex flex-col items-center text-lg lg:text-xl font-semibold flex-1">
