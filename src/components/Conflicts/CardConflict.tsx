@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { ConflictResponse } from "../../types";
-import handleImage from "../../utils/handleImage";
 import { useEcuot } from "../../ecuot";
 
 export default function CardConflict({
@@ -27,7 +26,7 @@ export default function CardConflict({
           {data.intervention.interventionName}
         </p>
         <img
-          src={handleImage(data.intervention.internalSystem)}
+          src={`${data.intervention.internalSystem}.avif`}
           alt={data.conflictName}
           className={`w-full h-full object-cover ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"

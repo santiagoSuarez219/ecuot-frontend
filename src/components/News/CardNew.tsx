@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { NewsResponse } from "../../types";
 import { useEcuot } from "../../ecuot";
-import handleImage from "../../utils/handleImage";
 
 export default function CardNew({
   data,
@@ -16,6 +15,7 @@ export default function CardNew({
 }) {
   const navigate = useNavigate();
   const setNews = useEcuot((state) => state.setNews);
+
   return (
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col md:flex-row">
       <figure className="w-full md:w-2/5 bg-white rounded-md aspect-square relative overflow-hidden">
@@ -27,7 +27,7 @@ export default function CardNew({
           {data.intervention.interventionName}
         </p>
         <img
-          src={handleImage(data.intervention.internalSystem)}
+          src={`${data.intervention.internalSystem}.avif`}
           alt={data.newsName}
           className={`w-full h-full object-cover ${
             isEditing || isDeleting ? "opacity-40" : "opacity-100"

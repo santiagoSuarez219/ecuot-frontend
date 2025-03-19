@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Intervention } from "../../../types";
+import { InterventionResponse } from "../../../types";
 import { useEcuot } from "../../../ecuot";
 
 export default function CardIntervention({
@@ -8,7 +8,7 @@ export default function CardIntervention({
   isDeleting,
   setInterventionId,
 }: {
-  data: Intervention;
+  data: InterventionResponse;
   isEditing: boolean;
   isDeleting: boolean;
   setInterventionId: (id: string) => void;
@@ -105,7 +105,7 @@ export default function CardIntervention({
         </div>
         <div>
           <p className="text-primary font-medium text-lg">Sistema interno</p>
-          <p>{data.internalSystem}</p>
+          <p>{data.internalSystem.systemName}</p>
         </div>
       </div>
       <input

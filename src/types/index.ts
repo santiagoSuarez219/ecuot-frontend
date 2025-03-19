@@ -13,6 +13,22 @@ export const InterventionSchema = z.object({
   conflicts: z.array(z.string()),
   news: z.array(z.string()),
 });
+export const System = z.object({
+  _id: z.string(),
+  systemName: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+export type System = z.infer<typeof System>;
+export const dashboardSystemSchema = z.array(
+  System.pick({
+    _id: true,
+    systemName: true,
+    createdAt: true,
+    updatedAt: true,
+  })
+);
+
 export const dashboardInterventionSchema = z.array(
   InterventionSchema.pick({
     _id: true,
@@ -37,6 +53,40 @@ export type InterventionFormData = Pick<
   | "internalSystem"
   | "image"
 >;
+
+export const InterventionResponseSchema = z.object({
+  _id: z.string(),
+  interventionName: z.string(),
+  description: z.string(),
+  hierarchy: z.string(),
+  strategicProject: z.string(),
+  internalSystem: z.object({
+    _id: z.string(),
+    systemName: z.string(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+  }),
+  image: z.string(),
+  datasheet: z.string().nullable(),
+  conflicts: z.array(z.string()),
+  news: z.array(z.string()),
+});
+export type InterventionResponse = z.infer<typeof InterventionResponseSchema>;
+
+export const dashboardInterventionResponseSchema = z.array(
+  InterventionResponseSchema.pick({
+    _id: true,
+    interventionName: true,
+    description: true,
+    hierarchy: true,
+    strategicProject: true,
+    internalSystem: true,
+    image: true,
+    datasheet: true,
+    conflicts: true,
+    news: true,
+  })
+);
 
 /**Conflicts */
 export const ConflictSchema = z.object({

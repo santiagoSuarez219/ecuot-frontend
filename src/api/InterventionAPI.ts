@@ -2,7 +2,7 @@ import { isAxiosError } from "axios";
 
 import {
   InterventionFormData,
-  dashboardInterventionSchema,
+  dashboardInterventionResponseSchema,
   Intervention,
   InterventionDataSheetFormData,
 } from "../types";
@@ -22,7 +22,7 @@ export async function createIntervention(formData: InterventionFormData) {
 export async function getInterventions() {
   try {
     const { data } = await api("/interventions");
-    const response = dashboardInterventionSchema.safeParse(data);
+    const response = dashboardInterventionResponseSchema.safeParse(data);
 
     if (response.success) {
       return response.data;
@@ -37,7 +37,7 @@ export async function getInterventions() {
 export async function getLatestInterventions() {
   try {
     const { data } = await api("/interventions/latest");
-    const response = dashboardInterventionSchema.safeParse(data);
+    const response = dashboardInterventionResponseSchema.safeParse(data);
     if (response.success) {
       return response.data;
     }

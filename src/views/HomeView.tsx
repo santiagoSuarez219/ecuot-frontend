@@ -37,7 +37,6 @@ export default function HomeView() {
         <Footer />
         <VideoModal />
         <StatisticsModal />
-        {/* <ContactUsSection /> */}
       </section>
     );
 }

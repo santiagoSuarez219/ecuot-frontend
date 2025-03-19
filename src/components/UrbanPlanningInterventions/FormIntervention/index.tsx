@@ -3,6 +3,9 @@ import { useState } from "react";
 import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { InterventionFormData } from "../../../types";
 import ImageUpload from "../../ImageUpload";
+import { getSystems } from "../../../api/SystemAPI";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../Loader/Loader";
 
 type FormInterventionProps = {
   register: UseFormRegister<InterventionFormData>;
@@ -16,6 +19,18 @@ export default function FormIntervention({
   register,
 }: FormInterventionProps) {
   const [image, setImage] = useState<string>("");
+
+  const {
+    data: systems,
+    isError,
+    isLoading,
+  } = useQuery({
+    queryKey: ["systems"],
+    queryFn: getSystems,
+  });
+
+  if (isLoading) return <Loader />;
+  if (isError) return <p>Ha ocurrido un error</p>;
 
   return (
     <>
@@ -124,7 +139,13 @@ export default function FormIntervention({
               required: "El sistema interno es obligatorio",
             })}
           >
-            <option value="">Seleccione un sistema interno</option>
+            <option value="">Seleccione una opción</option>
+            {systems?.map((system) => (
+              <option key={system._id} value={system._id}>
+                {system.systemName}
+              </option>
+            ))}
+            {/* <option value="">Seleccione un sistema interno</option>
             <option
               value="Sistema de Espacio Público de esparcimiento y
 encuentro"
@@ -152,7 +173,7 @@ domiciliarios)"
             </option>
             <option value="Sistema de Patrimonio Cultural Inmueble">
               Sistema de Patrimonio Cultural Inmueble
-            </option>
+            </option> */}
           </select>
         </div>
       </div>

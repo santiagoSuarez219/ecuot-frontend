@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { Intervention } from "../../types";
+import { InterventionResponse } from "../../types";
 
 type UrbanInterventionCardProps = {
-  intervention: Intervention;
+  intervention: InterventionResponse;
 };
 
 export default function UrbanInterventionCard({

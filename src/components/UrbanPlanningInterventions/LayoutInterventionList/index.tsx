@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import DialogDeleteIntervention from "../DialogDeleteIntervention";
 import { getInterventions } from "../../../api/InterventionAPI";
 import CardIntervention from "../CardIntervention";
-import { Intervention } from "../../../types";
+import { InterventionResponse } from "../../../types";
 import CrudButtons from "../../CrudButtons";
 import NoDataFound from "../../NoDataFound";
 import { useEcuot } from "../../../ecuot";
@@ -21,7 +21,7 @@ export default function LayoutInterventionList() {
   const [searchByHierarchy, setSearchByHierarchy] = useState("");
   const [searchBySystem, setSearchBySystem] = useState("");
 
-  const [filteredData, setFilteredData] = useState<Intervention[]>([]);
+  const [filteredData, setFilteredData] = useState<InterventionResponse[]>([]);
 
   const user = useEcuot((state) => state.user);
 
@@ -44,7 +44,7 @@ export default function LayoutInterventionList() {
     setIsEditing(false);
   };
 
-  const filterData = (data: Intervention[], type: string) => {
+  const filterData = (data: InterventionResponse[], type: string) => {
     let filtered = data;
     if (type.includes("BY_KEYWORDS")) {
       filtered = filtered.filter(
@@ -67,7 +67,7 @@ export default function LayoutInterventionList() {
     if (type.includes("BY_SYSTEM")) {
       filtered = filtered.filter(
         (intervention) =>
-          intervention.internalSystem.toLocaleLowerCase() ===
+          intervention.internalSystem.systemName.toLocaleLowerCase() ===
           searchBySystem.toLocaleLowerCase()
       );
     }

@@ -1,9 +1,9 @@
 // import { dataInterventions } from "../../utils/UrbanPlanningInterventionsData";
 import UrbanInterventionCard from "./UrbanInterventionCard";
-import { Intervention } from "../../types";
+import { InterventionResponse } from "../../types";
 
 type UrbanPlanningInterventionsProps = {
-  interventions: Intervention[] | undefined;
+  interventions: InterventionResponse[] | undefined;
 };
 
 export default function UrbanPlanningInterventions({
