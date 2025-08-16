@@ -65,7 +65,7 @@ export default function FilterForm({
             className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-senary"
             onChange={(event) => setSearchByIntervention(event.target.value)}
           >
-            <option value=""> -- Seleccione -- </option>
+            <option value=""> Todas las actuaciones urbanisticas </option>
             {interventions?.map((intervention) => (
               <option key={intervention._id} value={intervention._id}>
                 {intervention.interventionName}
@@ -93,12 +93,12 @@ export default function FilterForm({
               setSearchByTimeStressOccurrence(event.target.value)
             }
           >
-            <option value=""> -- Seleccione -- </option>
-            <option value="Proyectado">Proyectado</option>
-            <option value="Ejecución">Ejecución</option>
-            <option value="Apropiación">Apropiación</option>
-            <option value="Proyectado/Ejecución">Proyectado/Ejecución</option>
-            <option value="N/A">N/A</option>
+            <option value=""> Todas las etapas </option>
+            <option value="6894c9951cdc31e71d91ad09">Proyectado</option>
+            <option value="6894c9951cdc31e71d91ad0a">Ejecución</option>
+            <option value="6894c9951cdc31e71d91ad0b">Apropiación</option>
+            <option value="6894c9951cdc31e71d91ad0c">Proyectado/Ejecución</option>
+            <option value="6894c9951cdc31e71d91ad0d">N/A</option>
           </select>
         </div>
       </form>

@@ -48,6 +48,7 @@ export async function getConflicts() {
 export async function getConflictById(id: Conflict["_id"]) {
   try {
     const { data } = await api(`/conflicts/${id}`);
+    console.log(data);
     const response = ConflictSchemaResponse.safeParse(data);
     if (response.success) {
       return response.data;

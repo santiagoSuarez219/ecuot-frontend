@@ -29,23 +29,20 @@ export default function CardIntervention({
     <div className="w-full bg-font-color-light rounded-lg p-6 flex flex-col gap-6">
       <figure className="w-full bg-white rounded-md aspect-square relative overflow-hidden">
         <p
-          className={`p-2 bg-primary text-white rounded-md absolute top-4 left-4 ${
-            isEditing || isDeleting ? "opacity-40" : "opacity-100"
-          }`}
+          className={`p-2 bg-primary text-white rounded-md absolute top-4 left-4 ${isEditing || isDeleting ? "opacity-40" : "opacity-100"
+            }`}
         >
-          {data.hierarchy}
+          {data.hierarchy.hierarchyName}
         </p>
         <img
           src={data.image || "logo.avif"}
           alt={data.interventionName}
-          className={`w-full h-full object-cover ${
-            isEditing || isDeleting ? "opacity-40" : "opacity-100"
-          } `}
+          className={`w-full h-full object-cover ${isEditing || isDeleting ? "opacity-40" : "opacity-100"
+            } `}
         />
         <div
-          className={`${
-            isDeleting ? "flex" : "hidden"
-          } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
+          className={`${isDeleting ? "flex" : "hidden"
+            } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
           onClick={() => {
             setInterventionId(data._id);
             navigate("/interventions/?deleteUrbanIntervention=true");
@@ -68,9 +65,8 @@ export default function CardIntervention({
           </svg>
         </div>
         <div
-          className={`${
-            isEditing ? "flex" : "hidden"
-          } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
+          className={`${isEditing ? "flex" : "hidden"
+            } w-full h-full justify-center items-center absolute top-0 cursor-pointer`}
           onClick={() => {
             navigate(`/interventions/${data._id}/edit`);
             window.scrollTo(0, 0);

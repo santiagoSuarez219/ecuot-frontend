@@ -63,7 +63,7 @@ export default function FilterForm({
             className="w-full rounded-md border px-3 py-2 text-md text-font-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-quinary"
             onChange={(event) => setSearchByIntervention(event.target.value)}
           >
-            <option value=""> -- Seleccione -- </option>
+            <option value="">Todas las actuaciones urbanisticas</option>
             {interventions?.map((intervention) => (
               <option key={intervention._id} value={intervention._id}>
                 {intervention.interventionName}

@@ -20,7 +20,6 @@ export default function LayoutInterventionList() {
   const [searchKeyWords, setSearchKeyWords] = useState("");
   const [searchByHierarchy, setSearchByHierarchy] = useState("");
   const [searchBySystem, setSearchBySystem] = useState("");
-
   const [filteredData, setFilteredData] = useState<InterventionResponse[]>([]);
 
   const user = useEcuot((state) => state.user);
@@ -60,14 +59,14 @@ export default function LayoutInterventionList() {
     if (type.includes("BY_HIERARCHY")) {
       filtered = filtered.filter(
         (intervention) =>
-          intervention.hierarchy.toLocaleLowerCase() ===
+          intervention.hierarchy._id ===
           searchByHierarchy.toLocaleLowerCase()
       );
     }
     if (type.includes("BY_SYSTEM")) {
       filtered = filtered.filter(
         (intervention) =>
-          intervention.internalSystem.systemName.toLocaleLowerCase() ===
+          intervention.internalSystem._id ===
           searchBySystem.toLocaleLowerCase()
       );
     }
@@ -118,7 +117,6 @@ export default function LayoutInterventionList() {
       ) : (
         <NoDataFound title="actuaciones urbanisticas" />
       )}
-
       <DialogDeleteIntervention interventionId={interventionId} />
     </div>
   );

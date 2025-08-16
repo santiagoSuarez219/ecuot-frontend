@@ -58,7 +58,13 @@ export const InterventionResponseSchema = z.object({
   _id: z.string(),
   interventionName: z.string(),
   description: z.string(),
-  hierarchy: z.string(),
+  hierarchy: z.object({
+    _id: z.string(),
+    hierarchyName: z.string(),
+    __v: z.number(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+  }),
   strategicProject: z.string(),
   internalSystem: z.object({
     _id: z.string(),
@@ -125,7 +131,13 @@ export const ConflictSchemaResponse = z.object({
   _id: z.string(),
   conflictName: z.string(),
   description: z.string(),
-  timeStressOccurrence: z.string(),
+  timeStressOccurrence: z.object({
+    _id: z.string(),
+    systemName: z.string(),
+    __v: z.number(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+  }),
   actorsInvolved: z.string(),
   intervention: z.object({
     _id: z.string(),

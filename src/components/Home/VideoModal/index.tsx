@@ -51,11 +51,12 @@ export default function VideoModal() {
                     <iframe
                       width="100%"
                       height="100%"
-                      src="https://www.youtube.com/embed/pSeDOCJFn-k?si=8t4KRqhfyXJJSz8F"
+                      src="https://www.youtube.com/embed/3xFT5pfECC8?si=BYOqIPajc8tePJ-p"
                       title="YouTube video player"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                     ></iframe>
+
                   </figure>
                 </DialogPanel>
               </TransitionChild>

@@ -35,11 +35,10 @@ export default function ConflictAddForm({
           </label>
           <input
             id="conflictName"
-            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
-              errors.conflictName
-                ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
-                : ""
-            }`}
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${errors.conflictName
+              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+              : ""
+              }`}
             type="text"
             placeholder={
               errors.conflictName
@@ -57,21 +56,20 @@ export default function ConflictAddForm({
           </label>
           <select
             id="timeStressOccurrence"
-            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
-              errors.timeStressOccurrence
-                ? "border-red-500 focus:ring-red-500 "
-                : ""
-            }`}
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${errors.timeStressOccurrence
+              ? "border-red-500 focus:ring-red-500 "
+              : ""
+              }`}
             {...register("timeStressOccurrence", {
               required: "Este campo es obligatorio",
             })}
           >
             <option value="">Seleccione una opcion</option>
-            <option value="Proyectado">Proyectado</option>
-            <option value="Ejecución">Ejecución</option>
-            <option value="Apropiación">Apropiación</option>
-            <option value="Proyectado/Ejecución">Proyectado/Ejecución</option>
-            <option value="N/A">N/A</option>
+            <option value="6894c9951cdc31e71d91ad09">Proyectado</option>
+            <option value="6894c9951cdc31e71d91ad0a">Ejecución</option>
+            <option value="6894c9951cdc31e71d91ad0b">Apropiación</option>
+            <option value="6894c9951cdc31e71d91ad0c">Proyectado/Ejecución</option>
+            <option value="6894c9951cdc31e71d91ad0d">N/A</option>
           </select>
         </div>
       </div>
@@ -82,11 +80,10 @@ export default function ConflictAddForm({
         </label>
         <textarea
           id="description"
-          className={`w-full h-32 mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
-            errors.description
-              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
-              : ""
-          }`}
+          className={`w-full h-32 mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${errors.description
+            ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+            : ""
+            }`}
           placeholder={
             errors.description
               ? errors.description.message
@@ -105,11 +102,10 @@ export default function ConflictAddForm({
           </label>
           <input
             id="actorsInvolved"
-            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
-              errors.actorsInvolved
-                ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
-                : ""
-            }`}
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${errors.actorsInvolved
+              ? "border-red-500 placeholder:text-red-500 focus:ring-red-500"
+              : ""
+              }`}
             type="text"
             placeholder={
               errors.actorsInvolved
@@ -127,9 +123,8 @@ export default function ConflictAddForm({
           </label>
           <select
             id="intervention"
-            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${
-              errors.intervention ? "border-red-500 focus:ring-red-500 " : ""
-            }`}
+            className={`w-full mt-2 p-3 border border-primary rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-secondary transition-colors ${errors.intervention ? "border-red-500 focus:ring-red-500 " : ""
+              }`}
             {...register("intervention", {
               required: "Este campo es obligatorio",
             })}

@@ -23,6 +23,7 @@ export default function LayoutConflictList() {
     useState("");
 
   const [filteredData, setFilteredData] = useState<ConflictResponse[]>([]);
+  const [visibleCount, setVisibleCount] = useState(30);
 
   const user = useEcuot((state) => state.user);
 
@@ -68,7 +69,7 @@ export default function LayoutConflictList() {
     if (type.includes("BY_TIME_STRESS_OCCURRENCE")) {
       filtered = filtered.filter(
         (conflict) =>
-          conflict.timeStressOccurrence.toLocaleLowerCase() ===
+          conflict.timeStressOccurrence._id ===
           searchByTimeStressOccurrence.toLocaleLowerCase()
       );
     }
@@ -109,21 +110,34 @@ export default function LayoutConflictList() {
           setSearchByTimeStressOccurrence={setSearchByTimeStressOccurrence}
         />
       )}
-      <div className="w-full mt-6 mb-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {filteredData?.length ? (
-          filteredData.map((conflict) => (
-            <CardConflict
-              key={conflict._id}
-              data={conflict}
-              isEditing={isEditing}
-              isDeleting={isDeleting}
-              setConflict={setConflict}
-            />
-          ))
-        ) : (
-          <NoDataFound title="conflictos" />
-        )}
-      </div>
+      {filteredData?.length ? (
+        <>
+          <div className="w-full mt-6 mb-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {filteredData.slice(0, visibleCount).map((conflict) => (
+              <CardConflict
+                key={conflict._id}
+                data={conflict}
+                isEditing={isEditing}
+                isDeleting={isDeleting}
+                setConflict={setConflict}
+              />
+            ))}
+          </div>
+
+          {filteredData.length > visibleCount && (
+            <div className="text-center mt-4">
+              <button
+                className="bg-quinary text-white px-4 py-2 rounded hover:scale-105 transition-all"
+                onClick={() => setVisibleCount((prev) => prev + 15)}
+              >
+                Ver más
+              </button>
+            </div>
+          )}
+        </>
+      ) : (
+        <NoDataFound title="acontecimientos noticiosos" />
+      )}
       <DialogDeleteConflict conflict={conflict} />
     </div>
   );

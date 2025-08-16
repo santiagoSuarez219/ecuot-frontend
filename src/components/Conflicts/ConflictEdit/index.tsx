@@ -17,7 +17,7 @@ export default function ConflictEdit({ conflict }: ConflictEditProps) {
   const initialValues: ConflictFormData = {
     conflictName: conflict.conflictName,
     description: conflict.description,
-    timeStressOccurrence: conflict.timeStressOccurrence,
+    timeStressOccurrence: conflict.timeStressOccurrence._id,
     actorsInvolved: conflict.actorsInvolved,
     intervention: conflict.intervention._id,
     image: conflict.image,

@@ -23,7 +23,6 @@ export async function getInterventions() {
   try {
     const { data } = await api("/interventions");
     const response = dashboardInterventionResponseSchema.safeParse(data);
-
     if (response.success) {
       return response.data;
     }
